@@ -168,4 +168,19 @@ backgroundManager.ChangeBackground(newBackground, BackgroundManager.TransitionTy
 
 ---
 
-這個框架提供了劇情向遊戲的基礎功能，你可以根據具體需求進行修改和擴展。
+## 恐怖音效過渡系統
+
+### 新增功能
+- **MelodyToNoiseTransition**: 負責15秒溫柔音樂漸變為恐怖噪音
+- **ShakeTextManager**: 自動配合音樂時間軸顯示震動恐怖文字
+  - 15秒: 第一句「你聽到了什麼嗎？」
+  - 20秒: 第二句「那個聲音越來越近了...」  
+  - 25秒: 第三句「它就在你身後。」
+
+### 使用方法
+1. 掛載 `MelodyToNoiseTransition.cs` 到音效物件
+2. 掛載 `ShakeTextManager.cs` 到文字物件  
+3. 在 ShakeTextManager 中引用 MelodyToNoiseTransition
+4. 按 M 鍵啟動恐怖序列
+
+這個框架提供了劇情向遊戲的基礎功能，並包含專業的恐怖氛圍營造系統。

@@ -11,9 +11,8 @@ public class DialogueManager : MonoBehaviour
     public GameObject dialoguePanel;
     public TextMeshProUGUI characterNameText;
     public TextMeshProUGUI dialogueText;
-    public Image characterImage;
+    public SpriteRenderer characterRenderer;  // 改用 SpriteRenderer
     public Image backgroundImage;
-    public Button nextButton;
     public GameObject choiceButtonPrefab;
     public Transform choiceButtonContainer;
     
@@ -26,8 +25,13 @@ public class DialogueManager : MonoBehaviour
     public bool isAutoMode = false;
     public float autoModeWaitTime = 2f;
     
+    [Header("輸入設定")]
+    public KeyCode continueKey = KeyCode.Space;  // 繼續鍵
+    public bool allowMouseClick = true;          // 允許滑鼠左鍵
+    
     // 私有變量
     private DialogueSequence currentSequence;
+    private DialogueSequenceAsset currentSequenceAsset;  // 新增:保存 ScriptableObject 以觸發事件
     private int currentDialogueIndex = 0;
     private bool isTyping = false;
     private string fullText = "";
@@ -35,6 +39,7 @@ public class DialogueManager : MonoBehaviour
     
     // 事件
     public static event Action<DialogueData> OnDialogueStart;
+    public static event Action<int> OnDialogueIndexChanged;  // 新增:傳遞對話索引
     public static event Action OnDialogueEnd;
     public static event Action<int> OnChoiceSelected;
     
@@ -43,20 +48,47 @@ public class DialogueManager : MonoBehaviour
         InitializeDialogueSystem();
     }
     
+    void Update()
+    {
+        // 空白鍵繼續
+        if (Input.GetKeyDown(continueKey))
+        {
+            ContinueDialogue();
+        }
+        
+        // 滑鼠左鍵繼續
+        if (allowMouseClick && Input.GetMouseButtonDown(0))
+        {
+            ContinueDialogue();
+        }
+    }
+    
     void InitializeDialogueSystem()
     {
         if (dialoguePanel != null)
             dialoguePanel.SetActive(false);
-            
-        if (nextButton != null)
-        {
-            nextButton.onClick.AddListener(OnNextButtonClick);
-        }
     }
     
     public void StartDialogue(DialogueSequence sequence)
     {
         currentSequence = sequence;
+        currentSequenceAsset = null;  // 直接使用 DialogueSequence 時無法觸發事件
+        currentDialogueIndex = 0;
+        
+        if (dialoguePanel != null)
+            dialoguePanel.SetActive(true);
+            
+        ShowCurrentDialogue();
+        OnDialogueStart?.Invoke(currentSequence.dialogues[currentDialogueIndex]);
+    }
+    
+    // 新增:支持直接傳入 DialogueSequenceAsset
+    public void StartDialogue(DialogueSequenceAsset sequenceAsset)
+    {
+        if (sequenceAsset == null) return;
+        
+        currentSequenceAsset = sequenceAsset;
+        currentSequence = sequenceAsset.ToDialogueSequence();
         currentDialogueIndex = 0;
         
         if (dialoguePanel != null)
@@ -76,19 +108,39 @@ public class DialogueManager : MonoBehaviour
         
         DialogueData currentDialogue = currentSequence.dialogues[currentDialogueIndex];
         
+        // 觸發對話索引事件
+        OnDialogueIndexChanged?.Invoke(currentDialogueIndex);
+        
+        // 觸發對話開始事件
+        currentDialogue.onDialogueStart?.Invoke();
+        
         // 設定角色名稱
         if (characterNameText != null)
             characterNameText.text = currentDialogue.characterName;
         
         // 設定角色圖片
-        if (characterImage != null && currentDialogue.characterSprite != null)
+        if (characterRenderer != null)
         {
-            characterImage.sprite = currentDialogue.characterSprite;
-            characterImage.gameObject.SetActive(true);
-        }
-        else if (characterImage != null)
-        {
-            characterImage.gameObject.SetActive(false);
+            // 如果有指定新的 sprite,就更換
+            if (currentDialogue.characterSprite != null)
+            {
+                characterRenderer.sprite = currentDialogue.characterSprite;
+            }
+            
+            // 角色永遠顯示,只改變亮度
+            characterRenderer.gameObject.SetActive(true);
+            
+            // 根據是否有角色名稱決定亮度 (沒有名稱=旁白,角色變暗)
+            if (string.IsNullOrEmpty(currentDialogue.characterName))
+            {
+                // 旁白時,角色變暗 (灰色半透明)
+                characterRenderer.color = new Color(0.5f, 0.5f, 0.5f, 0.6f);
+            }
+            else
+            {
+                // 角色說話時,恢復正常亮度
+                characterRenderer.color = Color.white;
+            }
         }
         
         // 設定背景
@@ -121,14 +173,10 @@ public class DialogueManager : MonoBehaviour
         if (currentDialogue.hasChoices)
         {
             ShowChoices(currentDialogue.choices);
-            if (nextButton != null)
-                nextButton.gameObject.SetActive(false);
         }
         else
         {
             ClearChoices();
-            if (nextButton != null)
-                nextButton.gameObject.SetActive(true);
         }
     }
     
@@ -150,7 +198,7 @@ public class DialogueManager : MonoBehaviour
         if (isAutoMode && !currentSequence.dialogues[currentDialogueIndex].hasChoices)
         {
             yield return new WaitForSeconds(autoModeWaitTime);
-            OnNextButtonClick();
+            ContinueDialogue();
         }
     }
     
@@ -204,7 +252,7 @@ public class DialogueManager : MonoBehaviour
         ShowCurrentDialogue();
     }
     
-    public void OnNextButtonClick()
+    public void ContinueDialogue()
     {
         if (isTyping)
         {
@@ -258,5 +306,26 @@ public class DialogueManager : MonoBehaviour
     public int GetCurrentDialogueIndex()
     {
         return currentDialogueIndex;
+    }
+    
+    // 外部調用方法 - 用於直接顯示文字（如恐怖序列）
+    public void DisplayText(string text, string characterName = "")
+    {
+        // 啟動對話面板
+        if (dialoguePanel != null)
+            dialoguePanel.SetActive(true);
+        
+        // 設定角色名稱
+        if (characterNameText != null)
+            characterNameText.text = characterName;
+        
+        // 直接顯示文字
+        if (dialogueText != null)
+        {
+            StopAllCoroutines(); // 停止之前的打字效果
+            StartCoroutine(TypeText(text));
+        }
+        
+        Debug.Log($"💬 顯示文字: {text}");
     }
 }

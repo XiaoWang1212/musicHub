@@ -148,10 +148,6 @@ public class GameManager : MonoBehaviour
         switch (currentGameState)
         {
             case GameState.Dialogue:
-                if (dialogueManager != null)
-                {
-                    dialogueManager.OnNextButtonClick();
-                }
                 break;
             case GameState.Paused:
                 TogglePause();

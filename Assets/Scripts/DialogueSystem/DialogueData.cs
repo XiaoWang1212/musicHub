@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [System.Serializable]
 public class DialogueData
@@ -18,6 +19,9 @@ public class DialogueData
     
     [Header("特殊效果")]
     public DialogueEffect effect = DialogueEffect.None;
+    
+    [Header("對話觸發事件")]
+    public UnityEvent onDialogueStart;  // 對話開始時觸發
 }
 
 [System.Serializable]
