@@ -15,7 +15,7 @@ C:/Users/USER/Documents/GitHub/musicHub
 -logFile
 Logs/AssetImportWorker1.log
 -srvPort
-8463
+2340
 -job-worker-count
 3
 -background-job-worker-count
@@ -59,12 +59,12 @@ C:/Users/USER/Documents/GitHub/musicHub
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [22756]  Target information:
+Player connection [17616]  Target information:
 
-Player connection [22756]  * "[IP] 172.20.10.9 [Port] 0 [Flags] 2 [Guid] 1654449662 [EditorId] 1654449662 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-5J3BP1L) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+Player connection [17616]  * "[IP] 172.20.10.9 [Port] 0 [Flags] 2 [Guid] 314794854 [EditorId] 314794854 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-5J3BP1L) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
 
-Player connection [22756] Host joined multi-casting on [225.0.0.222:54997]...
-Player connection [22756] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [17616] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [17616] Host joined alternative multi-casting on [225.0.0.222:34997]...
 JobSystem: Creating JobQueue using job-worker-count value 3
 Input System module state changed to: Initialized.
 [Physics::Module] Initialized fallback backend.
@@ -76,7 +76,7 @@ Library Redirect Path: Library/
 [Physics::Module] SDK Version: 4.1.2
 [Physics::Module] Integration Version: 1.0.0
 [Physics::Module] Threading Mode: Multi-Threaded
-Refreshing native plugins compatible for Editor in 58.66 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 820.19 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 6000.0.39f1 (15ea7ed0b100)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/6000.0.39f1/Editor/Data/Resources/UnitySubsystems
@@ -92,45 +92,45 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/6000.0.39f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/6000.0.39f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/6000.0.39f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56600
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56324
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.0.39f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.0.39f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.026163 seconds.
-- Loaded All Assemblies, in  3.200 seconds
+Registered in 0.006435 seconds.
+- Loaded All Assemblies, in  3.321 seconds
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  1.942 seconds
-Domain Reload Profiling: 5129ms
-	BeginReloadAssembly (1527ms)
+- Finished resetting the current domain, in  0.855 seconds
+Domain Reload Profiling: 4173ms
+	BeginReloadAssembly (1069ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (4ms)
-	RebuildCommonClasses (400ms)
-	RebuildNativeTypeToScriptingClass (68ms)
-	initialDomainReloadingComplete (285ms)
-	LoadAllAssembliesAndSetupDomain (904ms)
-		LoadAssemblies (1503ms)
+		CreateAndSetChildDomain (2ms)
+	RebuildCommonClasses (71ms)
+	RebuildNativeTypeToScriptingClass (26ms)
+	initialDomainReloadingComplete (103ms)
+	LoadAllAssembliesAndSetupDomain (2048ms)
+		LoadAssemblies (1063ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (888ms)
-			TypeCache.Refresh (882ms)
-				TypeCache.ScanAssembly (816ms)
-			BuildScriptInfoCaches (1ms)
-			ResolveRequiredComponents (2ms)
-	FinalizeReload (1944ms)
+		AnalyzeDomain (2043ms)
+			TypeCache.Refresh (2041ms)
+				TypeCache.ScanAssembly (2014ms)
+			BuildScriptInfoCaches (0ms)
+			ResolveRequiredComponents (1ms)
+	FinalizeReload (855ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (1794ms)
+		SetupLoadedEditorAssemblies (751ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (131ms)
-			SetLoadedEditorAssemblies (28ms)
-			BeforeProcessingInitializeOnLoad (354ms)
-			ProcessInitializeOnLoadAttributes (1005ms)
-			ProcessInitializeOnLoadMethodAttributes (276ms)
+			InitializePlatformSupportModulesInManaged (56ms)
+			SetLoadedEditorAssemblies (11ms)
+			BeforeProcessingInitializeOnLoad (129ms)
+			ProcessInitializeOnLoadAttributes (396ms)
+			ProcessInitializeOnLoadMethodAttributes (159ms)
 			AfterProcessingInitializeOnLoad (0ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
@@ -139,51 +139,51 @@ Domain Reload Profiling: 5129ms
 Worker process is ready to serve import requests
 Import Worker Mode flag is 0x00
 Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  8.110 seconds
-Refreshing native plugins compatible for Editor in 14.69 ms, found 4 plugins.
+- Loaded All Assemblies, in  6.302 seconds
+Refreshing native plugins compatible for Editor in 6.78 ms, found 4 plugins.
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
 Shader Hidden/ProbeVolume/VoxelizeScene is not supported: GPU does not support conservative rasterization
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  7.787 seconds
-Domain Reload Profiling: 15870ms
-	BeginReloadAssembly (741ms)
+- Finished resetting the current domain, in  6.191 seconds
+Domain Reload Profiling: 12485ms
+	BeginReloadAssembly (432ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (24ms)
+		DisableScriptedObjects (15ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (92ms)
-	RebuildCommonClasses (220ms)
-	RebuildNativeTypeToScriptingClass (65ms)
-	initialDomainReloadingComplete (239ms)
-	LoadAllAssembliesAndSetupDomain (6817ms)
-		LoadAssemblies (4933ms)
+		CreateAndSetChildDomain (72ms)
+	RebuildCommonClasses (129ms)
+	RebuildNativeTypeToScriptingClass (32ms)
+	initialDomainReloadingComplete (112ms)
+	LoadAllAssembliesAndSetupDomain (5587ms)
+		LoadAssemblies (4907ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (2363ms)
-			TypeCache.Refresh (1511ms)
-				TypeCache.ScanAssembly (1426ms)
-			BuildScriptInfoCaches (732ms)
-			ResolveRequiredComponents (101ms)
-	FinalizeReload (7789ms)
+		AnalyzeDomain (934ms)
+			TypeCache.Refresh (642ms)
+				TypeCache.ScanAssembly (597ms)
+			BuildScriptInfoCaches (234ms)
+			ResolveRequiredComponents (47ms)
+	FinalizeReload (6193ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (6258ms)
+		SetupLoadedEditorAssemblies (4173ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (16ms)
-			SetLoadedEditorAssemblies (35ms)
-			BeforeProcessingInitializeOnLoad (1131ms)
-			ProcessInitializeOnLoadAttributes (3671ms)
-			ProcessInitializeOnLoadMethodAttributes (1288ms)
-			AfterProcessingInitializeOnLoad (116ms)
+			InitializePlatformSupportModulesInManaged (11ms)
+			SetLoadedEditorAssemblies (29ms)
+			BeforeProcessingInitializeOnLoad (362ms)
+			ProcessInitializeOnLoadAttributes (1840ms)
+			ProcessInitializeOnLoadMethodAttributes (1917ms)
+			AfterProcessingInitializeOnLoad (13ms)
 			EditorAssembliesLoaded (1ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (56ms)
+		AwakeInstancesAfterBackupRestoration (14ms)
 Shader Hidden/ProbeVolume/VoxelizeScene is not supported: GPU does not support conservative rasterization
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.10 seconds
-Refreshing native plugins compatible for Editor in 23.39 ms, found 4 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Refreshing native plugins compatible for Editor in 6.16 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 220 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6720 unused Assets / (6.6 MB). Loaded Objects now: 7380.
-Memory consumption went from 173.2 MB to 166.6 MB.
-Total: 77.674700 ms (FindLiveObjects: 2.721800 ms CreateObjectMapping: 4.092900 ms MarkObjects: 40.336200 ms  DeleteObjects: 30.516900 ms)
+Unloading 6722 unused Assets / (7.5 MB). Loaded Objects now: 7382.
+Memory consumption went from 172.9 MB to 165.4 MB.
+Total: 28.534600 ms (FindLiveObjects: 2.585600 ms CreateObjectMapping: 2.147200 ms MarkObjects: 12.916700 ms  DeleteObjects: 10.882800 ms)
 

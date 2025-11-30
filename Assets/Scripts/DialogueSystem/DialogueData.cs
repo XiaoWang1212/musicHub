@@ -6,6 +6,11 @@ using UnityEngine.Events;
 [System.Serializable]
 public class DialogueData
 {
+    [Header("📍 對話索引")]
+    [HideInInspector]
+    public int dialogueIndex = -1;
+    
+    [Header("對話內容")]
     public string characterName;
     public string dialogueText;
     public Sprite characterSprite;
@@ -19,6 +24,7 @@ public class DialogueData
     
     [Header("特殊效果")]
     public DialogueEffect effect = DialogueEffect.None;
+    public bool dimCharacter = false;        // 角色變灰 (不在說話狀態)
     
     [Header("對話觸發事件")]
     public UnityEvent onDialogueStart;  // 對話開始時觸發

@@ -48,14 +48,27 @@ public class Act1Manager : MonoBehaviour
 
     public void GoToNextAct()
     {
+        Debug.Log("🔍 檢查轉場組件...");
+        
         if (transitionToAct2 != null)
         {
+            Debug.Log("✅ 使用 TransitionTrigger 切換場景");
             transitionToAct2.TriggerTransition();
         }
-        else
-        {
-            // 或直接調用
-            SceneTransitionManager.LoadNextAct();
-        }
+    }
+    
+    /// <summary>
+    /// 跳過 Act1 - 直接跳到 Act2 (按 F1 鍵觸發)
+    /// </summary>
+    [ContextMenu("跳過 Act1")]
+    public void SkipAct1()
+    {
+        Debug.Log("⏩ 跳過 Act1，直接前往 Act2");
+        
+        // 停止所有正在進行的協程
+        StopAllCoroutines();
+        
+        // 立即跳轉到下一幕
+        GoToNextAct();
     }
 }

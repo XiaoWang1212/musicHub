@@ -66,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Utils\GameSetupTest.cs" />
+    <Compile Include="Assets\Scripts\CharacterSystem\CharacterManager.cs" />
     <Compile Include="Assets\Scripts\Effects\ShakeTextManager.cs" />
     <Compile Include="Assets\Scripts\DialogueSystem\DialogueManager.cs" />
     <Compile Include="Assets\Scripts\ActManagers\Act2Manager.cs" />

@@ -12,9 +12,12 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI characterNameText;
     public TextMeshProUGUI dialogueText;
     public SpriteRenderer characterRenderer;  // 改用 SpriteRenderer
-    public Image backgroundImage;
+    public SpriteRenderer backgroundRenderer; // 改用 SpriteRenderer
     public GameObject choiceButtonPrefab;
     public Transform choiceButtonContainer;
+    
+    [Header("特殊效果")]
+    public SpriteRenderer characterMask;     // 角色遮罩 (用於隔門效果)
     
     [Header("音效管理")]
     public AudioSource voiceAudioSource;
@@ -42,6 +45,10 @@ public class DialogueManager : MonoBehaviour
     public static event Action<int> OnDialogueIndexChanged;  // 新增:傳遞對話索引
     public static event Action OnDialogueEnd;
     public static event Action<int> OnChoiceSelected;
+    
+    // 角色管理事件
+    public static event Action<string, Sprite, bool> OnCharacterDisplay;  // 角色名稱, 圖片, 是否變灰
+    public static event Action OnCharacterHide;  // 隱藏角色
     
     void Start()
     {
@@ -118,35 +125,34 @@ public class DialogueManager : MonoBehaviour
         if (characterNameText != null)
             characterNameText.text = currentDialogue.characterName;
         
-        // 設定角色圖片
-        if (characterRenderer != null)
+        // 觸發角色顯示事件 (讓其他Manager處理角色顯示)
+        if (currentDialogue.characterSprite == null)
         {
-            // 如果有指定新的 sprite,就更換
-            if (currentDialogue.characterSprite != null)
-            {
-                characterRenderer.sprite = currentDialogue.characterSprite;
-            }
-            
-            // 角色永遠顯示,只改變亮度
-            characterRenderer.gameObject.SetActive(true);
-            
-            // 根據是否有角色名稱決定亮度 (沒有名稱=旁白,角色變暗)
-            if (string.IsNullOrEmpty(currentDialogue.characterName))
-            {
-                // 旁白時,角色變暗 (灰色半透明)
-                characterRenderer.color = new Color(0.5f, 0.5f, 0.5f, 0.6f);
-            }
-            else
-            {
-                // 角色說話時,恢復正常亮度
-                characterRenderer.color = Color.white;
-            }
+            OnCharacterHide?.Invoke();
+        }
+        else
+        {
+            OnCharacterDisplay?.Invoke(currentDialogue.characterName, 
+                                     currentDialogue.characterSprite, 
+                                     currentDialogue.dimCharacter);
         }
         
-        // 設定背景
-        if (backgroundImage != null && currentDialogue.backgroundSprite != null)
+        // 角色顯示完全由 CharacterManager 統一管理
+        // characterRenderer 僅作為後備，通常不會執行到這裡
+        
+
+        
+
+        
+        // 設定背景 (帶淡入效果)
+        if (backgroundRenderer != null && currentDialogue.backgroundSprite != null)
         {
-            backgroundImage.sprite = currentDialogue.backgroundSprite;
+            // 如果背景改變了或是第一次設定背景,執行淡入動畫
+            if (backgroundRenderer.sprite != currentDialogue.backgroundSprite || 
+                (backgroundRenderer.sprite == null && currentDialogue.backgroundSprite != null))
+            {
+                StartCoroutine(FadeInBackground(currentDialogue.backgroundSprite));
+            }
         }
         
         // 播放語音
@@ -271,6 +277,9 @@ public class DialogueManager : MonoBehaviour
     
     void EndDialogue()
     {
+        // 觸發對話結束事件 (索引 -1)
+        OnDialogueIndexChanged?.Invoke(-1);
+        
         if (dialoguePanel != null)
             dialoguePanel.SetActive(false);
             
@@ -328,4 +337,173 @@ public class DialogueManager : MonoBehaviour
         
         Debug.Log($"💬 顯示文字: {text}");
     }
+
+    // 背景淡入動畫 (針對 SpriteRenderer)
+    IEnumerator FadeInBackground(Sprite newBackgroundSprite)
+    {
+        if (backgroundRenderer == null || newBackgroundSprite == null) yield break;
+
+        // 保存當前透明度
+        Color originalColor = backgroundRenderer.color;
+        
+        // 設定新背景
+        backgroundRenderer.sprite = newBackgroundSprite;
+        
+        // 從透明開始淡入
+        Color fadeColor = originalColor;
+        fadeColor.a = 0f;
+        backgroundRenderer.color = fadeColor;
+        
+        float elapsed = 0f;
+        float fadeDuration = 1f; // 1秒淡入時間
+        
+        while (elapsed < fadeDuration)
+        {
+            elapsed += Time.deltaTime;
+            fadeColor.a = Mathf.Lerp(0f, originalColor.a, elapsed / fadeDuration);
+            backgroundRenderer.color = fadeColor;
+            yield return null;
+        }
+        
+        // 確保完全顯示
+        backgroundRenderer.color = originalColor;
+    }
+
+    // 角色第一次出現的淡入動畫
+    IEnumerator FadeInCharacter()
+    {
+        if (characterRenderer == null) yield break;
+
+        float elapsed = 0f;
+        float fadeDuration = 0.8f; // 0.8秒淡入
+        Color color = characterRenderer.color;
+        Color startColor = color;
+        startColor.a = 0f; // 從透明開始
+        
+        characterRenderer.color = startColor;
+        
+        while (elapsed < fadeDuration)
+        {
+            elapsed += Time.deltaTime;
+            color.a = Mathf.Lerp(0f, 1f, elapsed / fadeDuration);
+            characterRenderer.color = color;
+            yield return null;
+        }
+        
+        // 確保完全顯示
+        color.a = 1f;
+        characterRenderer.color = color;
+    }
+
+    // 角色顏色平滑過渡 (說話/旁白切換)
+    IEnumerator TransitionCharacterColor(Color targetColor)
+    {
+        if (characterRenderer == null) yield break;
+
+        float elapsed = 0f;
+        float transitionDuration = 0.3f; // 0.3秒過渡
+        Color startColor = characterRenderer.color;
+        
+        while (elapsed < transitionDuration)
+        {
+            elapsed += Time.deltaTime;
+            float progress = elapsed / transitionDuration;
+            characterRenderer.color = Color.Lerp(startColor, targetColor, progress);
+            yield return null;
+        }
+        
+        // 確保到達目標顏色
+        characterRenderer.color = targetColor;
+    }
+
+    // 角色淡出動畫
+    IEnumerator FadeOutCharacter()
+    {
+        if (characterRenderer == null) yield break;
+
+        float elapsed = 0f;
+        float fadeDuration = 0.5f; // 0.5秒淡出
+        Color color = characterRenderer.color;
+        float startAlpha = color.a;
+        
+        while (elapsed < fadeDuration)
+        {
+            elapsed += Time.deltaTime;
+            color.a = Mathf.Lerp(startAlpha, 0f, elapsed / fadeDuration);
+            characterRenderer.color = color;
+            yield return null;
+        }
+        
+        // 確保完全透明並隱藏
+        color.a = 0f;
+        characterRenderer.color = color;
+        characterRenderer.gameObject.SetActive(false);
+    }
+
+    // 對話文字淡出
+    IEnumerator FadeOutDialogueText()
+    {
+        if (dialogueText == null) yield break;
+
+        float elapsed = 0f;
+        float fadeDuration = 0.5f;
+        Color color = dialogueText.color;
+        float startAlpha = color.a;
+        
+        while (elapsed < fadeDuration)
+        {
+            elapsed += Time.deltaTime;
+            color.a = Mathf.Lerp(startAlpha, 0f, elapsed / fadeDuration);
+            dialogueText.color = color;
+            yield return null;
+        }
+        
+        color.a = 0f;
+        dialogueText.color = color;
+    }
+
+    // 角色名字淡出
+    IEnumerator FadeOutCharacterName()
+    {
+        if (characterNameText == null) yield break;
+
+        float elapsed = 0f;
+        float fadeDuration = 0.5f;
+        Color color = characterNameText.color;
+        float startAlpha = color.a;
+        
+        while (elapsed < fadeDuration)
+        {
+            elapsed += Time.deltaTime;
+            color.a = Mathf.Lerp(startAlpha, 0f, elapsed / fadeDuration);
+            characterNameText.color = color;
+            yield return null;
+        }
+        
+        color.a = 0f;
+        characterNameText.color = color;
+    }
+
+    // 對話面板整體淡出 (Act2 結束用)
+    public IEnumerator FadeOutDialoguePanel()
+    {
+        // 同時淡出所有對話 UI 元素
+        Coroutine fadeText = StartCoroutine(FadeOutDialogueText());
+        Coroutine fadeName = StartCoroutine(FadeOutCharacterName());
+        Coroutine fadeCharacter = StartCoroutine(FadeOutCharacter());
+        
+        // 等待所有淡出動畫完成
+        yield return fadeText;
+        yield return fadeName;
+        yield return fadeCharacter;
+        
+        // 隱藏對話面板
+        if (dialoguePanel != null)
+        {
+            dialoguePanel.SetActive(false);
+        }
+        
+        Debug.Log("✅ 對話面板淡出完成");
+    }
+
 }
