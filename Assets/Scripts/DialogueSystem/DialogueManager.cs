@@ -11,13 +11,9 @@ public class DialogueManager : MonoBehaviour
     public GameObject dialoguePanel;
     public TextMeshProUGUI characterNameText;
     public TextMeshProUGUI dialogueText;
-    public SpriteRenderer characterRenderer;  // 改用 SpriteRenderer
-    public SpriteRenderer backgroundRenderer; // 改用 SpriteRenderer
+    public SpriteRenderer backgroundRenderer; // 背景
     public GameObject choiceButtonPrefab;
     public Transform choiceButtonContainer;
-    
-    [Header("特殊效果")]
-    public SpriteRenderer characterMask;     // 角色遮罩 (用於隔門效果)
     
     [Header("音效管理")]
     public AudioSource voiceAudioSource;
@@ -49,6 +45,10 @@ public class DialogueManager : MonoBehaviour
     // 角色管理事件
     public static event Action<string, Sprite, bool> OnCharacterDisplay;  // 角色名稱, 圖片, 是否變灰
     public static event Action OnCharacterHide;  // 隱藏角色
+    
+    // 多角色顯示事件
+    public static event Action<List<CharacterDisplayData>> OnMultipleCharactersDisplay;  // 多角色顯示
+    public static event Action OnMultipleCharactersHide;  // 隱藏所有角色
     
     void Start()
     {
@@ -121,29 +121,60 @@ public class DialogueManager : MonoBehaviour
         // 觸發對話開始事件
         currentDialogue.onDialogueStart?.Invoke();
         
-        // 設定角色名稱
+        // 設定角色名稱 (根據 isNarration 決定是否顯示)
         if (characterNameText != null)
-            characterNameText.text = currentDialogue.characterName;
-        
-        // 觸發角色顯示事件 (讓其他Manager處理角色顯示)
-        if (currentDialogue.characterSprite == null)
         {
-            OnCharacterHide?.Invoke();
+            if (currentDialogue.isNarration)
+            {
+                characterNameText.text = "";  // 旁白不顯示角色名稱
+            }
+            else
+            {
+                characterNameText.text = currentDialogue.characterName;  // 正常對話顯示角色名稱
+            }
+        }
+        
+        // 處理角色顯示 (支援多角色模式)
+        if (currentDialogue.useMultipleCharacters && currentDialogue.characters.Count > 0)
+        {
+            // 多角色顯示模式
+            OnMultipleCharactersDisplay?.Invoke(currentDialogue.characters);
+            Debug.Log($"👥 多角色顯示: {currentDialogue.characters.Count} 個角色");
         }
         else
         {
-            OnCharacterDisplay?.Invoke(currentDialogue.characterName, 
-                                     currentDialogue.characterSprite, 
-                                     currentDialogue.dimCharacter);
+            // 傳統單角色顯示模式
+            if (currentDialogue.isNarration)
+            {
+                // 旁白模式：如果有角色圖片，顯示並變暗；如果沒有，保持現有角色並變暗
+                if (currentDialogue.characterSprite != null)
+                {
+                    OnCharacterDisplay?.Invoke(currentDialogue.characterName, 
+                                             currentDialogue.characterSprite, 
+                                             true);  // 旁白時角色一律變暗
+                }
+                else
+                {
+                    // 旁白且沒有指定角色圖片：保持現有角色但變暗
+                    // 這裡不調用 OnCharacterHide，讓角色保持顯示但變暗
+                    // 可以通過 dimCharacter 屬性控制
+                }
+            }
+            else
+            {
+                // 正常對話模式
+                if (currentDialogue.characterSprite == null)
+                {
+                    OnCharacterHide?.Invoke();
+                }
+                else
+                {
+                    OnCharacterDisplay?.Invoke(currentDialogue.characterName, 
+                                             currentDialogue.characterSprite, 
+                                             currentDialogue.dimCharacter);
+                }
+            }
         }
-        
-        // 角色顯示完全由 CharacterManager 統一管理
-        // characterRenderer 僅作為後備，通常不會執行到這裡
-        
-
-        
-
-        
         // 設定背景 (帶淡入效果)
         if (backgroundRenderer != null && currentDialogue.backgroundSprite != null)
         {
@@ -317,26 +348,7 @@ public class DialogueManager : MonoBehaviour
         return currentDialogueIndex;
     }
     
-    // 外部調用方法 - 用於直接顯示文字（如恐怖序列）
-    public void DisplayText(string text, string characterName = "")
-    {
-        // 啟動對話面板
-        if (dialoguePanel != null)
-            dialoguePanel.SetActive(true);
-        
-        // 設定角色名稱
-        if (characterNameText != null)
-            characterNameText.text = characterName;
-        
-        // 直接顯示文字
-        if (dialogueText != null)
-        {
-            StopAllCoroutines(); // 停止之前的打字效果
-            StartCoroutine(TypeText(text));
-        }
-        
-        Debug.Log($"💬 顯示文字: {text}");
-    }
+
 
     // 背景淡入動畫 (針對 SpriteRenderer)
     IEnumerator FadeInBackground(Sprite newBackgroundSprite)
@@ -367,77 +379,6 @@ public class DialogueManager : MonoBehaviour
         
         // 確保完全顯示
         backgroundRenderer.color = originalColor;
-    }
-
-    // 角色第一次出現的淡入動畫
-    IEnumerator FadeInCharacter()
-    {
-        if (characterRenderer == null) yield break;
-
-        float elapsed = 0f;
-        float fadeDuration = 0.8f; // 0.8秒淡入
-        Color color = characterRenderer.color;
-        Color startColor = color;
-        startColor.a = 0f; // 從透明開始
-        
-        characterRenderer.color = startColor;
-        
-        while (elapsed < fadeDuration)
-        {
-            elapsed += Time.deltaTime;
-            color.a = Mathf.Lerp(0f, 1f, elapsed / fadeDuration);
-            characterRenderer.color = color;
-            yield return null;
-        }
-        
-        // 確保完全顯示
-        color.a = 1f;
-        characterRenderer.color = color;
-    }
-
-    // 角色顏色平滑過渡 (說話/旁白切換)
-    IEnumerator TransitionCharacterColor(Color targetColor)
-    {
-        if (characterRenderer == null) yield break;
-
-        float elapsed = 0f;
-        float transitionDuration = 0.3f; // 0.3秒過渡
-        Color startColor = characterRenderer.color;
-        
-        while (elapsed < transitionDuration)
-        {
-            elapsed += Time.deltaTime;
-            float progress = elapsed / transitionDuration;
-            characterRenderer.color = Color.Lerp(startColor, targetColor, progress);
-            yield return null;
-        }
-        
-        // 確保到達目標顏色
-        characterRenderer.color = targetColor;
-    }
-
-    // 角色淡出動畫
-    IEnumerator FadeOutCharacter()
-    {
-        if (characterRenderer == null) yield break;
-
-        float elapsed = 0f;
-        float fadeDuration = 0.5f; // 0.5秒淡出
-        Color color = characterRenderer.color;
-        float startAlpha = color.a;
-        
-        while (elapsed < fadeDuration)
-        {
-            elapsed += Time.deltaTime;
-            color.a = Mathf.Lerp(startAlpha, 0f, elapsed / fadeDuration);
-            characterRenderer.color = color;
-            yield return null;
-        }
-        
-        // 確保完全透明並隱藏
-        color.a = 0f;
-        characterRenderer.color = color;
-        characterRenderer.gameObject.SetActive(false);
     }
 
     // 對話文字淡出
@@ -487,15 +428,13 @@ public class DialogueManager : MonoBehaviour
     // 對話面板整體淡出 (Act2 結束用)
     public IEnumerator FadeOutDialoguePanel()
     {
-        // 同時淡出所有對話 UI 元素
+        // 同時淡出對話 UI 元素
         Coroutine fadeText = StartCoroutine(FadeOutDialogueText());
         Coroutine fadeName = StartCoroutine(FadeOutCharacterName());
-        Coroutine fadeCharacter = StartCoroutine(FadeOutCharacter());
         
-        // 等待所有淡出動畫完成
+        // 等待淡出動畫完成
         yield return fadeText;
         yield return fadeName;
-        yield return fadeCharacter;
         
         // 隱藏對話面板
         if (dialoguePanel != null)

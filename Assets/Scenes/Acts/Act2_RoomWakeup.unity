@@ -287,11 +287,9 @@ MonoBehaviour:
   dialoguePanel: {fileID: 388141461}
   characterNameText: {fileID: 2032743104}
   dialogueText: {fileID: 2098735318}
-  characterRenderer: {fileID: 1687657887}
   backgroundRenderer: {fileID: 787841175}
   choiceButtonPrefab: {fileID: 0}
   choiceButtonContainer: {fileID: 0}
-  characterMask: {fileID: 0}
   voiceAudioSource: {fileID: 0}
   musicAudioSource: {fileID: 0}
   typingSpeed: 0.05
@@ -1316,8 +1314,9 @@ MonoBehaviour:
     speakingPosition: {x: 0, y: 0, z: 0}
     silentPosition: {x: 0, y: 0, z: 0}
     usePositionChange: 0
-  dimColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.6}
+  dimColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   normalColor: {r: 1, g: 1, b: 1, a: 1}
+  characterPositions: []
 --- !u!1 &1687657885
 GameObject:
   m_ObjectHideFlags: 0
@@ -1773,7 +1772,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u54C7\u54C7\u54C7"
+  m_text: "\u4F60\u597D"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b9374d0e2a6305141b9762bdca6bf440, type: 2}
   m_sharedMaterial: {fileID: -4440289692545817825, guid: b9374d0e2a6305141b9762bdca6bf440, type: 2}
@@ -1782,8 +1781,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294953577
-  m_fontColor: {r: 0.41320753, g: 0.7911416, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

@@ -66,10 +66,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Utils\GameSetupTest.cs" />
+    <Compile Include="Assets\Scripts\ActManagers\BaseActManager.cs" />
     <Compile Include="Assets\Scripts\CharacterSystem\CharacterManager.cs" />
     <Compile Include="Assets\Scripts\Effects\ShakeTextManager.cs" />
     <Compile Include="Assets\Scripts\DialogueSystem\DialogueManager.cs" />
     <Compile Include="Assets\Scripts\ActManagers\Act2Manager.cs" />
+    <Compile Include="Assets\Scripts\ActManagers\Act4Manager.cs" />
     <Compile Include="Assets\Scripts\SceneSystem\AudioListenerManager.cs" />
     <Compile Include="Assets\Scripts\CharacterSystem\CharacterDisplay.cs" />
     <Compile Include="Assets\Scripts\AnimationSystem\MusicbookDropAnimation.cs" />
@@ -80,6 +82,7 @@
     <Compile Include="Assets\Scripts\AudioSystem\MelodyToNoiseTransition.cs" />
     <Compile Include="Assets\Scripts\DialogueSystem\DialogueData.cs" />
     <Compile Include="Assets\Scripts\Utils\SampleDialogueCreator.cs" />
+    <Compile Include="Assets\Scripts\ActManagers\Act3Manager.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\SceneSystem\TransitionTrigger.cs" />
     <Compile Include="Assets\Scripts\DialogueSystem\DialogueSequenceAsset.cs" />

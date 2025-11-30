@@ -48,6 +48,67 @@ public class DialogueSequenceAsset : ScriptableObject
         dialogues.Add(choiceDialogue);
     }
     
+    [ContextMenu("Add Narration Dialogue")]
+    void AddNarrationDialogue()
+    {
+        DialogueData narrationDialogue = new DialogueData
+        {
+            isNarration = true,              // 勾選旁白選項
+            characterName = "",              // 旁白不需要角色名字
+            dialogueText = "這是旁白敘述文字。",
+            dimCharacter = true,             // 讓現有角色變淡
+            choices = new List<ChoiceData>()
+        };
+        
+        dialogues.Add(narrationDialogue);
+    }
+    
+    [ContextMenu("Add Act4 Narration Scene")]
+    void AddAct4NarrationScene()
+    {
+        // 為 Act4 出門場景添加完整的旁白序列
+        List<DialogueData> act4Dialogues = new List<DialogueData>
+        {
+            new DialogueData
+            {
+                isNarration = true,
+                characterName = "",
+                dialogueText = "白石 透羽提起書包，走出家門。",
+                dimCharacter = true
+            },
+            new DialogueData
+            {
+                isNarration = true,
+                characterName = "",
+                dialogueText = "清晨的光線照在她臉上，卻照不進她眼裡。",
+                dimCharacter = true
+            },
+            new DialogueData
+            {
+                isNarration = true,
+                characterName = "",
+                dialogueText = "她的背影像是從昨天的世界逃走，卻還沒準備好面對今天。",
+                dimCharacter = true
+            },
+            new DialogueData
+            {
+                isNarration = true,
+                characterName = "",
+                dialogueText = "風輕輕掀起她外套的下擺。",
+                dimCharacter = true
+            },
+            new DialogueData
+            {
+                isNarration = true,
+                characterName = "",
+                dialogueText = "遠處傳來不知名的校園廣播聲，象徵著她將走入的陌生環境。",
+                dimCharacter = true
+            }
+        };
+        
+        dialogues.AddRange(act4Dialogues);
+    }
+    
     public DialogueSequence ToDialogueSequence()
     {
         DialogueSequence sequence = new DialogueSequence
