@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using System.Collections.Generic;
 
+
 [CreateAssetMenu(fileName = "New Dialogue Sequence", menuName = "Narrative Game/Dialogue Sequence")]
 public class DialogueSequenceAsset : ScriptableObject
 {
