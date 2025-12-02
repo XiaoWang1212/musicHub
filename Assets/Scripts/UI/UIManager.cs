@@ -186,6 +186,7 @@ public class UIManager : MonoBehaviour
         ShowPauseMenu();
     }
     
+
     void OnSaveButtonClick()
     {
         Debug.Log("快速存檔");
