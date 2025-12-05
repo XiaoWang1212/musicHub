@@ -1126,7 +1126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueManager: {fileID: 79556193}
-  actDialogueSequence: {fileID: 11400000, guid: 24955547a8d12ed46950dd3dac448545, type: 2}
+  actDialogueSequence: {fileID: 11400000, guid: 65971d966a7b1cb48a797de9ed5b784e, type: 2}
   backgroundRenderer: {fileID: 787841175}
   transitionToNextScene: {fileID: 403987405}
   initialDelay: 0.5
