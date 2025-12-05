@@ -28,9 +28,6 @@ MonoBehaviour:
     backgroundMusic: {fileID: 0}
     effect: 0
     dimCharacter: 0
-    onDialogueStart:
-      m_PersistentCalls:
-        m_Calls: []
   - dialogueIndex: -1
     isNarration: 1
     characterName: "\u767D\u77F3 \u900F\u7FBD"
@@ -44,9 +41,6 @@ MonoBehaviour:
     backgroundMusic: {fileID: 0}
     effect: 0
     dimCharacter: 1
-    onDialogueStart:
-      m_PersistentCalls:
-        m_Calls: []
   - dialogueIndex: 0
     isNarration: 0
     characterName: "\u767D\u77F3 \u900F\u7FBD"
@@ -60,9 +54,6 @@ MonoBehaviour:
     backgroundMusic: {fileID: 0}
     effect: 0
     dimCharacter: 0
-    onDialogueStart:
-      m_PersistentCalls:
-        m_Calls: []
   - dialogueIndex: 0
     isNarration: 1
     characterName: "\u767D\u77F3 \u900F\u7FBD"
@@ -76,9 +67,6 @@ MonoBehaviour:
     backgroundMusic: {fileID: 0}
     effect: 0
     dimCharacter: 1
-    onDialogueStart:
-      m_PersistentCalls:
-        m_Calls: []
   - dialogueIndex: 0
     isNarration: 0
     characterName: "\u767D\u77F3 \u900F\u7FBD"
@@ -92,9 +80,6 @@ MonoBehaviour:
     backgroundMusic: {fileID: 0}
     effect: 0
     dimCharacter: 0
-    onDialogueStart:
-      m_PersistentCalls:
-        m_Calls: []
   isMainStoryline: 1
   canSkip: 1
   autoSave: 0

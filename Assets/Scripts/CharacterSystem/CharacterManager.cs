@@ -125,10 +125,13 @@ public class CharacterManager : MonoBehaviour
         
         // 檢查是否需要 fade 動畫
         bool wasHidden = !renderer.gameObject.activeInHierarchy;
-        bool spriteChanged = renderer.sprite != sprite;
+        bool spriteChanged = sprite != null && renderer.sprite != sprite;
         
-        // 設定圖片
-        renderer.sprite = sprite;
+        // 只有當傳入有效 sprite 時才更新，否則使用 SpriteRenderer 上預設的 sprite
+        if (sprite != null)
+        {
+            renderer.sprite = sprite;
+        }
         renderer.gameObject.SetActive(true);
         
         // 設定目標顏色
@@ -509,11 +512,7 @@ public class CharacterManager : MonoBehaviour
     {
         SpriteRenderer renderer = character.renderer;
         
-        // 設置精靈圖片
-        if (charData.characterSprite != null)
-        {
-            renderer.sprite = charData.characterSprite;
-        }
+        // 注意：不再從 charData 設定 sprite，使用 SpriteRenderer 預設的 sprite
         
         // 自動設定顏色：根據 dimCharacter 決定
         Color finalColor = charData.dimCharacter ? dimColor : normalColor;

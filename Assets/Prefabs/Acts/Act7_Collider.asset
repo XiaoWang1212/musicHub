@@ -1,0 +1,109 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05fccf3e6d213354aaa34d617b8b71df, type: 3}
+  m_Name: Act7_Collider
+  m_EditorClassIdentifier: 
+  sequenceName: Act7_SchoolGate
+  sequenceId: 7
+  dialogues:
+  - dialogueIndex: 0
+    isNarration: 1
+    characterName: "\u767D\u77F3 \u900F\u7FBD"
+    dialogueText: "\u767D\u77F3\u62FF\u8457\u300C\u793E\u5718\u5206\u914D\u901A\u77E5\u300D\uFF0C\u671D\u820A\u6821\u820D\u8D70\u3002"
+    choices: []
+    useMultipleCharacters: 0
+    characters: []
+    voiceClip: {fileID: 0}
+    backgroundMusic: {fileID: 0}
+    effect: 0
+    dimCharacter: 1
+  - dialogueIndex: 0
+    isNarration: 1
+    characterName: "\u767D\u77F3 \u900F\u7FBD"
+    dialogueText: "\u8D70\u5ECA\u9010\u6F38\u8B8A\u5F97\u5B89\u975C\u3001\u7A7A\u8569\uFF0C\u50CF\u662F\u88AB\u907A\u5FD8\u7684\u89D2\u843D\u3002"
+    choices: []
+    useMultipleCharacters: 0
+    characters: []
+    voiceClip: {fileID: 0}
+    backgroundMusic: {fileID: 0}
+    effect: 0
+    dimCharacter: 1
+  - dialogueIndex: 0
+    isNarration: 1
+    characterName: "\u767D\u77F3 \u900F\u7FBD"
+    dialogueText: "\u9580\u724C\u4E0A\u8CBC\u8457\u4E00\u5F35\u7565\u76BA\u7684\u7D19\uFF1A"
+    choices: []
+    useMultipleCharacters: 0
+    characters: []
+    voiceClip: {fileID: 0}
+    backgroundMusic: {fileID: 0}
+    effect: 0
+    dimCharacter: 1
+  - dialogueIndex: 0
+    isNarration: 1
+    characterName: "\u767D\u77F3 \u900F\u7FBD"
+    dialogueText: "<b>\u300A\u97F3\u6A02\u793E \u65B0\u4EBA\u6B61\u8FCE\uFF01\u300B<\\b>\\n
+      \u5E95\u4E0B\u9084\u7528\u7D05\u7B46\u5BEB\u4E86\uFF1A\u300C\u771F\u7684\u5F88\u7F3A\u4EBA\uFF01\uFF01\u300D "
+    choices: []
+    useMultipleCharacters: 0
+    characters: []
+    voiceClip: {fileID: 0}
+    backgroundMusic: {fileID: 0}
+    effect: 0
+    dimCharacter: 1
+  - dialogueIndex: 0
+    isNarration: 1
+    characterName: "\u767D\u77F3 \u900F\u7FBD"
+    dialogueText: "\u767D\u77F3\u7AD9\u5728\u9580\u524D\uFF0C\u624B\u6296\u5F97\u5FAE\u4E0D\u53EF\u5BDF\u3002"
+    choices: []
+    useMultipleCharacters: 0
+    characters: []
+    voiceClip: {fileID: 0}
+    backgroundMusic: {fileID: 0}
+    effect: 0
+    dimCharacter: 1
+  - dialogueIndex: 0
+    isNarration: 0
+    characterName: "\u767D\u77F3 \u900F\u7FBD"
+    dialogueText: " \u97F3\u6A02\u2026\u2026 "
+    choices: []
+    useMultipleCharacters: 0
+    characters: []
+    voiceClip: {fileID: 0}
+    backgroundMusic: {fileID: 0}
+    effect: 0
+    dimCharacter: 0
+  - dialogueIndex: 0
+    isNarration: 0
+    characterName: "\u767D\u77F3 \u900F\u7FBD"
+    dialogueText: "\u6211\u4E0D\u662F\u8AAA\u597D\u4E86\uFF0C\u518D\u4E5F\u4E0D\u9760\u8FD1\u55CE\uFF1F "
+    choices: []
+    useMultipleCharacters: 0
+    characters: []
+    voiceClip: {fileID: 0}
+    backgroundMusic: {fileID: 0}
+    effect: 0
+    dimCharacter: 0
+  - dialogueIndex: 0
+    isNarration: 1
+    characterName: "\u767D\u77F3 \u900F\u7FBD"
+    dialogueText: "\u767D\u77F3\u7D42\u7A76\u9084\u662F\u4F38\u624B\uFF0C\u63A8\u958B\u4E86\u9580"
+    choices: []
+    useMultipleCharacters: 0
+    characters: []
+    voiceClip: {fileID: 0}
+    backgroundMusic: {fileID: 0}
+    effect: 0
+    dimCharacter: 1
+  isMainStoryline: 1
+  canSkip: 1
+  autoSave: 0

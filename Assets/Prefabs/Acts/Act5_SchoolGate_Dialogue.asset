@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05fccf3e6d213354aaa34d617b8b71df, type: 3}
+  m_Name: Act5_SchoolGate_Dialogue
+  m_EditorClassIdentifier: 
+  sequenceName: Act5_SchoolGate
+  sequenceId: 5
+  dialogues:
+  - dialogueIndex: 0
+    isNarration: 1
+    characterName: "\u767D\u77F3 \u900F\u7FBD"
+    dialogueText: "\u5EE3\u64AD\u8072\u5728\u6821\u5712\u4E0A\u7A7A\u8FF4\u76EA\uFF0C\u5B78\u751F\u5011\u4E09\u4E09\u5169\u5169\u8AC7\u7B11\u8457\u3002"
+    choices: []
+    useMultipleCharacters: 0
+    characters: []
+    voiceClip: {fileID: 0}
+    backgroundMusic: {fileID: 0}
+    effect: 0
+    dimCharacter: 1
+  - dialogueIndex: 0
+    isNarration: 1
+    characterName: "\u767D\u77F3 \u900F\u7FBD"
+    dialogueText: "\u767D\u77F3\u7AD9\u5728\u6821\u9580\u524D\uFF0C\u80CC\u5305\u80A9\u5E36\u6293\u5F97\u5F88\u7DCA\u3002"
+    choices: []
+    useMultipleCharacters: 0
+    characters: []
+    voiceClip: {fileID: 0}
+    backgroundMusic: {fileID: 0}
+    effect: 0
+    dimCharacter: 1
+  - dialogueIndex: 0
+    isNarration: 1
+    characterName: "\u767D\u77F3 \u900F\u7FBD"
+    dialogueText: "\u6DF1\u5438\u4E00\u53E3\u6C23\uFF0C\u624D\u8E0F\u9032\u9019\u7247\u6BD4\u5922\u5883\u66F4\u523A\u773C\u7684\u5730\u65B9\u3002"
+    choices: []
+    useMultipleCharacters: 0
+    characters: []
+    voiceClip: {fileID: 0}
+    backgroundMusic: {fileID: 0}
+    effect: 0
+    dimCharacter: 1
+  isMainStoryline: 1
+  canSkip: 1
+  autoSave: 0

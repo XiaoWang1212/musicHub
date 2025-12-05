@@ -14,8 +14,6 @@ public class DialogueData
     public bool isNarration = false;     // 勾選後為旁白，不顯示角色名字
     public string characterName;
     public string dialogueText;
-    public Sprite characterSprite;
-    public Sprite backgroundSprite;
     public List<ChoiceData> choices = new List<ChoiceData>();
     public bool hasChoices => choices.Count > 0;
     
@@ -30,9 +28,6 @@ public class DialogueData
     [Header("特殊效果")]
     public DialogueEffect effect = DialogueEffect.None;
     public bool dimCharacter = false;        // 角色變灰 (不在說話狀態)
-    
-    [Header("對話觸發事件")]
-    public UnityEvent onDialogueStart;  // 對話開始時觸發
 }
 
 [System.Serializable]
@@ -74,7 +69,6 @@ public class CharacterDisplayData
 {
     [Header("角色資訊")]
     public string characterName;        // 角色名稱
-    public Sprite characterSprite;      // 角色圖片
     
     [Header("顯示設定")]
     public CharacterPosition position = CharacterPosition.Center;  // 角色位置

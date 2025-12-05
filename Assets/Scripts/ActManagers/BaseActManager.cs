@@ -24,6 +24,9 @@ public class BaseActManager : MonoBehaviour
     public float backgroundFadeOutTime = 2f;  // 背景淡出時間
     public float dialogueStartDelay = 1f;     // 背景淡入後開始對話的延遲
     
+    [Header("角色動作設定")]
+    public CharacterManager characterManager; // 角色管理器引用
+    
     [Header("內部狀態")]
     private bool isActDialogueActive = false;  // 標記對話是否正在進行
 
@@ -203,5 +206,187 @@ public class BaseActManager : MonoBehaviour
         backgroundRenderer.color = color;
         
         Debug.Log($"🎨 {GetActName()} 背景淡出完成");
+    }
+    
+    // ==================== 角色動作方法 ====================
+    
+    /// <summary>
+    /// 讓指定角色搖動（恐懼效果）- 左右抖動兩次
+    /// </summary>
+    /// <param name="characterName">角色名稱</param>
+    /// <param name="intensity">搖動強度</param>
+    /// <param name="duration">持續時間（完整搖動動作的總時間）</param>
+    public void ShakeCharacter(string characterName, float intensity = 0.05f, float duration = 0.8f)
+    {
+        if (characterManager == null)
+        {
+            Debug.LogWarning("⚠️ CharacterManager 未設定，無法執行角色動作");
+            return;
+        }
+        
+        SpriteRenderer characterRenderer = characterManager.GetCharacterRenderer(characterName);
+        if (characterRenderer != null)
+        {
+            StartCoroutine(ShakeCharacterCoroutine(characterRenderer, intensity, duration));
+        }
+        else
+        {
+            Debug.LogWarning($"⚠️ 找不到角色: {characterName}");
+        }
+    }
+    
+    /// <summary>
+    /// 讓指定角色跳一下
+    /// </summary>
+    /// <param name="characterName">角色名稱</param>
+    /// <param name="jumpHeight">跳躍高度</param>
+    /// <param name="duration">跳躍持續時間</param>
+    public void JumpCharacterOnce(string characterName, float jumpHeight = 0.3f, float duration = 1.2f)
+    {
+        if (characterManager == null)
+        {
+            Debug.LogWarning("⚠️ CharacterManager 未設定，無法執行角色動作");
+            return;
+        }
+        
+        SpriteRenderer characterRenderer = characterManager.GetCharacterRenderer(characterName);
+        if (characterRenderer != null)
+        {
+            StartCoroutine(JumpCharacterCoroutine(characterRenderer, 1, jumpHeight, duration));
+        }
+        else
+        {
+            Debug.LogWarning($"⚠️ 找不到角色: {characterName}");
+        }
+    }
+    
+    /// <summary>
+    /// 讓指定角色跳兩下
+    /// </summary>
+    /// <param name="characterName">角色名稱</param>
+    /// <param name="jumpHeight">跳躍高度</param>
+    /// <param name="duration">每次跳躍的持續時間</param>
+    public void JumpCharacterTwice(string characterName, float jumpHeight = 0.3f, float duration = 1.2f)
+    {
+        if (characterManager == null)
+        {
+            Debug.LogWarning("⚠️ CharacterManager 未設定，無法執行角色動作");
+            return;
+        }
+        
+        SpriteRenderer characterRenderer = characterManager.GetCharacterRenderer(characterName);
+        if (characterRenderer != null)
+        {
+            StartCoroutine(JumpCharacterCoroutine(characterRenderer, 2, jumpHeight, duration));
+        }
+        else
+        {
+            Debug.LogWarning($"⚠️ 找不到角色: {characterName}");
+        }
+    }
+    
+    // ==================== 內部動作協程 ====================
+    
+    /// <summary>
+    /// 角色搖動協程 - 左右抖動兩次
+    /// </summary>
+    IEnumerator ShakeCharacterCoroutine(SpriteRenderer renderer, float intensity, float duration)
+    {
+        Vector3 originalPosition = renderer.transform.position;
+        
+        Debug.Log($"😰 {renderer.name} 開始搖動 - 原位置: {originalPosition}, 強度: {intensity}, 時長: {duration}s");
+        
+        // 左右抖動兩次
+        float singleShakeDuration = duration / 4f; // 每次抖動的時間（左右來回算一次）
+        
+        for (int shake = 0; shake < 2; shake++)
+        {
+            Debug.Log($"🔄 {renderer.name} 第 {shake + 1} 次抖動開始");
+            
+            // 向右
+            yield return StartCoroutine(SmoothMoveToPosition(renderer, 
+                originalPosition + new Vector3(intensity, 0f, 0f), singleShakeDuration));
+            
+            // 向左
+            yield return StartCoroutine(SmoothMoveToPosition(renderer, 
+                originalPosition + new Vector3(-intensity, 0f, 0f), singleShakeDuration));
+        }
+        
+        // 回到原位置
+        yield return StartCoroutine(SmoothMoveToPosition(renderer, originalPosition, singleShakeDuration));
+        
+        Debug.Log($"✅ {renderer.name} 搖動完成 - 回到原位: {originalPosition}");
+    }
+    
+    /// <summary>
+    /// 平滑移動到指定位置
+    /// </summary>
+    IEnumerator SmoothMoveToPosition(SpriteRenderer renderer, Vector3 targetPosition, float moveDuration)
+    {
+        Vector3 startPosition = renderer.transform.position;
+        float elapsed = 0f;
+        
+        while (elapsed < moveDuration)
+        {
+            elapsed += Time.deltaTime;
+            float progress = elapsed / moveDuration;
+            
+            // 使用平滑插值
+            Vector3 currentPosition = Vector3.Lerp(startPosition, targetPosition, progress);
+            renderer.transform.position = currentPosition;
+            
+            yield return null;
+        }
+        
+        // 確保到達目標位置
+        renderer.transform.position = targetPosition;
+    }
+    
+    /// <summary>
+    /// 角色跳躍協程
+    /// </summary>
+    IEnumerator JumpCharacterCoroutine(SpriteRenderer renderer, int jumpCount, float jumpHeight, float duration)
+    {
+        Vector3 originalPosition = renderer.transform.position;
+        
+        // 增加跳躍高度讓效果更明顯 - 設定為誇張數值
+        float enhancedJumpHeight = Mathf.Max(jumpHeight, 3.0f);
+        
+        for (int i = 0; i < jumpCount; i++)
+        {
+            float elapsed = 0f;
+            
+            // 上升階段
+            while (elapsed < duration / 2f)
+            {
+                elapsed += Time.deltaTime;
+                float progress = elapsed / (duration / 2f);
+                float currentY = Mathf.Lerp(originalPosition.y, originalPosition.y + enhancedJumpHeight, 
+                                          Mathf.Sin(progress * Mathf.PI / 2f)); // 使用sin函數讓跳躍更自然
+                
+                Vector3 newPosition = new Vector3(originalPosition.x, currentY, originalPosition.z);
+                renderer.transform.position = newPosition;
+                
+                yield return null;
+            }
+            
+            // 下降階段
+            elapsed = 0f;
+            while (elapsed < duration / 2f)
+            {
+                elapsed += Time.deltaTime;
+                float progress = elapsed / (duration / 2f);
+                float currentY = Mathf.Lerp(originalPosition.y + enhancedJumpHeight, originalPosition.y, 
+                                          Mathf.Sin(progress * Mathf.PI / 2f));
+                
+                Vector3 newPosition = new Vector3(originalPosition.x, currentY, originalPosition.z);
+                renderer.transform.position = newPosition;
+                
+                yield return null;
+            }
+        }
+        
+        // 確保回到原位
+        renderer.transform.position = originalPosition;
     }
 }

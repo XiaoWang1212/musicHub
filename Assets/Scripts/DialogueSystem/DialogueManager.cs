@@ -118,9 +118,6 @@ public class DialogueManager : MonoBehaviour
         // 觸發對話索引事件
         OnDialogueIndexChanged?.Invoke(currentDialogueIndex);
         
-        // 觸發對話開始事件
-        currentDialogue.onDialogueStart?.Invoke();
-        
         // 設定角色名稱 (根據 isNarration 決定是否顯示)
         if (characterNameText != null)
         {
@@ -146,45 +143,31 @@ public class DialogueManager : MonoBehaviour
             // 傳統單角色顯示模式
             if (currentDialogue.isNarration)
             {
-                // 旁白模式：如果有角色圖片，顯示並變暗；如果沒有，保持現有角色並變暗
-                if (currentDialogue.characterSprite != null)
+                // 旁白模式：如果有指定角色名稱，顯示該角色並變暗
+                if (!string.IsNullOrEmpty(currentDialogue.characterName))
                 {
                     OnCharacterDisplay?.Invoke(currentDialogue.characterName, 
-                                             currentDialogue.characterSprite, 
+                                             null,  // 不再傳入 sprite，由 CharacterManager 使用預設 sprite
                                              true);  // 旁白時角色一律變暗
                 }
-                else
-                {
-                    // 旁白且沒有指定角色圖片：保持現有角色但變暗
-                    // 這裡不調用 OnCharacterHide，讓角色保持顯示但變暗
-                    // 可以通過 dimCharacter 屬性控制
-                }
+                // 如果沒有指定角色名稱，保持現有顯示狀態
             }
             else
             {
                 // 正常對話模式
-                if (currentDialogue.characterSprite == null)
+                if (string.IsNullOrEmpty(currentDialogue.characterName))
                 {
                     OnCharacterHide?.Invoke();
                 }
                 else
                 {
                     OnCharacterDisplay?.Invoke(currentDialogue.characterName, 
-                                             currentDialogue.characterSprite, 
+                                             null,  // 不再傳入 sprite，由 CharacterManager 使用預設 sprite
                                              currentDialogue.dimCharacter);
                 }
             }
         }
-        // 設定背景 (帶淡入效果)
-        if (backgroundRenderer != null && currentDialogue.backgroundSprite != null)
-        {
-            // 如果背景改變了或是第一次設定背景,執行淡入動畫
-            if (backgroundRenderer.sprite != currentDialogue.backgroundSprite || 
-                (backgroundRenderer.sprite == null && currentDialogue.backgroundSprite != null))
-            {
-                StartCoroutine(FadeInBackground(currentDialogue.backgroundSprite));
-            }
-        }
+        // 背景管理已移至 ActManager，此處不再處理背景設定
         
         // 播放語音
         if (voiceAudioSource != null && currentDialogue.voiceClip != null)
@@ -350,36 +333,7 @@ public class DialogueManager : MonoBehaviour
     
 
 
-    // 背景淡入動畫 (針對 SpriteRenderer)
-    IEnumerator FadeInBackground(Sprite newBackgroundSprite)
-    {
-        if (backgroundRenderer == null || newBackgroundSprite == null) yield break;
-
-        // 保存當前透明度
-        Color originalColor = backgroundRenderer.color;
-        
-        // 設定新背景
-        backgroundRenderer.sprite = newBackgroundSprite;
-        
-        // 從透明開始淡入
-        Color fadeColor = originalColor;
-        fadeColor.a = 0f;
-        backgroundRenderer.color = fadeColor;
-        
-        float elapsed = 0f;
-        float fadeDuration = 1f; // 1秒淡入時間
-        
-        while (elapsed < fadeDuration)
-        {
-            elapsed += Time.deltaTime;
-            fadeColor.a = Mathf.Lerp(0f, originalColor.a, elapsed / fadeDuration);
-            backgroundRenderer.color = fadeColor;
-            yield return null;
-        }
-        
-        // 確保完全顯示
-        backgroundRenderer.color = originalColor;
-    }
+    // 背景管理已移至 ActManager，移除背景淡入方法
 
     // 對話文字淡出
     IEnumerator FadeOutDialogueText()
