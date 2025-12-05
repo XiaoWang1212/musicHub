@@ -1053,6 +1053,8 @@ MonoBehaviour:
     intensity: 0.3
     jumpHeight: 0.2
     duration: 0.1
+    expressionName: "\u666E\u901A"
+    useExpressionAnimation: 1
   - dialogueIndex: 4
     targetRenderer: {fileID: 30463587}
     characterName: "\u767D\u77F3 \u900F\u7FBD"
@@ -1060,6 +1062,8 @@ MonoBehaviour:
     intensity: 0.3
     jumpHeight: 0.2
     duration: 0.1
+    expressionName: "\u666E\u901A"
+    useExpressionAnimation: 1
   - dialogueIndex: 8
     targetRenderer: {fileID: 30463587}
     characterName: "\u767D\u77F3 \u900F\u7FBD"
@@ -1067,6 +1071,8 @@ MonoBehaviour:
     intensity: 0.3
     jumpHeight: 0.2
     duration: 0.1
+    expressionName: "\u666E\u901A"
+    useExpressionAnimation: 1
   - dialogueIndex: 10
     targetRenderer: {fileID: 171917260}
     characterName: "\u5C0E\u5E2B"
@@ -1074,6 +1080,8 @@ MonoBehaviour:
     intensity: 0.3
     jumpHeight: 0.2
     duration: 0.1
+    expressionName: "\u666E\u901A"
+    useExpressionAnimation: 1
 --- !u!1 &1257121362
 GameObject:
   m_ObjectHideFlags: 0
@@ -1272,28 +1280,81 @@ MonoBehaviour:
   characters:
   - characterName: "\u767D\u77F3 \u900F\u7FBD"
     renderer: {fileID: 30463587}
+    autoGetDefaultFromRenderer: 1
+    customExpressions:
+    - expressionName: "\u50B7\u5FC3"
+      sprite: {fileID: 21300000, guid: 88689be4905000246adf1e44f50a73b5, type: 3}
+    - expressionName: "\u50B7\u8166\u7B4B"
+      sprite: {fileID: 21300000, guid: d35f84fe2db2bc044833d6071f3297ff, type: 3}
+    - expressionName: "\u559C"
+      sprite: {fileID: 21300000, guid: e72541dbe77f6454aa8f123c6faa4525, type: 3}
+    - expressionName: "\u5687\u5230"
+      sprite: {fileID: 21300000, guid: 26ad1b6beb005ae48938a33a93ef9401, type: 3}
+    - expressionName: "\u5805\u6BC5"
+      sprite: {fileID: 21300000, guid: a5c138c7a98d3d544b690d0e32045487, type: 3}
+    - expressionName: "\u59D4\u5C48"
+      sprite: {fileID: 21300000, guid: a486847dc7921974480586406fbfaad5, type: 3}
+    - expressionName: "\u6B63\u5E38"
+      sprite: {fileID: 21300000, guid: adf401320024dea44a0bc6152b2660fa, type: 3}
+    - expressionName: "\u7DCA\u5F35"
+      sprite: {fileID: 21300000, guid: 72c2cf2f428ffeb42aba003f81f8d355, type: 3}
+    - expressionName: "\u82E6\u60F1"
+      sprite: {fileID: 21300000, guid: cff814eceb5838b488de82da9ce8e8e4, type: 3}
+    - expressionName: "\u50B7\u8166\u7B4B"
+      sprite: {fileID: 21300000, guid: cff814eceb5838b488de82da9ce8e8e4, type: 3}
+    - expressionName: "\u9670\u5F71"
+      sprite: {fileID: 21300000, guid: 291fbf6a15adb544f9531194dd1e4dc5, type: 3}
     supportsFade: 1
     fadeInDuration: 0.8
     fadeOutDuration: 0.8
     colorTransitionDuration: 0.5
+    expressionChangeSpeed: 0.3
     speakingPosition: {x: 0, y: 0, z: 0}
     silentPosition: {x: 0, y: 0, z: 0}
     usePositionChange: 0
   - characterName: "\u5927\u91CE \u967D\u6597"
     renderer: {fileID: 171917260}
+    autoGetDefaultFromRenderer: 1
+    customExpressions:
+    - expressionName: "\u4E0D\u723D"
+      sprite: {fileID: 21300000, guid: bfb4ca76143e2944fb7d20d417f30de6, type: 3}
+    - expressionName: "\u559C"
+      sprite: {fileID: 21300000, guid: 893c455fcaa6a2b42af58c7e9af89cee, type: 3}
+    - expressionName: "\u6012"
+      sprite: {fileID: 21300000, guid: 64deaf699274075499e068cc3223755d, type: 3}
+    - expressionName: "\u6B63\u5E38"
+      sprite: {fileID: 21300000, guid: f382a0e1a90d58948a173e47d850245f, type: 3}
+    - expressionName: "\u9053\u6B49"
+      sprite: {fileID: 21300000, guid: cba83d269ba6c694f97136c4914ba39e, type: 3}
+    - expressionName: "\u8907\u96DC"
+      sprite: {fileID: 21300000, guid: 4e953fa3a29381740a19efdd88f4894a, type: 3}
     supportsFade: 1
     fadeInDuration: 0.8
     fadeOutDuration: 0.8
     colorTransitionDuration: 0.5
+    expressionChangeSpeed: 0.3
     speakingPosition: {x: 0, y: 0, z: 0}
     silentPosition: {x: 0, y: 0, z: 0}
     usePositionChange: 0
   - characterName: "\u5C71\u702C \u65E5\u5411"
     renderer: {fileID: 1481972848}
+    autoGetDefaultFromRenderer: 1
+    customExpressions:
+    - expressionName: "\u50B7\u5FC3"
+      sprite: {fileID: 21300000, guid: 32a5247f55b515e49ab27e9f0824ba29, type: 3}
+    - expressionName: "\u559C"
+      sprite: {fileID: 21300000, guid: 99712ed2e16c9134cb38da3def25d478, type: 3}
+    - expressionName: "\u5C37\u5C2C"
+      sprite: {fileID: 21300000, guid: 3bb5e387d85554d47b42c95177a19c4d, type: 3}
+    - expressionName: "\u6B63\u5E38"
+      sprite: {fileID: 21300000, guid: bafe890753815fb4eac7e1d304fb2b59, type: 3}
+    - expressionName: "\u8907\u96DC"
+      sprite: {fileID: 21300000, guid: a8cdac6ebb2943045ad56ad16d3e0eff, type: 3}
     supportsFade: 1
     fadeInDuration: 0.8
     fadeOutDuration: 0.8
     colorTransitionDuration: 0.5
+    expressionChangeSpeed: 0.3
     speakingPosition: {x: 0, y: 0, z: 0}
     silentPosition: {x: 0, y: 0, z: 0}
     usePositionChange: 0

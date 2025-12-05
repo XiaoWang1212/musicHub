@@ -955,6 +955,7 @@ MonoBehaviour:
   backgroundFadeInTime: 1
   backgroundFadeOutTime: 2
   dialogueStartDelay: 1
+  characterManager: {fileID: 0}
   protagonistRenderer: {fileID: 0}
   moveDistance: 6
   moveDuration: 2
@@ -1208,20 +1209,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characters:
   - characterName: "\u767D\u77F3 \u900F\u7FBD"
-    renderer: {fileID: 106551738}
+    renderer: {fileID: 0}
+    autoGetDefaultFromRenderer: 1
+    customExpressions:
+    - expressionName: "\u50B7\u5FC3"
+      sprite: {fileID: 21300000, guid: 88689be4905000246adf1e44f50a73b5, type: 3}
+    - expressionName: "\u50B7\u8166\u7B4B"
+      sprite: {fileID: 21300000, guid: d35f84fe2db2bc044833d6071f3297ff, type: 3}
+    - expressionName: "\u559C"
+      sprite: {fileID: 21300000, guid: e72541dbe77f6454aa8f123c6faa4525, type: 3}
+    - expressionName: "\u5687\u5230"
+      sprite: {fileID: 21300000, guid: 26ad1b6beb005ae48938a33a93ef9401, type: 3}
+    - expressionName: "\u5805\u6BC5"
+      sprite: {fileID: 21300000, guid: a5c138c7a98d3d544b690d0e32045487, type: 3}
+    - expressionName: "\u59D4\u5C48"
+      sprite: {fileID: 21300000, guid: a486847dc7921974480586406fbfaad5, type: 3}
+    - expressionName: "\u6B63\u5E38"
+      sprite: {fileID: 21300000, guid: adf401320024dea44a0bc6152b2660fa, type: 3}
+    - expressionName: "\u7DCA\u5F35"
+      sprite: {fileID: 21300000, guid: 72c2cf2f428ffeb42aba003f81f8d355, type: 3}
+    - expressionName: "\u82E6\u60F1"
+      sprite: {fileID: 21300000, guid: cff814eceb5838b488de82da9ce8e8e4, type: 3}
+    - expressionName: "\u50B7\u8166\u7B4B"
+      sprite: {fileID: 21300000, guid: cff814eceb5838b488de82da9ce8e8e4, type: 3}
+    - expressionName: "\u9670\u5F71"
+      sprite: {fileID: 21300000, guid: 291fbf6a15adb544f9531194dd1e4dc5, type: 3}
     supportsFade: 1
     fadeInDuration: 0.8
     fadeOutDuration: 0.8
     colorTransitionDuration: 0.5
+    expressionChangeSpeed: 0.3
     speakingPosition: {x: 0, y: 0, z: 0}
     silentPosition: {x: 0, y: 0, z: 0}
     usePositionChange: 0
   dimColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   normalColor: {r: 1, g: 1, b: 1, a: 1}
-  characterPositions:
-  - {fileID: 655946284}
-  - {fileID: 900233159}
-  - {fileID: 1165029759}
+  characterPositions: []
 --- !u!1 &2032743102
 GameObject:
   m_ObjectHideFlags: 0

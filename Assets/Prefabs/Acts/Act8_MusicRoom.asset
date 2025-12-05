@@ -99,6 +99,23 @@ MonoBehaviour:
     backgroundMusic: {fileID: 0}
     effect: 0
     dimCharacter: 0
+  - dialogueIndex: 0
+    isNarration: 1
+    characterName: "\u767D\u77F3 \u900F\u7FBD"
+    dialogueText: "\u767D\u77F3\u88AB\u4ED6\u7684\u6C23\u52E2\u5687\u5F97\u5F80\u5F8C\u9000\u534A\u6B65\uFF0C\u60F3\u6399\u812B\uFF0C\u4F46\u4ED6\u7684\u624B\u52C1\u5F88\u5927\u3002 "
+    choices: []
+    useMultipleCharacters: 1
+    characters:
+    - characterName: "\u767D\u77F3 \u900F\u7FBD"
+      position: 0
+      dimCharacter: 1
+    - characterName: "\u5927\u91CE \u967D\u6597"
+      position: 1
+      dimCharacter: 0
+    voiceClip: {fileID: 0}
+    backgroundMusic: {fileID: 0}
+    effect: 0
+    dimCharacter: 0
   isMainStoryline: 1
   canSkip: 1
   autoSave: 0
