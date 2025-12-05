@@ -51,14 +51,54 @@ MonoBehaviour:
   - dialogueIndex: 0
     isNarration: 0
     characterName: "\u5927\u91CE \u967D\u6597"
-    dialogueText: "\u767D\u77F3\u7AD9\u5728\u9580\u53E3\uFF0C\u624B\u63A8\u8457\u9580\uFF0C\u9072\u9072\u6C92\u6709\u8DE8\u9032\u53BB\u3002 "
+    dialogueText: "\u5594\uFF01\u662F\u65B0\u4EBA\uFF1F\uFF01\\n\uFF08\u4ED6\u50CF\u96FB\u6D41\u63A5\u4E0A\u822C\u885D\u904E\u4F86\uFF0C\u7B11\u5BB9\u71B1\u70C8\uFF0C\u4E00\u628A\u6293\u4F4F\u767D\u77F3\u7684\u624B\u81C2\uFF0C\u628A\u5979\u62C9\u9032\u793E\u8FA6\uFF09"
     choices: []
-    useMultipleCharacters: 0
-    characters: []
+    useMultipleCharacters: 1
+    characters:
+    - characterName: "\u767D\u77F3 \u900F\u7FBD"
+      position: 0
+      dimCharacter: 1
+    - characterName: "\u5927\u91CE \u967D\u6597"
+      position: 1
+      dimCharacter: 0
     voiceClip: {fileID: 0}
     backgroundMusic: {fileID: 0}
     effect: 0
-    dimCharacter: 1
+    dimCharacter: 0
+  - dialogueIndex: 0
+    isNarration: 0
+    characterName: "\u5927\u91CE \u967D\u6597"
+    dialogueText: "\u592A\u597D\u4E86\uFF01\u59B3\u662F\u54EA\u4F4D\uFF1F\u6703\u4EC0\u9EBC\uFF1F\u5409\u4ED6\uFF1F\u4E3B\u5531\uFF1F\u548C\u8072\uFF1F\u9084\u662F\u6253\u7BC0\u594F\uFF1F\u6211\u5011\u4EC0\u9EBC\u90FD\u7F3A\uFF01\u59B3\u662F\u88AB\u5206\u4F86\u7684\u55CE\uFF1F"
+    choices: []
+    useMultipleCharacters: 1
+    characters:
+    - characterName: "\u767D\u77F3 \u900F\u7FBD"
+      position: 0
+      dimCharacter: 1
+    - characterName: "\u5927\u91CE \u967D\u6597"
+      position: 1
+      dimCharacter: 0
+    voiceClip: {fileID: 0}
+    backgroundMusic: {fileID: 0}
+    effect: 0
+    dimCharacter: 0
+  - dialogueIndex: 0
+    isNarration: 1
+    characterName: "\u767D\u77F3 \u900F\u7FBD"
+    dialogueText: "\u767D\u77F3\u88AB\u4ED6\u7684\u6C23\u52E2\u5687\u5F97\u5F80\u5F8C\u9000\u534A\u6B65\uFF0C\u60F3\u6399\u812B\uFF0C\u4F46\u4ED6\u7684\u624B\u52C1\u5F88\u5927\u3002 "
+    choices: []
+    useMultipleCharacters: 1
+    characters:
+    - characterName: "\u767D\u77F3 \u900F\u7FBD"
+      position: 0
+      dimCharacter: 1
+    - characterName: "\u5927\u91CE \u967D\u6597"
+      position: 1
+      dimCharacter: 0
+    voiceClip: {fileID: 0}
+    backgroundMusic: {fileID: 0}
+    effect: 0
+    dimCharacter: 0
   isMainStoryline: 1
   canSkip: 1
   autoSave: 0

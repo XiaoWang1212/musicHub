@@ -22923,3 +22923,508 @@ Received Import Request.
 Start importing Assets/Prefabs/Acts/Act8_MusicRoom.asset using Guid(65971d966a7b1cb48a797de9ed5b784e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'a18aedd3427022114e6b8144a3633d0e') in 0.9348962 seconds
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
 
+========================================================================
+Received Import Request.
+  Time since last request: 2211.790787 seconds.
+  path: Assets/Scenes/Acts/Act8_MusicRoom.unity
+  artifactKey: Guid(f61f10f84be54b84e8007e6c97719033) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Acts/Act8_MusicRoom.unity using Guid(f61f10f84be54b84e8007e6c97719033) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'fbf9264cffaa9c0459206d24abd69b45') in 0.2591571 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 410.085026 seconds.
+  path: Assets/Prefabs/Acts/Act2_RoomWakeup_Dialogue.asset
+  artifactKey: Guid(da0c1f28cbac2234b8df41eaec64cdc4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Acts/Act2_RoomWakeup_Dialogue.asset using Guid(da0c1f28cbac2234b8df41eaec64cdc4) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '9f3fbb85a0bdf70b8c73692a0040cc66') in 2.1112743 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Prepare
+Shader Hidden/ProbeVolume/VoxelizeScene is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 61.35 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 40 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6714 unused Assets / (10.2 MB). Loaded Objects now: 7587.
+Memory consumption went from 153.5 MB to 143.3 MB.
+Total: 49344.736100 ms (FindLiveObjects: 212.453200 ms CreateObjectMapping: 0.995500 ms MarkObjects: 48668.309900 ms  DeleteObjects: 462.971000 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in 96.018 seconds
+Refreshing native plugins compatible for Editor in 2.03 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in 17.803 seconds
+Domain Reload Profiling: 113850ms
+	BeginReloadAssembly (63061ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (12868ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (107ms)
+		CreateAndSetChildDomain (26545ms)
+	RebuildCommonClasses (399ms)
+	RebuildNativeTypeToScriptingClass (82ms)
+	initialDomainReloadingComplete (1308ms)
+	LoadAllAssembliesAndSetupDomain (31168ms)
+		LoadAssemblies (27646ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (10244ms)
+			TypeCache.Refresh (3358ms)
+				TypeCache.ScanAssembly (204ms)
+			BuildScriptInfoCaches (5679ms)
+			ResolveRequiredComponents (358ms)
+	FinalizeReload (17833ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (13734ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (189ms)
+			SetLoadedEditorAssemblies (106ms)
+			BeforeProcessingInitializeOnLoad (3433ms)
+			ProcessInitializeOnLoadAttributes (9302ms)
+			ProcessInitializeOnLoadMethodAttributes (692ms)
+			AfterProcessingInitializeOnLoad (6ms)
+			EditorAssembliesLoaded (7ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (68ms)
+Shader Hidden/ProbeVolume/VoxelizeScene is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 3.21 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 40 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6725 unused Assets / (9.5 MB). Loaded Objects now: 7590.
+Memory consumption went from 153.3 MB to 143.8 MB.
+Total: 41.144800 ms (FindLiveObjects: 1.044100 ms CreateObjectMapping: 1.012000 ms MarkObjects: 14.572500 ms  DeleteObjects: 24.512500 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  8.943 seconds
+Refreshing native plugins compatible for Editor in 2.92 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  4.386 seconds
+Domain Reload Profiling: 13327ms
+	BeginReloadAssembly (4070ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (389ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (1ms)
+		CreateAndSetChildDomain (1810ms)
+	RebuildCommonClasses (357ms)
+	RebuildNativeTypeToScriptingClass (35ms)
+	initialDomainReloadingComplete (652ms)
+	LoadAllAssembliesAndSetupDomain (3825ms)
+		LoadAssemblies (3428ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (2007ms)
+			TypeCache.Refresh (25ms)
+				TypeCache.ScanAssembly (2ms)
+			BuildScriptInfoCaches (1907ms)
+			ResolveRequiredComponents (69ms)
+	FinalizeReload (4387ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (3426ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (6ms)
+			SetLoadedEditorAssemblies (6ms)
+			BeforeProcessingInitializeOnLoad (517ms)
+			ProcessInitializeOnLoadAttributes (2611ms)
+			ProcessInitializeOnLoadMethodAttributes (280ms)
+			AfterProcessingInitializeOnLoad (6ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (50ms)
+Shader Hidden/ProbeVolume/VoxelizeScene is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 3.43 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 40 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6725 unused Assets / (10.6 MB). Loaded Objects now: 7593.
+Memory consumption went from 153.4 MB to 142.7 MB.
+Total: 117.326700 ms (FindLiveObjects: 1.007100 ms CreateObjectMapping: 0.974700 ms MarkObjects: 9.033900 ms  DeleteObjects: 106.307800 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Import Request.
+  Time since last request: 3865.115115 seconds.
+  path: Assets/Scenes/Acts/Act2_RoomWakeup.unity
+  artifactKey: Guid(1f515965b7f4bde43914b6310a12fdf4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Acts/Act2_RoomWakeup.unity using Guid(1f515965b7f4bde43914b6310a12fdf4) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '39b89b06f8167bd03367767a7844ed7b') in 1.3015067 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 759.016276 seconds.
+  path: Assets/Sprites/Characters/白石 透羽
+  artifactKey: Guid(98e3522cb6d74de4b8a891174923689d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Characters/白石 透羽 using Guid(98e3522cb6d74de4b8a891174923689d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '28c4e60e9e8e251a86127fb9bd9ac65d') in 0.0364812 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 18.143521 seconds.
+  path: Assets/Sprites/Characters/白石 透羽/傷心.png
+  artifactKey: Guid(88689be4905000246adf1e44f50a73b5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Characters/白石 透羽/傷心.png using Guid(88689be4905000246adf1e44f50a73b5) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '670e93b389b12468100f817778b25945') in 2.1355227 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 1254.550202 seconds.
+  path: Assets/Sprites/Characters/大野 陽斗
+  artifactKey: Guid(a012c40818387d44785c53c62369a719) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Characters/大野 陽斗 using Guid(a012c40818387d44785c53c62369a719) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '2e1a63a70017d3433f6ce6878837b44c') in 0.0091103 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 75.015393 seconds.
+  path: Assets/Sprites/Characters/山瀬 日向
+  artifactKey: Guid(adca7acec9c6acd4ca603bb215d971ed) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Characters/山瀬 日向 using Guid(adca7acec9c6acd4ca603bb215d971ed) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'e048067abcb4930d3574a29befdb4af9') in 0.0013232 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 1840.577548 seconds.
+  path: Assets/Sprites/Characters/久我 靜真
+  artifactKey: Guid(a5af01e40778ef64a9789100f6b4c1e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Characters/久我 靜真 using Guid(a5af01e40778ef64a9789100f6b4c1e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '11058633f17fb6e1563988da066de801') in 0.0718327 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 129.738466 seconds.
+  path: Assets/Sprites/Characters/高官
+  artifactKey: Guid(d1d97fa8a5d9ace4c90eee7a66997ee6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Characters/高官 using Guid(d1d97fa8a5d9ace4c90eee7a66997ee6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'be0be99de6e82b3be441d64390371430') in 0.3012677 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.389639 seconds.
+  path: Assets/Sprites/Characters/高宮 芽依
+  artifactKey: Guid(d1d97fa8a5d9ace4c90eee7a66997ee6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Characters/高宮 芽依 using Guid(d1d97fa8a5d9ace4c90eee7a66997ee6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '158a362528691ca1b10a5b30b1bdfafb') in 0.0136674 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 25.493653 seconds.
+  path: Assets/Sprites/Characters/高宮 芽依/傷心.png
+  artifactKey: Guid(9e5f536faa55aa642874a51cbdfc3ad8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Characters/高宮 芽依/傷心.png using Guid(9e5f536faa55aa642874a51cbdfc3ad8) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '38682e22c5f93d2b96a3c03301103735') in 2.288046 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.785059 seconds.
+  path: Assets/Sprites/Characters/高宮 芽依/正常.png
+  artifactKey: Guid(64652b85b8718904dace41d19438077b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Characters/高宮 芽依/正常.png using Guid(64652b85b8718904dace41d19438077b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '0030ecdbca467784236b6e7a91df1157') in 0.7306181 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.830767 seconds.
+  path: Assets/Sprites/Characters/白石 透羽/傷心.png
+  artifactKey: Guid(88689be4905000246adf1e44f50a73b5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Characters/白石 透羽/傷心.png using Guid(88689be4905000246adf1e44f50a73b5) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '122d792d13d4a96abeef8e3277c78e66') in 0.4957022 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.557429 seconds.
+  path: Assets/Sprites/Characters/白石 透羽/堅毅.png
+  artifactKey: Guid(a5c138c7a98d3d544b690d0e32045487) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Characters/白石 透羽/堅毅.png using Guid(a5c138c7a98d3d544b690d0e32045487) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '07488c9b5de0a39d1c84a689a528c424') in 0.443805 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.905792 seconds.
+  path: Assets/Sprites/Characters/山瀬 日向/傷心.png
+  artifactKey: Guid(32a5247f55b515e49ab27e9f0824ba29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Characters/山瀬 日向/傷心.png using Guid(32a5247f55b515e49ab27e9f0824ba29) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '24aeb2cc9c3fa36d00670d1bb7f738b5') in 0.4395435 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.017491 seconds.
+  path: Assets/Sprites/Characters/山瀬 日向/尷尬.png
+  artifactKey: Guid(3bb5e387d85554d47b42c95177a19c4d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Characters/山瀬 日向/尷尬.png using Guid(3bb5e387d85554d47b42c95177a19c4d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'b86f2c3e6e15cedc985edb33339384c1') in 0.2181272 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 20.526530 seconds.
+  path: Assets/Sprites/Characters/久我 靜真/不爽.png
+  artifactKey: Guid(d76945aeac4dd254e81f87abbdafa7c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Characters/久我 靜真/不爽.png using Guid(d76945aeac4dd254e81f87abbdafa7c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '9b8f90fb18ffbc20774e97ad8f28a6f9') in 0.7769922 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 4.568047 seconds.
+  path: Assets/Sprites/Characters/大野 陽斗/不爽.png
+  artifactKey: Guid(bfb4ca76143e2944fb7d20d417f30de6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Characters/大野 陽斗/不爽.png using Guid(bfb4ca76143e2944fb7d20d417f30de6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '84e404c0eb29a30af6a6d9b8f5cc7cfa') in 0.8468744 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in 242.986 seconds
+Refreshing native plugins compatible for Editor in 231.74 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in 46.174 seconds
+Domain Reload Profiling: 292038ms
+	BeginReloadAssembly (124210ms)
+		ExecutionOrderSort (32ms)
+		DisableScriptedObjects (12701ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (258ms)
+		CreateAndSetChildDomain (70459ms)
+	RebuildCommonClasses (1923ms)
+	RebuildNativeTypeToScriptingClass (242ms)
+	initialDomainReloadingComplete (5310ms)
+	LoadAllAssembliesAndSetupDomain (114169ms)
+		LoadAssemblies (73279ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (54975ms)
+			TypeCache.Refresh (9760ms)
+				TypeCache.ScanAssembly (1048ms)
+			BuildScriptInfoCaches (37885ms)
+			ResolveRequiredComponents (2513ms)
+	FinalizeReload (46184ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (32701ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (362ms)
+			SetLoadedEditorAssemblies (156ms)
+			BeforeProcessingInitializeOnLoad (11436ms)
+			ProcessInitializeOnLoadAttributes (19180ms)
+			ProcessInitializeOnLoadMethodAttributes (1518ms)
+			AfterProcessingInitializeOnLoad (8ms)
+			EditorAssembliesLoaded (42ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (137ms)
+Shader Hidden/ProbeVolume/VoxelizeScene is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 5.32 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 40 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6725 unused Assets / (9.6 MB). Loaded Objects now: 7603.
+Memory consumption went from 153.4 MB to 143.8 MB.
+Total: 240.460100 ms (FindLiveObjects: 1.795100 ms CreateObjectMapping: 0.782100 ms MarkObjects: 107.588100 ms  DeleteObjects: 130.291100 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  5.143 seconds
+Refreshing native plugins compatible for Editor in 2.36 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  5.395 seconds
+Domain Reload Profiling: 10539ms
+	BeginReloadAssembly (1255ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (44ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (432ms)
+	RebuildCommonClasses (185ms)
+	RebuildNativeTypeToScriptingClass (19ms)
+	initialDomainReloadingComplete (67ms)
+	LoadAllAssembliesAndSetupDomain (3617ms)
+		LoadAssemblies (3173ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (1036ms)
+			TypeCache.Refresh (12ms)
+				TypeCache.ScanAssembly (1ms)
+			BuildScriptInfoCaches (1000ms)
+			ResolveRequiredComponents (18ms)
+	FinalizeReload (5396ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (4595ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (4ms)
+			BeforeProcessingInitializeOnLoad (453ms)
+			ProcessInitializeOnLoadAttributes (3893ms)
+			ProcessInitializeOnLoadMethodAttributes (233ms)
+			AfterProcessingInitializeOnLoad (7ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (17ms)
+Shader Hidden/ProbeVolume/VoxelizeScene is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 2.88 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 40 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6725 unused Assets / (8.3 MB). Loaded Objects now: 7606.
+Memory consumption went from 153.4 MB to 145.2 MB.
+Total: 87.579900 ms (FindLiveObjects: 0.812600 ms CreateObjectMapping: 0.878400 ms MarkObjects: 8.422100 ms  DeleteObjects: 77.464000 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  3.546 seconds
+Refreshing native plugins compatible for Editor in 4.47 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  2.416 seconds
+Domain Reload Profiling: 5964ms
+	BeginReloadAssembly (1210ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (67ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (332ms)
+	RebuildCommonClasses (81ms)
+	RebuildNativeTypeToScriptingClass (25ms)
+	initialDomainReloadingComplete (51ms)
+	LoadAllAssembliesAndSetupDomain (2181ms)
+		LoadAssemblies (2151ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (588ms)
+			TypeCache.Refresh (12ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (515ms)
+			ResolveRequiredComponents (52ms)
+	FinalizeReload (2416ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (1908ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (41ms)
+			BeforeProcessingInitializeOnLoad (255ms)
+			ProcessInitializeOnLoadAttributes (1374ms)
+			ProcessInitializeOnLoadMethodAttributes (225ms)
+			AfterProcessingInitializeOnLoad (8ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (39ms)
+Shader Hidden/ProbeVolume/VoxelizeScene is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 2.25 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 40 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6725 unused Assets / (7.4 MB). Loaded Objects now: 7609.
+Memory consumption went from 153.4 MB to 146.0 MB.
+Total: 20.585300 ms (FindLiveObjects: 1.370800 ms CreateObjectMapping: 1.214500 ms MarkObjects: 10.617500 ms  DeleteObjects: 7.378500 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  4.041 seconds
+Refreshing native plugins compatible for Editor in 4.64 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in 11.021 seconds
+Domain Reload Profiling: 15066ms
+	BeginReloadAssembly (519ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (21ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (157ms)
+	RebuildCommonClasses (287ms)
+	RebuildNativeTypeToScriptingClass (156ms)
+	initialDomainReloadingComplete (325ms)
+	LoadAllAssembliesAndSetupDomain (2755ms)
+		LoadAssemblies (1939ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (983ms)
+			TypeCache.Refresh (10ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (904ms)
+			ResolveRequiredComponents (58ms)
+	FinalizeReload (11023ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (9022ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (15ms)
+			SetLoadedEditorAssemblies (18ms)
+			BeforeProcessingInitializeOnLoad (1135ms)
+			ProcessInitializeOnLoadAttributes (6059ms)
+			ProcessInitializeOnLoadMethodAttributes (1746ms)
+			AfterProcessingInitializeOnLoad (23ms)
+			EditorAssembliesLoaded (25ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (386ms)
+Shader Hidden/ProbeVolume/VoxelizeScene is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 3.63 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 40 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6725 unused Assets / (7.4 MB). Loaded Objects now: 7612.
+Memory consumption went from 153.4 MB to 146.0 MB.
+Total: 45.744000 ms (FindLiveObjects: 4.944700 ms CreateObjectMapping: 3.320100 ms MarkObjects: 16.320300 ms  DeleteObjects: 21.155700 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  3.361 seconds
+Refreshing native plugins compatible for Editor in 3.51 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  3.479 seconds
+Domain Reload Profiling: 6840ms
+	BeginReloadAssembly (1297ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (107ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (150ms)
+	RebuildCommonClasses (187ms)
+	RebuildNativeTypeToScriptingClass (21ms)
+	initialDomainReloadingComplete (187ms)
+	LoadAllAssembliesAndSetupDomain (1668ms)
+		LoadAssemblies (1587ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (795ms)
+			TypeCache.Refresh (87ms)
+				TypeCache.ScanAssembly (9ms)
+			BuildScriptInfoCaches (686ms)
+			ResolveRequiredComponents (16ms)
+	FinalizeReload (3480ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (2647ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (5ms)
+			SetLoadedEditorAssemblies (5ms)
+			BeforeProcessingInitializeOnLoad (268ms)
+			ProcessInitializeOnLoadAttributes (2189ms)
+			ProcessInitializeOnLoadMethodAttributes (173ms)
+			AfterProcessingInitializeOnLoad (8ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (69ms)
+Shader Hidden/ProbeVolume/VoxelizeScene is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 2.82 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 40 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6725 unused Assets / (7.4 MB). Loaded Objects now: 7615.
+Memory consumption went from 153.5 MB to 146.0 MB.
+Total: 24.386400 ms (FindLiveObjects: 0.835400 ms CreateObjectMapping: 0.737500 ms MarkObjects: 7.350000 ms  DeleteObjects: 15.460900 ms)
+
+Prepare: number of updated asset objects reloaded= 0

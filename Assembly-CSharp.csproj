@@ -79,6 +79,7 @@
     <Compile Include="Assets\Scripts\ActManagers\Act1Manager.cs" />
     <Compile Include="Assets\Scripts\SceneSystem\SceneTransitionManager.cs" />
     <Compile Include="Assets\Scripts\BackgroundSystem\BackgroundManager.cs" />
+    <Compile Include="Assets\Scripts\CharacterSystem\ExpressionTriggerManager.cs" />
     <Compile Include="Assets\Scripts\GameInitializer.cs" />
     <Compile Include="Assets\Scripts\AudioSystem\MelodyToNoiseTransition.cs" />
     <Compile Include="Assets\Scripts\DialogueSystem\DialogueData.cs" />

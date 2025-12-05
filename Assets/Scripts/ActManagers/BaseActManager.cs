@@ -285,6 +285,38 @@ public class BaseActManager : MonoBehaviour
         }
     }
     
+    /// <summary>
+    /// 切換指定角色的表情
+    /// </summary>
+    /// <param name="characterName">角色名稱</param>
+    /// <param name="expressionName">表情名稱</param>
+    /// <param name="useAnimation">是否使用切換動畫</param>
+    public void ChangeCharacterExpression(string characterName, string expressionName, bool useAnimation = true)
+    {
+        if (characterManager == null)
+        {
+            Debug.LogWarning("⚠️ CharacterManager 未設定，無法執行角色動作");
+            return;
+        }
+        
+        characterManager.ChangeCharacterExpression(characterName, expressionName, useAnimation);
+    }
+    
+    /// <summary>
+    /// 設定角色為預設表情
+    /// </summary>
+    /// <param name="characterName">角色名稱</param>
+    public void SetCharacterDefaultExpression(string characterName)
+    {
+        if (characterManager == null)
+        {
+            Debug.LogWarning("⚠️ CharacterManager 未設定，無法執行角色動作");
+            return;
+        }
+        
+        characterManager.SetCharacterDefaultExpression(characterName);
+    }
+    
     // ==================== 內部動作協程 ====================
     
     /// <summary>

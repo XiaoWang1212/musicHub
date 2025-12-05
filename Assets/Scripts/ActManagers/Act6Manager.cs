@@ -82,6 +82,19 @@ public class Act6Manager : BaseActManager
             case CharacterActionType.JumpTwice:
                 StartCoroutine(JumpRendererCoroutine(trigger.targetRenderer, 2, actualJumpHeight, actualDuration));
                 break;
+                
+            case CharacterActionType.ChangeExpression:
+                // 直接通過 CharacterManager 切換表情
+                var characterManager = FindFirstObjectByType<CharacterManager>();
+                if (characterManager != null)
+                {
+                    characterManager.ChangeCharacterExpression(trigger.characterName, trigger.expressionName, trigger.useExpressionAnimation);
+                }
+                else
+                {
+                    Debug.LogWarning("⚠️ 找不到 CharacterManager，無法切換表情");
+                }
+                break;
         }
     }
     
@@ -184,6 +197,33 @@ public class Act6Manager : BaseActManager
             }
         }
     }
+    
+    /// <summary>
+    /// 測試表情切換 - 用於除錯
+    /// </summary>
+    [ContextMenu("測試表情切換")]
+    void TestExpressionChange()
+    {
+        var characterManager = FindFirstObjectByType<CharacterManager>();
+        if (characterManager != null && actionTriggers != null && actionTriggers.Length > 0)
+        {
+            // 尋找第一個表情切換觸發器
+            foreach (var trigger in actionTriggers)
+            {
+                if (trigger.actionType == CharacterActionType.ChangeExpression)
+                {
+                    Debug.Log($"🧪 測試切換 {trigger.characterName} 的表情為 {trigger.expressionName}");
+                    characterManager.ChangeCharacterExpression(trigger.characterName, trigger.expressionName, trigger.useExpressionAnimation);
+                    return;
+                }
+            }
+            Debug.LogWarning("⚠️ 沒有找到表情切換觸發器");
+        }
+        else
+        {
+            Debug.LogError("❌ 找不到 CharacterManager 或沒有設定觸發器");
+        }
+    }
 }
 
 /// <summary>
@@ -219,6 +259,13 @@ public class CharacterActionTrigger
     [Tooltip("動作持續時間")]
     [Range(0.05f, 2.0f)]
     public float duration = 0.1f;
+    
+    [Header("表情設定 (ChangeExpression 專用)")]
+    [Tooltip("要切換的表情名稱 (普通/開心/難過/驚訝/憤怒/害怕/困惑/害羞)")]
+    public string expressionName = "普通";
+    
+    [Tooltip("是否使用表情切換動畫")]
+    public bool useExpressionAnimation = true;
 }
 
 /// <summary>
@@ -226,7 +273,8 @@ public class CharacterActionTrigger
 /// </summary>
 public enum CharacterActionType
 {
-    Shake,      // 搖動（恐懼）
-    JumpOnce,   // 跳一下
-    JumpTwice   // 跳兩下
+    Shake,           // 搖動（恐懼）
+    JumpOnce,        // 跳一下
+    JumpTwice,       // 跳兩下
+    ChangeExpression // 切換表情
 }

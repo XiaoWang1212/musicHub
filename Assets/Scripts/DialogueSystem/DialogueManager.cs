@@ -50,6 +50,9 @@ public class DialogueManager : MonoBehaviour
     public static event Action<List<CharacterDisplayData>> OnMultipleCharactersDisplay;  // 多角色顯示
     public static event Action OnMultipleCharactersHide;  // 隱藏所有角色
     
+    // 表情切換事件
+    public static event Action<string, string, bool> OnCharacterExpressionChange;  // 角色名稱, 表情名稱, 是否使用動畫
+    
     void Start()
     {
         InitializeDialogueSystem();

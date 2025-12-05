@@ -3,18 +3,12 @@ using System.Collections;
 
 /// <summary>
 /// 第二幕管理器 - S 的房間（清晨）
-/// 簡化版:只處理對話和音效
+/// 繼承 BaseActManager，擴展特殊的手機訊息和音樂筆記本功能
 /// </summary>
-public class Act2Manager : MonoBehaviour
+public class Act2Manager : BaseActManager
 {
-    [Header("對話系統")]
-    public DialogueManager dialogueManager;
-    public DialogueSequenceAsset act2DialogueSequence;  // 在 Inspector 中設定
-
-    [Header("場景物件")]
+    [Header("Act2 特殊場景物件")]
     public SpriteRenderer musicBookRenderer;  // 音樂筆記本
-    public CharacterManager characterManager; // 角色管理器
-    public SpriteRenderer backgroundRenderer; // 背景
     
     [Header("Act2 特殊 UI")]
     public GameObject phoneMessagePanel;      // 手機訊息面板
@@ -40,19 +34,10 @@ public class Act2Manager : MonoBehaviour
     public float shakeIntensity = 0.15f;    // 抖動強度
     public int shakeCount = 2;              // 抖動次數
 
-    [Header("時間控制")]
-    public float initialDelay = 1f;
-    
-    [Header("轉場設定")]
-    public TransitionTrigger transitionToAct3;  // 轉場到 Act3 的 Trigger
-    
-    [Header("內部狀態")]
-    private bool isAct2DialogueActive = false;  // 標記 Act2 對話是否正在進行
 
-    void Start()
+
+    protected override void Start()
     {
-        Debug.Log("🎬 第二幕開始 - S 的房間");
-        
         // 初始化筆記本為隱藏
         if (musicBookRenderer != null)
         {
@@ -62,38 +47,25 @@ public class Act2Manager : MonoBehaviour
             musicBookRenderer.gameObject.SetActive(false);
         }
         
-        // 初始化背景為透明
-        if (backgroundRenderer != null)
-        {
-            Color bgColor = backgroundRenderer.color;
-            bgColor.a = 0f;
-            backgroundRenderer.color = bgColor;
-        }
-        
-        // 暫時禁用 GameManager 的對話結束監聽，避免干擾 Act2 流程
-        DisableGameManagerDialogueEvents();
-        
         // 訂閱對話索引事件
         DialogueManager.OnDialogueIndexChanged += OnDialogueIndexChanged;
         
-        StartCoroutine(Act2Sequence());
+        // 調用基類 Start，這會自動處理基本的 Act 流程
+        base.Start();
     }
     
-    void OnDestroy()
+    protected override void OnDestroy()
     {
         // 取消訂閱
         DialogueManager.OnDialogueIndexChanged -= OnDialogueIndexChanged;
+        
+        // 調用基類清理
+        base.OnDestroy();
     }
     
-    /// <summary>
-    /// 暫時禁用 GameManager 的對話事件監聽，避免干擾 Act2 流程
-    /// 簡單的方法：在 Act2 中自行管理對話流程
-    /// </summary>
-    void DisableGameManagerDialogueEvents()
+    protected override string GetActName()
     {
-        // 由於 GameManager 的 OnDialogueEnd 是 private，
-        // 我們採用更簡單的方法：讓 Act2Manager 完全控制自己的對話流程
-        Debug.Log("🔇 Act2Manager 接管對話控制權");
+        return "Act2 - S的房間";
     }
     
     void OnDialogueIndexChanged(int dialogueIndex)
@@ -125,37 +97,17 @@ public class Act2Manager : MonoBehaviour
                 HidePhoneMessage();
                 break;
                 
-            // 在對話結束時觸發 Act2 退場
-            case -1: // 對話結束標記 (由 DialogueManager 觸發)
-                Debug.Log("🎬 收到對話結束信號，檢查是否為 Act2 對話...");
-                
-                // 只有當 Act2 對話正在進行時才處理結束事件
-                if (isAct2DialogueActive)
-                {
-                    Debug.Log("✅ 確認是 Act2 對話結束，開始退場");
-                    isAct2DialogueActive = false; // 清除標記
-                    StartCoroutine(Act2Ending());
-                }
-                else
-                {
-                    Debug.Log("⚠️ 非 Act2 對話結束事件，忽略");
-                }
-                break;
+            // 其他對話索引不需特殊處理，BaseActManager 會處理對話結束
         }
     }
 
-    IEnumerator Act2Sequence()
+    protected override IEnumerator StartActSequence()
     {
-        yield return new WaitForSeconds(initialDelay);
-
-        // 背景淡入
-        StartCoroutine(FadeInBackground());
-
-        // 播放清晨氛圍音
+        // 調用基類的開始序列
+        yield return StartCoroutine(base.StartActSequence());
+        
+        // Act2 特殊初始化：播放清晨氛圍音
         PlayAmbience();
-
-        // 開始對話
-        StartDialogue();
     }
 
     void PlayAmbience()
@@ -169,22 +121,7 @@ public class Act2Manager : MonoBehaviour
         }
     }
 
-    void StartDialogue()
-    {
-        if (act2DialogueSequence != null && dialogueManager != null)
-        {
-            // 標記 Act2 對話開始
-            isAct2DialogueActive = true;
-            Debug.Log("🎯 Act2 對話開始，設定保護標記");
-            
-            // 直接傳入 ScriptableObject，讓 DialogueManager 自動觸發事件
-            dialogueManager.StartDialogue(act2DialogueSequence);
-        }
-        else
-        {
-            Debug.LogWarning("⚠️ 請在 Inspector 中設定 Act2 Dialogue Sequence!");
-        }
-    }
+
 
     // 可以從 UnityEvent 或對話系統呼叫的音效方法
     public void PlayHeartbeat()
@@ -286,54 +223,20 @@ public class Act2Manager : MonoBehaviour
 
     IEnumerator ShakeCharacter()
     {
-        // 使用CharacterManager獲取當前活躍角色進行抖動
+        // 使用 CharacterManager 獲取當前活躍角色進行抖動
         if (characterManager == null) yield break;
         
         var activeCharacter = characterManager.GetCurrentActiveCharacter();
-        if (activeCharacter == null || activeCharacter.renderer == null) yield break;
-        
-        SpriteRenderer renderer = activeCharacter.renderer;
-        Vector3 originalPosition = renderer.transform.position;
-        
-        for (int i = 0; i < shakeCount; i++)
+        if (activeCharacter != null)
         {
-            // 向左抖
-            renderer.transform.position = originalPosition + Vector3.left * shakeIntensity;
-            yield return new WaitForSeconds(0.05f);
-            
-            // 向右抖
-            renderer.transform.position = originalPosition + Vector3.right * shakeIntensity;
-            yield return new WaitForSeconds(0.05f);
+            // 使用 BaseActManager 提供的抖動方法
+            ShakeCharacter(activeCharacter.characterName, shakeIntensity, 0.1f);
         }
         
-        // 恢復原位
-        renderer.transform.position = originalPosition;
+        yield return new WaitForSeconds(0.4f); // 等待抖動完成
     }
 
-    // 背景淡入效果
-    IEnumerator FadeInBackground()
-    {
-        if (backgroundRenderer == null) yield break;
 
-        float elapsed = 0f;
-        float fadeDuration = 1f; // 1秒淡入
-        Color color = backgroundRenderer.color;
-        
-        // 從透明(0)淡入到完全顯示(1)
-        while (elapsed < fadeDuration)
-        {
-            elapsed += Time.deltaTime;
-            color.a = Mathf.Lerp(0f, 1f, elapsed / fadeDuration);
-            backgroundRenderer.color = color;
-            yield return null;
-        }
-        
-        // 確保完全顯示
-        color.a = 1f;
-        backgroundRenderer.color = color;
-        
-        Debug.Log("🎨 背景淡入完成");
-    }
 
     // 顯示手機訊息 (Act2 專用)
     public void ShowPhoneMessage(string message)
@@ -414,40 +317,18 @@ public class Act2Manager : MonoBehaviour
         if (characterManager != null)
         {
             var activeCharacter = characterManager.GetCurrentActiveCharacter();
-            if (activeCharacter != null && activeCharacter.renderer != null)
+            if (activeCharacter != null)
             {
-                yield return StartCoroutine(ShakeCharacterFear(activeCharacter.renderer));
+                // 使用 BaseActManager 的抖動方法，強度更高
+                ShakeCharacter(activeCharacter.characterName, shakeIntensity * 1.5f, 0.1f);
+                yield return new WaitForSeconds(0.8f); // 等待抖動完成
             }
         }
         
         Debug.Log("😰 害怕效果完成");
     }
     
-    // 害怕抖動效果 (比一般抖動更激烈)
-    IEnumerator ShakeCharacterFear(SpriteRenderer renderer)
-    {
-        Vector3 originalPosition = renderer.transform.position;
-        float fearShakeIntensity = shakeIntensity * 1.5f; // 比普通抖動更強烈
-        int fearShakeCount = shakeCount * 2; // 抖動次數更多
-        
-        for (int i = 0; i < fearShakeCount; i++)
-        {
-            // 隨機方向抖動 (更真實的害怕效果)
-            Vector3 shakeOffset = new Vector3(
-                Random.Range(-fearShakeIntensity, fearShakeIntensity),
-                Random.Range(-fearShakeIntensity * 0.5f, fearShakeIntensity * 0.5f),
-                0f
-            );
-            
-            renderer.transform.position = originalPosition + shakeOffset;
-            yield return new WaitForSeconds(0.04f); // 更快的抖動節奏
-        }
-        
-        // 恢復原位
-        renderer.transform.position = originalPosition;
-        
-        Debug.Log("😱 主角害怕抖動完成");
-    }
+
 
     // 手機訊息淡入動畫
     IEnumerator FadeInPhoneMessage()
@@ -542,55 +423,18 @@ public class Act2Manager : MonoBehaviour
         }
     }
 
-    // Act2 結束序列：所有元素淡出並轉換到 Act3
-    IEnumerator Act2Ending()
+    protected override IEnumerator ActEndingSequence()
     {
-        Debug.Log("🎬 開始 Act2 結束序列");
+        Debug.Log("🎬 開始 Act2 特殊結束序列");
 
         // 停止背景音樂
         if (bgmSource != null)
         {
-            StartCoroutine(FadeOutBGM());
+            yield return StartCoroutine(FadeOutBGM());
         }
 
-        // 淡出對話系統
-        if (dialogueManager != null)
-        {
-            yield return StartCoroutine(dialogueManager.FadeOutDialoguePanel());
-        }
-
-        // 淡出背景
-        yield return StartCoroutine(FadeOutBackground());
-
-        // 等待一點時間確保淡出完成
-        yield return new WaitForSeconds(0.5f);
-
-        Debug.Log("✅ Act2 淡出完成，準備轉換到 Act3");
-
-        // 轉換到 Act3
-        TransitionToAct3();
-    }
-
-    // 背景淡出
-    IEnumerator FadeOutBackground()
-    {
-        if (backgroundRenderer == null) yield break;
-
-        float elapsed = 0f;
-        float fadeDuration = 2f; // 比較慢的淡出
-        Color color = backgroundRenderer.color;
-        float startAlpha = color.a;
-
-        while (elapsed < fadeDuration)
-        {
-            elapsed += Time.deltaTime;
-            color.a = Mathf.Lerp(startAlpha, 0f, elapsed / fadeDuration);
-            backgroundRenderer.color = color;
-            yield return null;
-        }
-
-        color.a = 0f;
-        backgroundRenderer.color = color;
+        // 調用基類的結束序列（處理對話淡出、背景淡出、場景轉換）
+        yield return StartCoroutine(base.ActEndingSequence());
     }
 
     // BGM 淡出
@@ -613,20 +457,5 @@ public class Act2Manager : MonoBehaviour
         bgmSource.Stop();
     }
 
-    // 轉換到 Act3
-    void TransitionToAct3()
-    {
-        Debug.Log("🎬 轉換到 Act3");
-        
-        if (transitionToAct3 != null)
-        {
-            Debug.Log("✅ 使用 TransitionTrigger 切換到 Act3");
-            transitionToAct3.TriggerTransition();
-        }
-        else
-        {
-            Debug.LogWarning("⚠️ TransitionTrigger 為空，使用直接載入方式");
-            SceneTransitionManager.LoadActScene("Act3_Entryway");
-        }
-    }
+
 }
