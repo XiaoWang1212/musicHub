@@ -141,16 +141,25 @@ public class DialogueManager : MonoBehaviour
             OnMultipleCharactersDisplay?.Invoke(currentDialogue.characters);
             Debug.Log($"👥 多角色顯示: {currentDialogue.characters.Count} 個角色");
             
-            // 處理每個角色的表情
+            // 處理每個角色的表情和動作
             var characterManager = FindFirstObjectByType<CharacterManager>();
             if (characterManager != null)
             {
                 foreach (var charData in currentDialogue.characters)
                 {
+                    // 表情切換
                     if (!string.IsNullOrEmpty(charData.expression))
                     {
                         characterManager.ChangeCharacterExpression(charData.characterName, charData.expression);
                         Debug.Log($"😊 {charData.characterName} 表情切換: {charData.expression}");
+                    }
+                    
+                    // 執行角色動作
+                    if (charData.characterAction != null && 
+                        charData.characterAction.enabled && 
+                        !string.IsNullOrEmpty(charData.characterName))
+                    {
+                        ExecuteCharacterAction(charData.characterAction, charData.characterName);
                     }
                 }
             }
@@ -196,6 +205,15 @@ public class DialogueManager : MonoBehaviour
             }
         }
         // 背景管理已移至 ActManager，此處不再處理背景設定
+        
+        // 執行角色動作 (單人對話模式)
+        if (!currentDialogue.useMultipleCharacters && 
+            currentDialogue.characterAction != null && 
+            currentDialogue.characterAction.enabled &&
+            !string.IsNullOrEmpty(currentDialogue.characterName))
+        {
+            ExecuteCharacterAction(currentDialogue.characterAction, currentDialogue.characterName);
+        }
         
         // 播放語音
         if (voiceAudioSource != null && currentDialogue.voiceClip != null)
@@ -426,5 +444,125 @@ public class DialogueManager : MonoBehaviour
         
         Debug.Log("✅ 對話面板淡出完成");
     }
+    
+    #region 角色動作執行
+    
+    /// <summary>
+    /// 執行角色動作 (自動使用 CharacterManager 找到角色的 SpriteRenderer)
+    /// </summary>
+    void ExecuteCharacterAction(CharacterAction action, string characterName)
+    {
+        var characterManager = FindFirstObjectByType<CharacterManager>();
+        if (characterManager == null)
+        {
+            Debug.LogWarning("⚠️ 找不到 CharacterManager，無法執行角色動作");
+            return;
+        }
+        
+        // 透過 CharacterManager 找到角色的 SpriteRenderer
+        SpriteRenderer targetRenderer = characterManager.GetCharacterRenderer(characterName);
+        if (targetRenderer == null)
+        {
+            Debug.LogWarning($"⚠️ 找不到角色 '{characterName}' 的 SpriteRenderer");
+            return;
+        }
+        
+        // 使用Inspector設定的參數，只有當參數為0時才使用預設值
+        float actualIntensity = action.intensity > 0 ? action.intensity : 0.05f;
+        float actualJumpHeight = action.jumpHeight > 0 ? action.jumpHeight : 0.1f;
+        float actualDuration = action.duration > 0 ? action.duration : 0.4f;
+        
+        switch (action.actionType)
+        {
+            case CharacterActionType.Shake:
+                StartCoroutine(ShakeRendererCoroutine(targetRenderer, actualIntensity, actualDuration));
+                Debug.Log($"🎬 {characterName} 執行動作: 搖動");
+                break;
+                
+            case CharacterActionType.JumpOnce:
+                StartCoroutine(JumpRendererCoroutine(targetRenderer, 1, actualJumpHeight, actualDuration));
+                Debug.Log($"🎬 {characterName} 執行動作: 跳一下");
+                break;
+                
+            case CharacterActionType.JumpTwice:
+                StartCoroutine(JumpRendererCoroutine(targetRenderer, 2, actualJumpHeight, actualDuration));
+                Debug.Log($"🎬 {characterName} 執行動作: 跳兩下");
+                break;
+        }
+    }
+    
+    /// <summary>
+    /// 搖動 SpriteRenderer 協程 - 左右抖動兩次，確保回到原位置
+    /// </summary>
+    IEnumerator ShakeRendererCoroutine(SpriteRenderer renderer, float intensity, float duration)
+    {
+        // 記錄原始位置
+        Vector3 originalPosition = renderer.transform.position;
+        
+        // 左右抖動兩次
+        float singleShakeDuration = duration / 5f; // 總共5個動作：右左右左回原位
+        
+        for (int shake = 0; shake < 2; shake++)
+        {
+            // 向右
+            yield return StartCoroutine(SmoothMoveToPosition(renderer, 
+                originalPosition + new Vector3(intensity, 0f, 0f), singleShakeDuration));
+            
+            // 向左
+            yield return StartCoroutine(SmoothMoveToPosition(renderer, 
+                originalPosition + new Vector3(-intensity, 0f, 0f), singleShakeDuration));
+        }
+        
+        // 確保回到原始位置
+        yield return StartCoroutine(SmoothMoveToPosition(renderer, originalPosition, singleShakeDuration));
+        
+        // 強制設置到精確位置
+        renderer.transform.position = originalPosition;
+    }
+    
+    /// <summary>
+    /// 跳躍動作協程 - 上下跳動，確保回到原位置
+    /// </summary>
+    IEnumerator JumpRendererCoroutine(SpriteRenderer renderer, int jumpCount, float jumpHeight, float duration)
+    {
+        Vector3 originalPosition = renderer.transform.position;
+        float singleJumpDuration = duration / (jumpCount * 2); // 每次跳躍分為上下兩個動作
+        
+        for (int i = 0; i < jumpCount; i++)
+        {
+            // 向上
+            yield return StartCoroutine(SmoothMoveToPosition(renderer, 
+                originalPosition + new Vector3(0f, jumpHeight, 0f), singleJumpDuration));
+            
+            // 向下回原位
+            yield return StartCoroutine(SmoothMoveToPosition(renderer, originalPosition, singleJumpDuration));
+        }
+        
+        // 強制設置到精確位置
+        renderer.transform.position = originalPosition;
+    }
+    
+    /// <summary>
+    /// 平滑移動到目標位置
+    /// </summary>
+    IEnumerator SmoothMoveToPosition(SpriteRenderer renderer, Vector3 targetPosition, float duration)
+    {
+        Vector3 startPosition = renderer.transform.position;
+        float elapsed = 0f;
+        
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = elapsed / duration;
+            // 使用 SmoothStep 讓動作更自然
+            t = t * t * (3f - 2f * t);
+            renderer.transform.position = Vector3.Lerp(startPosition, targetPosition, t);
+            yield return null;
+        }
+        
+        renderer.transform.position = targetPosition;
+    }
+    
+    #endregion
 
 }

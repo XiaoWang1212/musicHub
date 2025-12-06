@@ -21,6 +21,10 @@ public class DialogueData
     [Tooltip("角色的表情名稱(例如: 開心, 難過, 不爽, 平常). 留空則不改變表情")]
     public string expression = "";
     
+    [Header("🎬 角色動作")]
+    [Tooltip("這句對話顯示時要執行的角色動作")]
+    public CharacterAction characterAction;
+    
     [Header("選擇系統")]
     public List<ChoiceData> choices = new List<ChoiceData>();
     public bool hasChoices => choices.Count > 0;
@@ -121,6 +125,10 @@ public class CharacterDisplayData
     [Header("表情設定")]
     [Tooltip("角色的表情名稱(例如: 開心, 難過, 不爽, 平常)")]
     public string expression = "";      // 角色表情
+    
+    [Header("🎬 角色動作")]
+    [Tooltip("這個角色要執行的動作")]
+    public CharacterAction characterAction;
 }
 
 /// <summary>
@@ -131,4 +139,41 @@ public enum CharacterPosition
     Left,       // 左側
     Center,     // 中央
     Right       // 右側
+}
+
+/// <summary>
+/// 角色動作設定 - 在對話中觸發角色動作(自動使用當前對話的角色)
+/// </summary>
+[System.Serializable]
+public class CharacterAction
+{
+    [Header("是否啟用動作")]
+    public bool enabled = false;
+    
+    [Header("動作設定")]
+    [Tooltip("動作類型")]
+    public CharacterActionType actionType = CharacterActionType.JumpOnce;
+    
+    [Header("動作參數")]
+    [Tooltip("搖動強度 (Shake 專用)")]
+    [Range(0.005f, 1.0f)]
+    public float intensity = 0.3f;
+    
+    [Tooltip("跳躍高度 (Jump 專用)")]
+    [Range(0.01f, 1.0f)]
+    public float jumpHeight = 0.2f;
+    
+    [Tooltip("動作持續時間")]
+    [Range(0.05f, 2.0f)]
+    public float duration = 0.1f;
+}
+
+/// <summary>
+/// 角色動作類型
+/// </summary>
+public enum CharacterActionType
+{
+    Shake,     // 搖動（恐懼）
+    JumpOnce,  // 跳一下
+    JumpTwice  // 跳兩下
 }
