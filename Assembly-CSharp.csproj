@@ -68,6 +68,9 @@
     <Compile Include="Assets\Scripts\Utils\GameSetupTest.cs" />
     <Compile Include="Assets\Scripts\ActManagers\BaseActManager.cs" />
     <Compile Include="Assets\Scripts\CharacterSystem\CharacterManager.cs" />
+    <Compile Include="Assets\Scripts\ChoiceSystem\範例_Chapter4Event1Manager.cs" />
+    <Compile Include="Assets\Scripts\ChoiceSystem\範例_EndingManager.cs" />
+    <Compile Include="Assets\Scripts\ChoiceSystem\RelationshipManager.cs" />
     <Compile Include="Assets\Scripts\Effects\ShakeTextManager.cs" />
     <Compile Include="Assets\Scripts\DialogueSystem\DialogueManager.cs" />
     <Compile Include="Assets\Scripts\ActManagers\Act2Manager.cs" />
@@ -79,6 +82,7 @@
     <Compile Include="Assets\Scripts\ActManagers\Act1Manager.cs" />
     <Compile Include="Assets\Scripts\SceneSystem\SceneTransitionManager.cs" />
     <Compile Include="Assets\Scripts\BackgroundSystem\BackgroundManager.cs" />
+    <Compile Include="Assets\Scripts\ChoiceSystem\ChoiceManager.cs" />
     <Compile Include="Assets\Scripts\CharacterSystem\ExpressionTriggerManager.cs" />
     <Compile Include="Assets\Scripts\GameInitializer.cs" />
     <Compile Include="Assets\Scripts\AudioSystem\MelodyToNoiseTransition.cs" />
@@ -87,9 +91,9 @@
     <Compile Include="Assets\Scripts\ActManagers\Act3Manager.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\SceneSystem\TransitionTrigger.cs" />
+    <Compile Include="Assets\Scripts\ChoiceSystem\範例_Chapter3Act2Manager.cs" />
     <Compile Include="Assets\Scripts\DialogueSystem\DialogueSequenceAsset.cs" />
     <Compile Include="Assets\Scripts\SceneSystem\EventSystemManager.cs" />
-    <Compile Include="Assets\Scripts\UI\UIManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

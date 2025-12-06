@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 05fccf3e6d213354aaa34d617b8b71df, type: 3}
-  m_Name: Act14_Empty_stage
+  m_Name: Act14_EmptyStage
   m_EditorClassIdentifier: 
   sequenceName: Act14_Empty_stage
   sequenceId: 12

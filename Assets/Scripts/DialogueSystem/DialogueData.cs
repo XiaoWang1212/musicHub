@@ -33,15 +33,47 @@ public class DialogueData
 [System.Serializable]
 public class ChoiceData
 {
+    [Header("選項內容")]
     public string choiceText;
     public int nextDialogueId;
     public bool isAvailable = true;
+    
+    [Header("好感度系統 (選用)")]
+    [Tooltip("影響的角色")]
+    public string targetCharacter = "";
+    
+    [Tooltip("好感度變化效果")]
+    public RelationshipEffect relationshipEffect = RelationshipEffect.None;
+    
+    [Header("角色反應 (選用)")]
+    [Tooltip("選擇後角色的表情")]
+    public string characterExpression = "";
+    
+    [Header("後續對話 (選用)")]
+    [Tooltip("選擇後的對話序列")]
+    public DialogueSequenceAsset followUpDialogue;
     
     public ChoiceData(string text, int nextId)
     {
         choiceText = text;
         nextDialogueId = nextId;
     }
+    
+    public ChoiceData()
+    {
+        choiceText = "";
+        nextDialogueId = -1;
+    }
+}
+
+/// <summary>
+/// 好感度效果類型
+/// </summary>
+public enum RelationshipEffect
+{
+    None,       // 無變化
+    Increase,   // 增加
+    Decrease    // 減少
 }
 
 [System.Serializable]

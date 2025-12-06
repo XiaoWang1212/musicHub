@@ -955,7 +955,9 @@ MonoBehaviour:
   backgroundFadeInTime: 1
   backgroundFadeOutTime: 2
   dialogueStartDelay: 1
-  characterManager: {fileID: 0}
+  characterManager: {fileID: 1402649991}
+  choiceManager: {fileID: 0}
+  relationshipManager: {fileID: 0}
   protagonistRenderer: {fileID: 0}
   moveDistance: 6
   moveDuration: 2

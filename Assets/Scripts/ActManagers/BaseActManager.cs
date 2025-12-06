@@ -27,6 +27,10 @@ public class BaseActManager : MonoBehaviour
     [Header("角色動作設定")]
     public CharacterManager characterManager; // 角色管理器引用
     
+    [Header("選擇系統")]
+    public ChoiceManager choiceManager;       // 選擇管理器引用
+    public RelationshipManager relationshipManager; // 好感度管理器引用
+    
     [Header("內部狀態")]
     private bool isActDialogueActive = false;  // 標記對話是否正在進行
 
@@ -315,6 +319,108 @@ public class BaseActManager : MonoBehaviour
         }
         
         characterManager.SetCharacterDefaultExpression(characterName);
+    }
+    
+    // ==================== 選擇系統方法 ====================
+    
+    /// <summary>
+    /// 顯示選項
+    /// </summary>
+    /// <param name="choices">選項資料陣列</param>
+    public void ShowChoices(ChoiceData[] choices)
+    {
+        if (choiceManager == null)
+        {
+            Debug.LogWarning("⚠️ ChoiceManager 未設定，無法顯示選項");
+            return;
+        }
+        
+        choiceManager.ShowChoices(choices);
+    }
+    
+    /// <summary>
+    /// 隱藏選項
+    /// </summary>
+    public void HideChoices()
+    {
+        if (choiceManager != null)
+        {
+            choiceManager.HideChoices();
+        }
+    }
+    
+    /// <summary>
+    /// 檢查是否正在顯示選項
+    /// </summary>
+    public bool IsShowingChoices()
+    {
+        return choiceManager != null && choiceManager.IsShowingChoices();
+    }
+    
+    /// <summary>
+    /// 修改角色好感度
+    /// </summary>
+    /// <param name="characterName">角色名稱</param>
+    /// <param name="effect">好感度效果</param>
+    public void ModifyRelationship(string characterName, RelationshipEffect effect)
+    {
+        if (relationshipManager != null)
+        {
+            relationshipManager.ModifyRelationship(characterName, effect);
+        }
+        else
+        {
+            Debug.LogWarning("⚠️ RelationshipManager 未設定，無法修改好感度");
+        }
+    }
+    
+    /// <summary>
+    /// 取得角色好感度
+    /// </summary>
+    public int GetRelationshipValue(string characterName)
+    {
+        if (relationshipManager != null)
+        {
+            return relationshipManager.GetRelationshipValue(characterName);
+        }
+        return 0;
+    }
+    
+    /// <summary>
+    /// 建立大野陽斗練習場景的選項
+    /// </summary>
+    /// <returns>選項資料陣列</returns>
+    public ChoiceData[] CreateOhnoPracticeChoices()
+    {
+        return new ChoiceData[]
+        {
+            // 選項 A - 提高好感
+            new ChoiceData
+            {
+                choiceText = "想一起試一下？我聽聽看哪裡卡。",
+                targetCharacter = "大野陽斗",
+                relationshipEffect = RelationshipEffect.Increase,
+                characterExpression = "開心"
+            },
+            
+            // 選項 B - 好感不變
+            new ChoiceData
+            {
+                choiceText = "先休息一下吧，你彈太久了。",
+                targetCharacter = "大野陽斗", 
+                relationshipEffect = RelationshipEffect.None,
+                characterExpression = "普通"
+            },
+            
+            // 選項 C - 降低好感
+            new ChoiceData
+            {
+                choiceText = "你這段已經卡三天了吧。",
+                targetCharacter = "大野陽斗",
+                relationshipEffect = RelationshipEffect.Decrease,
+                characterExpression = "不爽"
+            }
+        };
     }
     
     // ==================== 內部動作協程 ====================
