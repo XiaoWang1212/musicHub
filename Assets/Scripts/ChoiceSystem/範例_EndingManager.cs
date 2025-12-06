@@ -6,9 +6,6 @@ using UnityEngine;
 /// </summary>
 public class EndingManager : MonoBehaviour
 {
-    [Header("管理器引用")]
-    public RelationshipManager relationshipManager;
-    
     [Header("結局場景名稱")]
     public string ending1SceneName = "Ending1_Perfect";
     public string ending2WithHinataSceneName = "Ending2_Normal_WithHinata";
@@ -20,7 +17,13 @@ public class EndingManager : MonoBehaviour
     /// </summary>
     public void DetermineAndLoadEnding()
     {
-        int endingType = relationshipManager.DetermineEnding();
+        if (RelationshipManager.Instance == null)
+        {
+            Debug.LogError("找不到 RelationshipManager!");
+            return;
+        }
+        
+        int endingType = RelationshipManager.Instance.DetermineEnding();
         
         switch (endingType)
         {
@@ -30,8 +33,8 @@ public class EndingManager : MonoBehaviour
                 break;
                 
             case 2:
-                // 普通結局（檢查日向是否回歸）
-                bool hinataReturned = relationshipManager.GetStoryFlag("hinata_returned");
+                // 普通結局(檢查日向是否回歸)
+                bool hinataReturned = RelationshipManager.Instance.GetStoryFlag("hinata_returned");
                 
                 if (hinataReturned)
                 {
@@ -69,8 +72,8 @@ public class EndingManager : MonoBehaviour
     {
         Debug.Log("=== 結局條件檢查 ===");
         
-        bool tohaReturned = relationshipManager.GetStoryFlag("toha_returned_to_club");
-        bool hinataReturned = relationshipManager.GetStoryFlag("hinata_returned");
+        bool tohaReturned = RelationshipManager.Instance.GetStoryFlag("toha_returned_to_club");
+        bool hinataReturned = RelationshipManager.Instance.GetStoryFlag("hinata_returned");
         int totalRelationship = relationshipManager.GetTotalRelationship();
         
         Debug.Log($"白石透羽回歸: {tohaReturned}");

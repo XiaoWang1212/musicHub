@@ -5,9 +5,52 @@ using System;
 /// <summary>
 /// 好感度與劇情狀態管理器
 /// 追蹤角色好感度、事件標記、用於結局判定
+/// 使用單例模式,跨場景保存資料
 /// </summary>
 public class RelationshipManager : MonoBehaviour
 {
+    #region 單例模式
+    
+    private static RelationshipManager instance;
+    
+    /// <summary>
+    /// 單例實例
+    /// </summary>
+    public static RelationshipManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<RelationshipManager>();
+                
+                if (instance == null)
+                {
+                    Debug.LogError("[RelationshipManager] 場景中找不到 RelationshipManager! 請在 MainMenu 場景中新增!");
+                }
+            }
+            return instance;
+        }
+    }
+    
+    void Awake()
+    {
+        // 確保只有一個實例
+        if (instance != null && instance != this)
+        {
+            Debug.LogWarning("[RelationshipManager] 已經存在實例,銷毀重複的物件");
+            Destroy(gameObject);
+            return;
+        }
+        
+        instance = this;
+        DontDestroyOnLoad(gameObject); // 跨場景保存
+        
+        Debug.Log("[RelationshipManager] 初始化完成,已設定為 DontDestroyOnLoad");
+    }
+    
+    #endregion
+    
     [Header("角色好感度")]
     [Tooltip("各角色的好感度 (0-100)")]
     public List<CharacterRelationship> characterRelationships = new List<CharacterRelationship>();
