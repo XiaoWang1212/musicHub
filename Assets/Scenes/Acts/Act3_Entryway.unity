@@ -1173,15 +1173,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfd4855c40e08ad4980eb17c8c5eac1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueManager: {fileID: 79556193}
-  actDialogueSequence: {fileID: 11400000, guid: 9b9d1c541c7f91d48a84846259b20c3d, type: 2}
-  backgroundRenderer: {fileID: 787841175}
-  transitionToNextScene: {fileID: 403987405}
-  initialDelay: 0.5
-  backgroundFadeInTime: 1
-  backgroundFadeOutTime: 2
-  dialogueStartDelay: 1
-  characterManager: {fileID: 1402649991}
 --- !u!1 &1257121362
 GameObject:
   m_ObjectHideFlags: 0

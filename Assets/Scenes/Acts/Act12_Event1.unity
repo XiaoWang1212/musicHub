@@ -1156,6 +1156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterRelationships: []
+  storyFlags: []
   increaseAmount: 10
   decreaseAmount: -5
   enableDebugLog: 1
@@ -1394,6 +1395,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterRelationships: []
+  storyFlags: []
   increaseAmount: 10
   decreaseAmount: -5
   enableDebugLog: 1
@@ -1558,6 +1560,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1402649990}
   - component: {fileID: 1402649991}
+  - component: {fileID: 1402649992}
   m_Layer: 0
   m_Name: CharacterManager
   m_TagString: Untagged
@@ -1725,6 +1728,20 @@ MonoBehaviour:
   - {fileID: 655946284}
   - {fileID: 900233159}
   - {fileID: 1165029759}
+--- !u!114 &1402649992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402649988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474a5b5d2357a174b9da7c06222947f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expressionTriggers: []
+  enableDebugLog: 1
 --- !u!1 &1481972846
 GameObject:
   m_ObjectHideFlags: 0

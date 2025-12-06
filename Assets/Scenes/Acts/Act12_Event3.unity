@@ -913,7 +913,7 @@ SpriteRenderer:
   m_SortingLayerID: 558274157
   m_SortingLayer: -2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 77b5fcd33897e9a4088c67cf31a954fa, type: 3}
+  m_Sprite: {fileID: -3588445087701016320, guid: 1646ed668ba20f54e8de02d14c3a20c4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -1297,6 +1297,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1402649990}
   - component: {fileID: 1402649991}
+  - component: {fileID: 1402649992}
   m_Layer: 0
   m_Name: CharacterManager
   m_TagString: Untagged
@@ -1464,6 +1465,26 @@ MonoBehaviour:
   - {fileID: 655946284}
   - {fileID: 900233159}
   - {fileID: 1165029759}
+--- !u!114 &1402649992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402649988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474a5b5d2357a174b9da7c06222947f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expressionTriggers:
+  - dialogueIndex: 0
+    characterName: "\u5C71\u702C \u65E5\u5411"
+    expressionName: "\u5C37\u5C2C"
+    useAnimation: 0
+    delay: 0
+    description: 
+  enableDebugLog: 1
 --- !u!1 &1481972846
 GameObject:
   m_ObjectHideFlags: 0

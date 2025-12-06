@@ -913,7 +913,7 @@ SpriteRenderer:
   m_SortingLayerID: 558274157
   m_SortingLayer: -2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d6ec3c0bc62face4fa7f0166e063640d, type: 3}
+  m_Sprite: {fileID: -3393297703320380375, guid: 932590072e15b024fb486488d8a92855, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1126,7 +1126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueManager: {fileID: 79556193}
-  actDialogueSequence: {fileID: 11400000, guid: 5f795b8c4a0230d4684d6d05547515c7, type: 2}
+  actDialogueSequence: {fileID: 11400000, guid: 171680abe31c74546aa6a0cddf75a38e, type: 2}
   backgroundRenderer: {fileID: 787841175}
   transitionToNextScene: {fileID: 403987405}
   initialDelay: 0.5
@@ -1134,6 +1134,8 @@ MonoBehaviour:
   backgroundFadeOutTime: 2
   dialogueStartDelay: 1
   characterManager: {fileID: 1402649991}
+  choiceManager: {fileID: 0}
+  relationshipManager: {fileID: 0}
   actionTriggers:
   - dialogueIndex: 1
     targetRenderer: {fileID: 30463587}
@@ -1332,6 +1334,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1402649990}
   - component: {fileID: 1402649991}
+  - component: {fileID: 1402649992}
   m_Layer: 0
   m_Name: CharacterManager
   m_TagString: Untagged
@@ -1499,6 +1502,44 @@ MonoBehaviour:
   - {fileID: 655946284}
   - {fileID: 900233159}
   - {fileID: 1165029759}
+--- !u!114 &1402649992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402649988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474a5b5d2357a174b9da7c06222947f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expressionTriggers:
+  - dialogueIndex: 0
+    characterName: "\u5927\u91CE \u967D\u6597"
+    expressionName: "\u4E0D\u723D"
+    useAnimation: 0
+    delay: 0
+    description: 
+  - dialogueIndex: 0
+    characterName: "\u4E45\u6211 \u975C\u771F"
+    expressionName: "\u4E0D\u723D"
+    useAnimation: 0
+    delay: 0
+    description: 
+  - dialogueIndex: 0
+    characterName: "\u5C71\u702C \u65E5\u5411"
+    expressionName: "\u50B7\u5FC3"
+    useAnimation: 0
+    delay: 0
+    description: 
+  - dialogueIndex: 0
+    characterName: "\u767D\u77F3 \u900F\u7FBD"
+    expressionName: "\u82E6\u60F1"
+    useAnimation: 0
+    delay: 0
+    description: 
+  enableDebugLog: 1
 --- !u!1 &1481972846
 GameObject:
   m_ObjectHideFlags: 0
