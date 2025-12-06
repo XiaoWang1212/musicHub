@@ -76,10 +76,10 @@ MonoBehaviour:
     characters:
     - characterName: "\u767D\u77F3 \u900F\u7FBD"
       position: 0
-      dimCharacter: 0
+      dimCharacter: 1
     - characterName: "\u5C0E\u5E2B"
       position: 2
-      dimCharacter: 1
+      dimCharacter: 0
     voiceClip: {fileID: 0}
     backgroundMusic: {fileID: 0}
     effect: 0
