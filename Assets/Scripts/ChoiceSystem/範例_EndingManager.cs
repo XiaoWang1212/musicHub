@@ -74,7 +74,7 @@ public class EndingManager : MonoBehaviour
         
         bool tohaReturned = RelationshipManager.Instance.GetStoryFlag("toha_returned_to_club");
         bool hinataReturned = RelationshipManager.Instance.GetStoryFlag("hinata_returned");
-        int totalRelationship = relationshipManager.GetTotalRelationship();
+        int totalRelationship = RelationshipManager.Instance.GetTotalRelationship();
         
         Debug.Log($"白石透羽回歸: {tohaReturned}");
         Debug.Log($"山瀨日向回歸: {hinataReturned}");
