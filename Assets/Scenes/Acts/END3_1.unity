@@ -119,6 +119,93 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &30463585
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 30463586}
+  - component: {fileID: 30463587}
+  m_Layer: 0
+  m_Name: Singer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &30463586
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30463585}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -700, y: 160, z: -9720}
+  m_LocalScale: {x: 180.00035, y: 180.00035, z: 180.00035}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 388141462}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &30463587
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30463585}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 558274157
+  m_SortingLayer: -2
+  m_SortingOrder: 1
+  m_Sprite: {fileID: -8288338645124521271, guid: 993290a42b14d6d4295a5b3c7662cd31, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 2.13, y: 4.43}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &79556192
 GameObject:
   m_ObjectHideFlags: 0
@@ -475,6 +562,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
+  - {fileID: 30463586}
   - {fileID: 2138669627}
   - {fileID: 130669882}
   - {fileID: 655946284}
@@ -734,7 +822,7 @@ SpriteRenderer:
   m_SortingLayerID: 558274157
   m_SortingLayer: -2
   m_SortingOrder: 0
-  m_Sprite: {fileID: -3670355198534575993, guid: a0f22ff7c5be9474daf78180ea7e4a17, type: 3}
+  m_Sprite: {fileID: 988507920533913538, guid: 52ea8674889d20446a885b9567d18192, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -860,7 +948,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueManager: {fileID: 79556193}
-  actDialogueSequence: {fileID: 11400000, guid: 7c373bc409463cd4ca765f634fb00e73, type: 2}
+  actDialogueSequence: {fileID: 11400000, guid: 27dbcef57b5f02e47ba5e1d8df4272cb, type: 2}
   choiceSequence: {fileID: 0}
   afterChoiceDialogue: {fileID: 0}
   backgroundRenderer: {fileID: 787841175}
@@ -873,7 +961,7 @@ MonoBehaviour:
   choiceManager: {fileID: 0}
   actionTriggers:
   - dialogueIndex: 1
-    targetRenderer: {fileID: 0}
+    targetRenderer: {fileID: 30463587}
     characterName: "\u767D\u77F3 \u900F\u7FBD"
     actionType: 2
     intensity: 0.3
@@ -882,7 +970,7 @@ MonoBehaviour:
     expressionName: "\u666E\u901A"
     useExpressionAnimation: 1
   - dialogueIndex: 4
-    targetRenderer: {fileID: 0}
+    targetRenderer: {fileID: 30463587}
     characterName: "\u767D\u77F3 \u900F\u7FBD"
     actionType: 0
     intensity: 0.3
@@ -891,7 +979,7 @@ MonoBehaviour:
     expressionName: "\u666E\u901A"
     useExpressionAnimation: 1
   - dialogueIndex: 8
-    targetRenderer: {fileID: 0}
+    targetRenderer: {fileID: 30463587}
     characterName: "\u767D\u77F3 \u900F\u7FBD"
     actionType: 0
     intensity: 0.3
@@ -1069,7 +1157,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1402649990}
   - component: {fileID: 1402649991}
-  - component: {fileID: 1402649992}
   m_Layer: 0
   m_Name: CharacterManager
   m_TagString: Untagged
@@ -1106,7 +1193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characters:
   - characterName: "\u767D\u77F3 \u900F\u7FBD"
-    renderer: {fileID: 0}
+    renderer: {fileID: 30463587}
     autoGetDefaultFromRenderer: 1
     customExpressions:
     - expressionName: "\u50B7\u5FC3"
@@ -1237,26 +1324,6 @@ MonoBehaviour:
   - {fileID: 655946284}
   - {fileID: 900233159}
   - {fileID: 1165029759}
---- !u!114 &1402649992
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1402649988}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 474a5b5d2357a174b9da7c06222947f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  expressionTriggers:
-  - dialogueIndex: 0
-    characterName: "\u767D\u77F3 \u900F\u7FBD"
-    expressionName: "\u59D4\u5C48"
-    useAnimation: 1
-    delay: 0
-    description: 
-  enableDebugLog: 1
 --- !u!1 &2032743102
 GameObject:
   m_ObjectHideFlags: 0
