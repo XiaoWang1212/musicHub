@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f7e968b43329b0e48a23bfd2babcad9e
+guid: 51242adf45cc47341a651393a683272e
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -116,10 +116,10 @@ TextureImporter:
       name: SingerMother_0
       rect:
         serializedVersion: 2
-        x: 124
-        y: 0
-        width: 280
-        height: 457
+        x: 189
+        y: 23
+        width: 139
+        height: 454
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

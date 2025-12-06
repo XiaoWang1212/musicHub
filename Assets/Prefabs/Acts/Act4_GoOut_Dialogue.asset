@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05fccf3e6d213354aaa34d617b8b71df, type: 3}
+  m_Name: Act4_GoOut_Dialogue
+  m_EditorClassIdentifier: 
+  sequenceName: Act4_GoOut
+  sequenceId: 4
+  dialogues:
+  - dialogueIndex: 0
+    isNarration: 0
+    characterName: "\u767D\u77F3 \u900F\u7FBD"
+    dialogueText: "\u53C8\u662F\u65B0\u7684\u4E00\u5929..."
+    characterSprite: {fileID: 21300000, guid: 993290a42b14d6d4295a5b3c7662cd31, type: 3}
+    backgroundSprite: {fileID: 21300000, guid: d4e32c73cfd68604680ba46789523519, type: 3}
+    choices: []
+    useMultipleCharacters: 0
+    characters: []
+    voiceClip: {fileID: 0}
+    backgroundMusic: {fileID: 0}
+    effect: 0
+    dimCharacter: 0
+  - dialogueIndex: -1
+    isNarration: 1
+    characterName: "\u767D\u77F3 \u900F\u7FBD"
+    dialogueText: "\u6E05\u6668\u7684\u5149\u7DDA\u7167\u5728\u5979\u81C9\u4E0A\uFF0C\u537B\u7167\u4E0D\u9032\u5979\u773C\u88E1\u3002"
+    characterSprite: {fileID: 21300000, guid: 993290a42b14d6d4295a5b3c7662cd31, type: 3}
+    backgroundSprite: {fileID: 0}
+    choices: []
+    useMultipleCharacters: 0
+    characters: []
+    voiceClip: {fileID: 0}
+    backgroundMusic: {fileID: 0}
+    effect: 0
+    dimCharacter: 1
+  - dialogueIndex: 0
+    isNarration: 0
+    characterName: "\u767D\u77F3 \u900F\u7FBD"
+    dialogueText: "\u9003\u96E2\u4E86\u6628\u5929\uFF0C\u4F46\u4ECA\u5929...\u6211\u6E96\u5099\u597D\u4E86\u55CE\uFF1F"
+    characterSprite: {fileID: 21300000, guid: 993290a42b14d6d4295a5b3c7662cd31, type: 3}
+    backgroundSprite: {fileID: 0}
+    choices: []
+    useMultipleCharacters: 0
+    characters: []
+    voiceClip: {fileID: 0}
+    backgroundMusic: {fileID: 0}
+    effect: 0
+    dimCharacter: 0
+  - dialogueIndex: 0
+    isNarration: 1
+    characterName: "\u767D\u77F3 \u900F\u7FBD"
+    dialogueText: "\u98A8\u8F15\u8F15\u6380\u8D77\u5979\u5916\u5957\u7684\u4E0B\u64FA\u3002"
+    characterSprite: {fileID: 21300000, guid: 993290a42b14d6d4295a5b3c7662cd31, type: 3}
+    backgroundSprite: {fileID: 0}
+    choices: []
+    useMultipleCharacters: 0
+    characters: []
+    voiceClip: {fileID: 0}
+    backgroundMusic: {fileID: 0}
+    effect: 0
+    dimCharacter: 1
+  - dialogueIndex: 0
+    isNarration: 0
+    characterName: "\u767D\u77F3 \u900F\u7FBD"
+    dialogueText: "\u7E3D\u4E4B\uFF0C\u5148\u524D\u9032\u518D\u8AAA\u5427..."
+    characterSprite: {fileID: 21300000, guid: 993290a42b14d6d4295a5b3c7662cd31, type: 3}
+    backgroundSprite: {fileID: 0}
+    choices: []
+    useMultipleCharacters: 0
+    characters: []
+    voiceClip: {fileID: 0}
+    backgroundMusic: {fileID: 0}
+    effect: 0
+    dimCharacter: 0
+  isMainStoryline: 1
+  canSkip: 1
+  autoSave: 0

@@ -287,11 +287,9 @@ MonoBehaviour:
   dialoguePanel: {fileID: 388141461}
   characterNameText: {fileID: 2032743104}
   dialogueText: {fileID: 2098735318}
-  characterRenderer: {fileID: 1687657887}
   backgroundRenderer: {fileID: 787841175}
   choiceButtonPrefab: {fileID: 0}
   choiceButtonContainer: {fileID: 0}
-  characterMask: {fileID: 0}
   voiceAudioSource: {fileID: 0}
   musicAudioSource: {fileID: 0}
   typingSpeed: 0.05
@@ -1013,10 +1011,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueManager: {fileID: 79556193}
-  act2DialogueSequence: {fileID: 11400000, guid: da0c1f28cbac2234b8df41eaec64cdc4, type: 2}
-  musicBookRenderer: {fileID: 622286720}
-  characterManager: {fileID: 1402649991}
+  actDialogueSequence: {fileID: 11400000, guid: da0c1f28cbac2234b8df41eaec64cdc4, type: 2}
   backgroundRenderer: {fileID: 787841175}
+  transitionToNextScene: {fileID: 1226097934}
+  initialDelay: 1
+  backgroundFadeInTime: 1
+  backgroundFadeOutTime: 2
+  dialogueStartDelay: 1
+  characterManager: {fileID: 1402649991}
+  musicBookRenderer: {fileID: 622286720}
   phoneMessagePanel: {fileID: 0}
   phoneRenderer: {fileID: 837886931}
   phoneMessageText: {fileID: 79268829}
@@ -1033,8 +1036,6 @@ MonoBehaviour:
   bookFadeOutDuration: 0.3
   shakeIntensity: 0.15
   shakeCount: 2
-  initialDelay: 1
-  transitionToAct3: {fileID: 1226097934}
 --- !u!4 &1185825262
 Transform:
   m_ObjectHideFlags: 0
@@ -1300,24 +1301,53 @@ MonoBehaviour:
   characters:
   - characterName: "\u767D\u77F3 \u900F\u7FBD"
     renderer: {fileID: 1687657887}
+    autoGetDefaultFromRenderer: 1
+    customExpressions:
+    - expressionName: "\u50B7\u5FC3"
+      sprite: {fileID: 21300000, guid: 88689be4905000246adf1e44f50a73b5, type: 3}
+    - expressionName: "\u50B7\u8166\u7B4B"
+      sprite: {fileID: 21300000, guid: d35f84fe2db2bc044833d6071f3297ff, type: 3}
+    - expressionName: "\u559C"
+      sprite: {fileID: 21300000, guid: e72541dbe77f6454aa8f123c6faa4525, type: 3}
+    - expressionName: "\u5687\u5230"
+      sprite: {fileID: 21300000, guid: 26ad1b6beb005ae48938a33a93ef9401, type: 3}
+    - expressionName: "\u5805\u6BC5"
+      sprite: {fileID: 21300000, guid: a5c138c7a98d3d544b690d0e32045487, type: 3}
+    - expressionName: "\u59D4\u5C48"
+      sprite: {fileID: 21300000, guid: a486847dc7921974480586406fbfaad5, type: 3}
+    - expressionName: "\u6B63\u5E38"
+      sprite: {fileID: 21300000, guid: adf401320024dea44a0bc6152b2660fa, type: 3}
+    - expressionName: "\u7DCA\u5F35"
+      sprite: {fileID: 21300000, guid: 72c2cf2f428ffeb42aba003f81f8d355, type: 3}
+    - expressionName: "\u82E6\u60F1"
+      sprite: {fileID: 21300000, guid: cff814eceb5838b488de82da9ce8e8e4, type: 3}
+    - expressionName: "\u50B7\u8166\u7B4B"
+      sprite: {fileID: 21300000, guid: cff814eceb5838b488de82da9ce8e8e4, type: 3}
+    - expressionName: "\u9670\u5F71"
+      sprite: {fileID: 21300000, guid: 291fbf6a15adb544f9531194dd1e4dc5, type: 3}
     supportsFade: 1
     fadeInDuration: 0.8
     fadeOutDuration: 0.8
     colorTransitionDuration: 0.5
+    expressionChangeSpeed: 0.3
     speakingPosition: {x: 0, y: 0, z: 0}
     silentPosition: {x: 0, y: 0, z: 0}
     usePositionChange: 0
   - characterName: "\u6BCD\u89AA"
     renderer: {fileID: 1812025816}
+    autoGetDefaultFromRenderer: 1
+    customExpressions: []
     supportsFade: 1
     fadeInDuration: 0.8
     fadeOutDuration: 0.8
     colorTransitionDuration: 0
+    expressionChangeSpeed: 0.3
     speakingPosition: {x: 0, y: 0, z: 0}
     silentPosition: {x: 0, y: 0, z: 0}
     usePositionChange: 0
-  dimColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.6}
+  dimColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   normalColor: {r: 1, g: 1, b: 1, a: 1}
+  characterPositions: []
 --- !u!1 &1687657885
 GameObject:
   m_ObjectHideFlags: 0
@@ -1344,9 +1374,9 @@ Transform:
   m_GameObject: {fileID: 1687657885}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -775, y: 296, z: -9720}
-  m_LocalScale: {x: 108, y: 108, z: 108}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: -700, y: 160, z: -9720}
+  m_LocalScale: {x: 180, y: 180, z: 180}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 388141462}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1394,12 +1424,12 @@ SpriteRenderer:
   m_SortingLayerID: 558274157
   m_SortingLayer: -2
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 993290a42b14d6d4295a5b3c7662cd31, type: 3}
+  m_Sprite: {fileID: -8288338645124521271, guid: 993290a42b14d6d4295a5b3c7662cd31, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 5, y: 5}
+  m_Size: {x: 2.13, y: 4.43}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1416,7 +1446,7 @@ GameObject:
   - component: {fileID: 1812025815}
   - component: {fileID: 1812025816}
   m_Layer: 0
-  m_Name: SingerMotherMask
+  m_Name: SingerMother
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1431,9 +1461,9 @@ Transform:
   m_GameObject: {fileID: 1812025814}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -775, y: 296, z: -9720}
-  m_LocalScale: {x: 108, y: 108, z: 108}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: -750, y: 160, z: -9720}
+  m_LocalScale: {x: 180, y: 180, z: 180}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 388141462}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1481,12 +1511,12 @@ SpriteRenderer:
   m_SortingLayerID: 558274157
   m_SortingLayer: -2
   m_SortingOrder: 1
-  m_Sprite: {fileID: -4821999847727968032, guid: f7e968b43329b0e48a23bfd2babcad9e, type: 3}
+  m_Sprite: {fileID: -4821999847727968032, guid: 51242adf45cc47341a651393a683272e, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 5, y: 5}
+  m_Size: {x: 1.39, y: 4.54}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1773,7 +1803,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u54C7\u54C7\u54C7"
+  m_text: "\u4F60\u597D"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b9374d0e2a6305141b9762bdca6bf440, type: 2}
   m_sharedMaterial: {fileID: -4440289692545817825, guid: b9374d0e2a6305141b9762bdca6bf440, type: 2}
@@ -1782,8 +1812,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294953577
-  m_fontColor: {r: 0.41320753, g: 0.7911416, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

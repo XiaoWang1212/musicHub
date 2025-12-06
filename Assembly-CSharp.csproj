@@ -66,16 +66,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Utils\GameSetupTest.cs" />
+    <Compile Include="Assets\Scripts\ActManagers\BaseActManager.cs" />
     <Compile Include="Assets\Scripts\CharacterSystem\CharacterManager.cs" />
     <Compile Include="Assets\Scripts\Effects\ShakeTextManager.cs" />
     <Compile Include="Assets\Scripts\DialogueSystem\DialogueManager.cs" />
     <Compile Include="Assets\Scripts\ActManagers\Act2Manager.cs" />
+    <Compile Include="Assets\Scripts\ActManagers\Act4Manager.cs" />
     <Compile Include="Assets\Scripts\SceneSystem\AudioListenerManager.cs" />
     <Compile Include="Assets\Scripts\CharacterSystem\CharacterDisplay.cs" />
+    <Compile Include="Assets\Scripts\ActManagers\Act6Manager.cs" />
     <Compile Include="Assets\Scripts\AnimationSystem\MusicbookDropAnimation.cs" />
     <Compile Include="Assets\Scripts\ActManagers\Act1Manager.cs" />
     <Compile Include="Assets\Scripts\SceneSystem\SceneTransitionManager.cs" />
     <Compile Include="Assets\Scripts\BackgroundSystem\BackgroundManager.cs" />
+    <Compile Include="Assets\Scripts\CharacterSystem\ExpressionTriggerManager.cs" />
     <Compile Include="Assets\Scripts\GameInitializer.cs" />
     <Compile Include="Assets\Scripts\AudioSystem\MelodyToNoiseTransition.cs" />
     <Compile Include="Assets\Scripts\DialogueSystem\DialogueData.cs" />
