@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\Utils\GameSetupTest.cs" />
     <Compile Include="Assets\Scripts\ActManagers\BaseActManager.cs" />
     <Compile Include="Assets\Scripts\CharacterSystem\CharacterManager.cs" />
+    <Compile Include="Assets\Scripts\ChoiceSystem\ChoiceSequenceAsset.cs" />
     <Compile Include="Assets\Scripts\ChoiceSystem\範例_EndingManager.cs" />
     <Compile Include="Assets\Scripts\ChoiceSystem\RelationshipManager.cs" />
     <Compile Include="Assets\Scripts\Effects\ShakeTextManager.cs" />

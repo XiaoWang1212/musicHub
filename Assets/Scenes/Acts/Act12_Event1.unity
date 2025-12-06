@@ -933,7 +933,6 @@ MonoBehaviour:
   panelFadeInDuration: 0.3
   panelFadeOutDuration: 0.2
   buttonAppearDelay: 0.1
-  relationshipManager: {fileID: 898560435}
 --- !u!4 &463012151
 Transform:
   m_ObjectHideFlags: 0
@@ -1126,54 +1125,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 787841173}
   m_CullTransparentMesh: 1
---- !u!1 &898560434
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 898560436}
-  - component: {fileID: 898560435}
-  m_Layer: 0
-  m_Name: RelationshipManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &898560435
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 898560434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38841937fb24c1e459c8cede3ec941d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterRelationships: []
-  increaseAmount: 10
-  decreaseAmount: -5
-  enableDebugLog: 1
---- !u!4 &898560436
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 898560434}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1185825262}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &900233158
 GameObject:
   m_ObjectHideFlags: 0
@@ -1355,7 +1306,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 463012151}
-  - {fileID: 898560436}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1185825263
@@ -1372,6 +1322,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueManager: {fileID: 79556193}
   actDialogueSequence: {fileID: 11400000, guid: 0953ca3d7a59b824581feb542a7dc943, type: 2}
+  choiceSequence: {fileID: 0}
+  afterChoiceDialogue: {fileID: 0}
   backgroundRenderer: {fileID: 787841175}
   transitionToNextScene: {fileID: 403987405}
   initialDelay: 0.5
@@ -1380,7 +1332,6 @@ MonoBehaviour:
   dialogueStartDelay: 1
   characterManager: {fileID: 1402649991}
   choiceManager: {fileID: 463012150}
-  relationshipManager: {fileID: 898560435}
 --- !u!114 &1185825264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1390,12 +1341,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1185825260}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38841937fb24c1e459c8cede3ec941d7, type: 3}
+  m_Script: {fileID: 11500000, guid: 474a5b5d2357a174b9da7c06222947f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterRelationships: []
-  increaseAmount: 10
-  decreaseAmount: -5
+  expressionTriggers:
+  - dialogueIndex: 0
+    characterName: 
+    expressionName: 
+    useAnimation: 0
+    delay: 0
+    description: 
   enableDebugLog: 1
 --- !u!1 &1257121362
 GameObject:

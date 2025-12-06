@@ -20,11 +20,8 @@ public class ChoiceManager : MonoBehaviour
     public float panelFadeOutDuration = 0.2f;
     public float buttonAppearDelay = 0.1f;   // 按鈕出現間隔
     
-    [Header("好感度系統")]
-    public RelationshipManager relationshipManager; // 好感度管理器
-    
     // 事件
-    public static event System.Action<int> OnChoiceMade;
+    public static event System.Action<ChoiceData> OnChoiceMade;
     public static event System.Action OnChoicesShown;
     public static event System.Action OnChoicesHidden;
     
@@ -174,9 +171,10 @@ public class ChoiceManager : MonoBehaviour
         Debug.Log($"🎯 選擇了選項 {choiceIndex}: {choiceData.choiceText}");
         
         // 應用好感度變化
-        if (relationshipManager != null && !string.IsNullOrEmpty(choiceData.targetCharacter))
+        if (RelationshipManager.Instance != null && !string.IsNullOrEmpty(choiceData.targetCharacter))
         {
-            relationshipManager.ModifyRelationship(choiceData.targetCharacter, choiceData.relationshipEffect);
+            RelationshipManager.Instance.ModifyRelationship(choiceData.targetCharacter, choiceData.relationshipEffect);
+            Debug.Log($"💝 {choiceData.targetCharacter} 好感度變化: {choiceData.relationshipEffect}");
         }
         
         // 觸發角色表情變化
@@ -189,14 +187,48 @@ public class ChoiceManager : MonoBehaviour
             }
         }
         
+        // 處理對話分支
+        if (choiceData.branchDialogue != null)
+        {
+            Debug.Log($"🔀 切換到分支對話: {choiceData.branchDialogue.sequenceName}");
+            
+            // 隱藏選項
+            StartCoroutine(HideAndStartBranchDialogue(choiceData));
+        }
+        else
+        {
+            // 沒有分支對話,使用傳統方式
+            StartCoroutine(HideChoicesAfterSelection(choiceData));
+        }
+    }
+    
+    /// <summary>
+    /// 隱藏選項並開始分支對話
+    /// </summary>
+    IEnumerator HideAndStartBranchDialogue(ChoiceData choiceData)
+    {
+        // 短暫等待
+        yield return new WaitForSeconds(0.3f);
+        
         // 隱藏選項
-        StartCoroutine(HideChoicesAfterSelection(choiceIndex));
+        yield return StartCoroutine(HideChoicesCoroutine());
+        
+        // 觸發選擇完成事件
+        OnChoiceMade?.Invoke(choiceData);
+        
+        // 開始分支對話
+        var dialogueManager = FindFirstObjectByType<DialogueManager>();
+        if (dialogueManager != null)
+        {
+            yield return new WaitForSeconds(0.2f);
+            dialogueManager.StartDialogue(choiceData.branchDialogue);
+        }
     }
     
     /// <summary>
     /// 選擇後隱藏選項
     /// </summary>
-    IEnumerator HideChoicesAfterSelection(int selectedIndex)
+    IEnumerator HideChoicesAfterSelection(ChoiceData choiceData)
     {
         // 短暫等待讓玩家看到選擇結果
         yield return new WaitForSeconds(0.3f);
@@ -205,7 +237,7 @@ public class ChoiceManager : MonoBehaviour
         yield return StartCoroutine(HideChoicesCoroutine());
         
         // 觸發選擇完成事件
-        OnChoiceMade?.Invoke(selectedIndex);
+        OnChoiceMade?.Invoke(choiceData);
     }
     
     /// <summary>

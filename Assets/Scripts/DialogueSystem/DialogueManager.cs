@@ -140,6 +140,20 @@ public class DialogueManager : MonoBehaviour
             // 多角色顯示模式
             OnMultipleCharactersDisplay?.Invoke(currentDialogue.characters);
             Debug.Log($"👥 多角色顯示: {currentDialogue.characters.Count} 個角色");
+            
+            // 處理每個角色的表情
+            var characterManager = FindFirstObjectByType<CharacterManager>();
+            if (characterManager != null)
+            {
+                foreach (var charData in currentDialogue.characters)
+                {
+                    if (!string.IsNullOrEmpty(charData.expression))
+                    {
+                        characterManager.ChangeCharacterExpression(charData.characterName, charData.expression);
+                        Debug.Log($"😊 {charData.characterName} 表情切換: {charData.expression}");
+                    }
+                }
+            }
         }
         else
         {
@@ -165,8 +179,19 @@ public class DialogueManager : MonoBehaviour
                 else
                 {
                     OnCharacterDisplay?.Invoke(currentDialogue.characterName, 
-                                             null,  // 不再傳入 sprite，由 CharacterManager 使用預設 sprite
+                                             null,  // 不再傳入 sprite,由 CharacterManager 使用預設 sprite
                                              currentDialogue.dimCharacter);
+                    
+                    // 處理單人對話的表情切換
+                    if (!string.IsNullOrEmpty(currentDialogue.expression))
+                    {
+                        var characterManager = FindFirstObjectByType<CharacterManager>();
+                        if (characterManager != null)
+                        {
+                            characterManager.ChangeCharacterExpression(currentDialogue.characterName, currentDialogue.expression);
+                            Debug.Log($"😊 {currentDialogue.characterName} 表情切換: {currentDialogue.expression}");
+                        }
+                    }
                 }
             }
         }
