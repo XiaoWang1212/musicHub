@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
 
 /// <summary>
 /// 第二幕管理器 - S 的房間（清晨）
@@ -11,28 +12,29 @@ public class Act2Manager : BaseActManager
     public SpriteRenderer musicBookRenderer;  // 音樂筆記本
     
     [Header("Act2 特殊 UI")]
-    public GameObject phoneMessagePanel;      // 手機訊息面板
-    public SpriteRenderer phoneRenderer;      // 手機圖片
-    public TMPro.TextMeshProUGUI phoneMessageText; // 手機訊息文字
-    
+    public GameObject phoneMessagePanel;
+    public SpriteRenderer phoneRenderer;
+    public TMPro.TextMeshProUGUI phoneMessageText;
+
     [Header("手機滑入動畫設定")]
-    public Vector3 phoneHiddenPosition = new Vector3(10f, 5f, 0f);   // 手機隱藏位置 (螢幕外)
-    public Vector3 phoneShowPosition = new Vector3(5f, 5f, 0f);      // 手機顯示位置
-    public float phoneSlideInDuration = 0.8f;     // 滑入時間
-    public float phoneSlideOutDuration = 0.6f;    // 滑出時間
+    public Vector3 phoneHiddenPosition = new Vector3(10f, 5f, 0f);
+    public Vector3 phoneShowPosition = new Vector3(5f, 5f, 0f);
+    public float phoneSlideInDuration = 0.8f;
+    public float phoneSlideOutDuration = 0.6f;
 
     [Header("背景音效")]
     public AudioSource bgmSource;
-    public AudioClip morningAmbience;      // 清晨氛圍音
-    public AudioClip heartbeatSound;       // 心跳聲
-    public AudioClip drawerCloseSound;     // 抽屜關閉音效
-    public AudioClip knockSound;           // 敲門聲
+    public AudioClip morningAmbience;
+    public AudioClip heartbeatSound;
+    public AudioClip drawerCloseSound;
+    public AudioClip knockSound;
 
     [Header("動畫設定")]
-    public float bookFadeInDuration = 2f;  // 筆記本淡入時間
-    public float bookFadeOutDuration = 0.3f; // 筆記本淡出時間
-    public float shakeIntensity = 0.15f;    // 抖動強度
-    public int shakeCount = 2;              // 抖動次數
+    public float bookFadeInDuration = 2f;
+    public float bookFadeOutDuration = 0.3f;
+    public float shakeIntensity = 0.15f;
+    public int shakeCount = 2;
+    public float backgroundFadeDuration = 1.5f;  // 新增：背景淡出時間
 
 
 
@@ -41,10 +43,9 @@ public class Act2Manager : BaseActManager
         // 初始化筆記本為隱藏
         if (musicBookRenderer != null)
         {
-            Color color = musicBookRenderer.color;
-            color.a = 0f;
-            musicBookRenderer.color = color;
-            musicBookRenderer.gameObject.SetActive(false);
+            Color c = musicBookRenderer.color;
+            c.a = 0f;
+            musicBookRenderer.color = c;
         }
         
         // 訂閱對話索引事件
@@ -56,7 +57,6 @@ public class Act2Manager : BaseActManager
     
     protected override void OnDestroy()
     {
-        // 取消訂閱
         DialogueManager.OnDialogueIndexChanged -= OnDialogueIndexChanged;
         
         // 調用基類清理
@@ -70,19 +70,26 @@ public class Act2Manager : BaseActManager
     
     void OnDialogueIndexChanged(int dialogueIndex)
     {
-        // 顯示當前對話索引 (方便除錯)
-        Debug.Log($"📝 當前對話索引: {dialogueIndex}");
-        
-        // 根據對話索引觸發特定效果
+        if (!isAct2DialogueActive) return;
+
         switch (dialogueIndex)
         {
-            case 4:  // 第 5 句話 (索引從 0 開始)
-                Debug.Log("🎵 觸發音樂筆記本顯示");
+            case 4:
+                Debug.Log("[Act2Manager] 對話索引 4：心跳聲");
+                PlayHeartbeat();
+                break;
+            case 5:
+                Debug.Log("[Act2Manager] 對話索引 5：顯示筆記本");
                 ShowMusicBook();
                 break;
-            case 5:  // 第 6 句話
-                Debug.Log("📔 觸發筆記本隱藏和角色抖動");
+            case 6:
+                Debug.Log("[Act2Manager] 對話索引 6：呼吸急促 + 額頭冒汗");
+                // 角色表情動畫（由 CharacterManager 處理）
+                break;
+            case 7:
+                Debug.Log("[Act2Manager] 對話索引 7：隱藏筆記本 + 抖動 + 顯示手機");
                 HideMusicBookAndShake();
+                ShowPhoneMessage("【開學提醒：今日為轉學生報到日】");  // 改這裡
                 break;
             case 7: // 手機訊息出現
                 Debug.Log("📱 觸發手機通知顯示");
@@ -115,15 +122,15 @@ public class Act2Manager : BaseActManager
         if (bgmSource != null && morningAmbience != null)
         {
             bgmSource.clip = morningAmbience;
+            bgmSource.volume = 0.7f;
             bgmSource.loop = true;
-            bgmSource.volume = 0.3f;
             bgmSource.Play();
+            Debug.Log("[Act2Manager] 播放清晨氛圍音");
         }
     }
 
 
 
-    // 可以從 UnityEvent 或對話系統呼叫的音效方法
     public void PlayHeartbeat()
     {
         if (bgmSource != null && heartbeatSound != null)
@@ -136,7 +143,7 @@ public class Act2Manager : BaseActManager
     {
         if (bgmSource != null && drawerCloseSound != null)
         {
-            bgmSource.PlayOneShot(drawerCloseSound);
+            bgmSource.PlayOneShot(drawerCloseSound, 0.9f);
         }
     }
 
@@ -144,22 +151,22 @@ public class Act2Manager : BaseActManager
     {
         if (bgmSource != null && knockSound != null)
         {
-            bgmSource.PlayOneShot(knockSound, 0.8f);
+            bgmSource.PlayOneShot(knockSound, 0.7f);
         }
     }
 
-    // 第五句話:慢慢顯現筆記本
     public void ShowMusicBook()
     {
         if (musicBookRenderer != null)
         {
+            StopCoroutine(nameof(FadeInMusicBook));
             StartCoroutine(FadeInMusicBook());
         }
     }
 
-    // 第六句話:筆記本快速消失 + 角色抖動
     public void HideMusicBookAndShake()
     {
+        StopAllCoroutines();
         StartCoroutine(HideBookAndShakeCharacter());
     }
 
@@ -167,35 +174,26 @@ public class Act2Manager : BaseActManager
     {
         if (musicBookRenderer == null) yield break;
 
-        musicBookRenderer.gameObject.SetActive(true);
-        
         float elapsed = 0f;
-        Color color = musicBookRenderer.color;
-        
         while (elapsed < bookFadeInDuration)
         {
             elapsed += Time.deltaTime;
-            color.a = Mathf.Lerp(0f, 1f, elapsed / bookFadeInDuration);
-            musicBookRenderer.color = color;
+            Color c = musicBookRenderer.color;
+            c.a = Mathf.Clamp01(elapsed / bookFadeInDuration);
+            musicBookRenderer.color = c;
             yield return null;
         }
-        
-        // 確保完全顯示
-        color.a = 1f;
-        musicBookRenderer.color = color;
+
+        Color finalColor = musicBookRenderer.color;
+        finalColor.a = 1f;
+        musicBookRenderer.color = finalColor;
+        Debug.Log("[Act2Manager] 筆記本淡入完成");
     }
 
     IEnumerator HideBookAndShakeCharacter()
     {
-        // 同時進行淡出和抖動
-        Coroutine fadeOut = StartCoroutine(FadeOutMusicBook());
-        Coroutine shake = StartCoroutine(ShakeCharacter());
-        
-        // 等待兩個動畫完成
-        yield return fadeOut;
-        yield return shake;
-        
-        // 播放抽屜關閉音效
+        yield return StartCoroutine(FadeOutMusicBook());
+        yield return StartCoroutine(ShakeCharacter());
         PlayDrawerClose();
     }
 
@@ -204,28 +202,26 @@ public class Act2Manager : BaseActManager
         if (musicBookRenderer == null) yield break;
 
         float elapsed = 0f;
-        Color color = musicBookRenderer.color;
-        float startAlpha = color.a;
-        
         while (elapsed < bookFadeOutDuration)
         {
             elapsed += Time.deltaTime;
-            color.a = Mathf.Lerp(startAlpha, 0f, elapsed / bookFadeOutDuration);
-            musicBookRenderer.color = color;
+            Color c = musicBookRenderer.color;
+            c.a = 1f - Mathf.Clamp01(elapsed / bookFadeOutDuration);
+            musicBookRenderer.color = c;
             yield return null;
         }
-        
-        // 確保完全隱藏
-        color.a = 0f;
-        musicBookRenderer.color = color;
-        musicBookRenderer.gameObject.SetActive(false);
+
+        Color finalColor = musicBookRenderer.color;
+        finalColor.a = 0f;
+        musicBookRenderer.color = finalColor;
+        Debug.Log("[Act2Manager] 筆記本淡出完成");
     }
 
     IEnumerator ShakeCharacter()
     {
         // 使用 CharacterManager 獲取當前活躍角色進行抖動
         if (characterManager == null) yield break;
-        
+
         var activeCharacter = characterManager.GetCurrentActiveCharacter();
         if (activeCharacter != null)
         {
