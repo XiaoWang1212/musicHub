@@ -24,6 +24,18 @@ public class ChoiceManager : MonoBehaviour
     [Tooltip("是否隨機打亂選項順序")]
     public bool randomizeChoiceOrder = true;
     
+    [Header("Hover 效果設定")]
+    [Tooltip("滑鼠懸停時的縮放大小")]
+    public float hoverScale = 1.05f;  // 寬長型按鈕用較小的縮放
+    [Tooltip("Hover 動畫時間")]
+    public float hoverAnimationDuration = 0.15f;  // 更快的反應
+    [Tooltip("Hover 時的顏色 - 黑底白字建議用深灰色")]
+    public Color hoverColor = new Color(0.25f, 0.25f, 0.25f, 1f);  // 深灰色 (RGB: 64, 64, 64)
+    [Tooltip("是否啟用 Hover 顏色變化")]
+    public bool enableHoverColorChange = true;
+    [Tooltip("Hover 時向右偏移的距離")]
+    public float hoverOffsetX = 10f;  // 寬長型按鈕適合用水平位移;
+    
     // 事件
     public static event System.Action<ChoiceData> OnChoiceMade;
     public static event System.Action OnChoicesShown;
@@ -43,10 +55,37 @@ public class ChoiceManager : MonoBehaviour
             {
                 panelCanvasGroup = choicePanel.AddComponent<CanvasGroup>();
             }
+            
+            // 確保初始狀態正確
+            panelCanvasGroup.interactable = true;
+            panelCanvasGroup.blocksRaycasts = false;  // 初始不阻擋射線
         }
         
         // 初始隱藏面板
         HideChoicesImmediate();
+        
+        // 檢查 EventSystem
+        CheckEventSystem();
+    }
+    
+    void CheckEventSystem()
+    {
+        var eventSystem = UnityEngine.EventSystems.EventSystem.current;
+        if (eventSystem == null)
+        {
+            Debug.LogWarning("⚠️ 場景中沒有 EventSystem,正在自動創建...");
+            
+            // 自動創建 EventSystem
+            GameObject eventSystemObj = new GameObject("EventSystem");
+            eventSystemObj.AddComponent<UnityEngine.EventSystems.EventSystem>();
+            eventSystemObj.AddComponent<UnityEngine.EventSystems.StandaloneInputModule>();
+            
+            Debug.Log("✅ EventSystem 已自動創建");
+        }
+        else
+        {
+            Debug.Log($"✅ EventSystem 存在: {eventSystem.name}");
+        }
     }
     
     /// <summary>
@@ -131,15 +170,29 @@ public class ChoiceManager : MonoBehaviour
         Button newButton = Instantiate(choiceButtonPrefab, choiceButtonContainer);
         currentChoiceButtons.Add(newButton);
         
+        // 確保按鈕可以互動
+        newButton.interactable = true;
+        
         // 設定按鈕文字
         TextMeshProUGUI buttonText = newButton.GetComponentInChildren<TextMeshProUGUI>();
         if (buttonText != null)
         {
             buttonText.text = choiceData.choiceText;
+            Debug.Log($"✅ 創建按鈕 {index}: {choiceData.choiceText}");
         }
         
+        // 添加 Hover 效果
+        AddHoverEffect(newButton);
+        
         // 設定按鈕點擊事件
-        newButton.onClick.AddListener(() => OnChoiceSelected(index, choiceData));
+        newButton.onClick.AddListener(() => {
+            Debug.Log($"🖱️ 按鈕被點擊: {choiceData.choiceText}");
+            OnChoiceSelected(index, choiceData);
+        });
+        
+        // 檢查按鈕層級和設定
+        Debug.Log($"📍 按鈕狀態: interactable={newButton.interactable}, raycastTarget={newButton.GetComponent<UnityEngine.UI.Image>()?.raycastTarget}");
+        Debug.Log($"📍 按鈕層級: {newButton.gameObject.layer}, 父物件層級: {choiceButtonContainer.gameObject.layer}");
         
         // 按鈕動畫
         StartCoroutine(AnimateButtonAppear(newButton));
@@ -156,9 +209,16 @@ public class ChoiceManager : MonoBehaviour
             buttonGroup = button.gameObject.AddComponent<CanvasGroup>();
         }
         
+        // 確保 CanvasGroup 不會阻擋射線檢測
+        buttonGroup.interactable = true;
+        buttonGroup.blocksRaycasts = true;
+        
         // 初始透明
         buttonGroup.alpha = 0f;
         button.transform.localScale = Vector3.zero;
+        
+        // 確保按鈕本身可以互動
+        button.interactable = true;
         
         float elapsed = 0f;
         float duration = 0.2f;
@@ -176,6 +236,13 @@ public class ChoiceManager : MonoBehaviour
         
         buttonGroup.alpha = 1f;
         button.transform.localScale = Vector3.one;
+        
+        // 動畫完成後初始化 Hover 效果
+        var hoverEffect = button.GetComponent<ChoiceButtonHoverEffect>();
+        if (hoverEffect != null)
+        {
+            hoverEffect.InitializeAfterAnimation();
+        }
     }
     
     /// <summary>
@@ -204,42 +271,8 @@ public class ChoiceManager : MonoBehaviour
             }
         }
         
-        // 處理對話分支
-        if (choiceData.branchDialogue != null)
-        {
-            Debug.Log($"🔀 切換到分支對話: {choiceData.branchDialogue.sequenceName}");
-            
-            // 隱藏選項
-            StartCoroutine(HideAndStartBranchDialogue(choiceData));
-        }
-        else
-        {
-            // 沒有分支對話,使用傳統方式
-            StartCoroutine(HideChoicesAfterSelection(choiceData));
-        }
-    }
-    
-    /// <summary>
-    /// 隱藏選項並開始分支對話
-    /// </summary>
-    IEnumerator HideAndStartBranchDialogue(ChoiceData choiceData)
-    {
-        // 短暫等待
-        yield return new WaitForSeconds(0.3f);
-        
-        // 隱藏選項
-        yield return StartCoroutine(HideChoicesCoroutine());
-        
-        // 觸發選擇完成事件
-        OnChoiceMade?.Invoke(choiceData);
-        
-        // 開始分支對話
-        var dialogueManager = FindFirstObjectByType<DialogueManager>();
-        if (dialogueManager != null)
-        {
-            yield return new WaitForSeconds(0.2f);
-            dialogueManager.StartDialogue(choiceData.branchDialogue);
-        }
+        // 隱藏選項並觸發事件
+        StartCoroutine(HideChoicesAfterSelection(choiceData));
     }
     
     /// <summary>
@@ -253,7 +286,7 @@ public class ChoiceManager : MonoBehaviour
         // 隱藏選項
         yield return StartCoroutine(HideChoicesCoroutine());
         
-        // 觸發選擇完成事件
+        // 觸發選擇完成事件,由 DialogueManager 統一處理後續流程
         OnChoiceMade?.Invoke(choiceData);
     }
     
@@ -313,6 +346,10 @@ public class ChoiceManager : MonoBehaviour
     {
         if (panelCanvasGroup == null) yield break;
         
+        // 啟用射線檢測,讓按鈕可以被點擊
+        panelCanvasGroup.blocksRaycasts = true;
+        panelCanvasGroup.interactable = true;
+        
         float elapsed = 0f;
         
         while (elapsed < panelFadeInDuration)
@@ -323,6 +360,7 @@ public class ChoiceManager : MonoBehaviour
         }
         
         panelCanvasGroup.alpha = 1f;
+        Debug.Log("✅ 面板淡入完成,blocksRaycasts=" + panelCanvasGroup.blocksRaycasts);
     }
     
     /// <summary>
@@ -331,6 +369,10 @@ public class ChoiceManager : MonoBehaviour
     IEnumerator FadeOutPanel()
     {
         if (panelCanvasGroup == null) yield break;
+        
+        // 禁用射線檢測和互動
+        panelCanvasGroup.blocksRaycasts = false;
+        panelCanvasGroup.interactable = false;
         
         float elapsed = 0f;
         
@@ -365,5 +407,139 @@ public class ChoiceManager : MonoBehaviour
     public bool IsShowingChoices()
     {
         return isShowingChoices;
+    }
+    
+    /// <summary>
+    /// 為按鈕添加 Hover 效果
+    /// </summary>
+    void AddHoverEffect(Button button)
+    {
+        var hoverEffect = button.gameObject.AddComponent<ChoiceButtonHoverEffect>();
+        hoverEffect.hoverScale = hoverScale;
+        hoverEffect.animationDuration = hoverAnimationDuration;
+        hoverEffect.hoverColor = hoverColor;
+        hoverEffect.enableColorChange = enableHoverColorChange;
+        hoverEffect.hoverOffsetX = hoverOffsetX;
+    }
+}
+
+/// <summary>
+/// 選項按鈕 Hover 效果組件
+/// </summary>
+public class ChoiceButtonHoverEffect : MonoBehaviour, 
+    UnityEngine.EventSystems.IPointerEnterHandler, 
+    UnityEngine.EventSystems.IPointerExitHandler
+{
+    [HideInInspector] public float hoverScale = 1.05f;
+    [HideInInspector] public float animationDuration = 0.15f;
+    [HideInInspector] public Color hoverColor = Color.white;
+    [HideInInspector] public bool enableColorChange = true;
+    [HideInInspector] public float hoverOffsetX = 10f;
+    
+    private Vector3 originalScale;
+    private Vector3 originalPosition;
+    private Color originalColor;
+    private Image buttonImage;
+    private RectTransform rectTransform;
+    private Coroutine animationCoroutine;
+    private bool isInitialized = false;
+    
+    void Start()
+    {
+        rectTransform = GetComponent<RectTransform>();
+        buttonImage = GetComponent<Image>();
+    }
+    
+    /// <summary>
+    /// 在按鈕出現動畫完成後調用此方法初始化
+    /// </summary>
+    public void InitializeAfterAnimation()
+    {
+        originalScale = transform.localScale;
+        originalPosition = rectTransform.anchoredPosition;
+        
+        if (buttonImage != null)
+        {
+            originalColor = buttonImage.color;
+        }
+        
+        isInitialized = true;
+        Debug.Log($"✅ Hover 效果初始化完成: originalScale = {originalScale}");
+    }
+    
+    public void OnPointerEnter(UnityEngine.EventSystems.PointerEventData eventData)
+    {
+        if (!isInitialized) return;
+        if (animationCoroutine != null) StopCoroutine(animationCoroutine);
+        animationCoroutine = StartCoroutine(AnimateHover(true));
+    }
+    
+    public void OnPointerExit(UnityEngine.EventSystems.PointerEventData eventData)
+    {
+        if (!isInitialized) return;
+        if (animationCoroutine != null) StopCoroutine(animationCoroutine);
+        animationCoroutine = StartCoroutine(AnimateHover(false));
+    }
+    
+    IEnumerator AnimateHover(bool isEntering)
+    {
+        Vector3 startScale = transform.localScale;
+        Vector3 targetScale = isEntering ? (originalScale * hoverScale) : originalScale;
+        
+        Vector3 startPos = rectTransform.anchoredPosition;
+        Vector3 targetPos = isEntering ? (originalPosition + new Vector3(hoverOffsetX, 0, 0)) : originalPosition;
+        
+        Color startColor = buttonImage != null ? buttonImage.color : Color.white;
+        Color targetColor = isEntering ? hoverColor : originalColor;
+        
+        float elapsed = 0f;
+        
+        while (elapsed < animationDuration)
+        {
+            elapsed += Time.deltaTime;
+            float progress = elapsed / animationDuration;
+            
+            // 使用緩動函數讓動畫更流暢
+            float t = isEntering ? EaseOutCubic(progress) : EaseInOutCubic(progress);
+            
+            // 縮放動畫
+            transform.localScale = Vector3.Lerp(startScale, targetScale, t);
+            
+            // 位移動畫 (水平滑動)
+            if (rectTransform != null)
+            {
+                rectTransform.anchoredPosition = Vector3.Lerp(startPos, targetPos, t);
+            }
+            
+            // 顏色動畫
+            if (enableColorChange && buttonImage != null)
+            {
+                buttonImage.color = Color.Lerp(startColor, targetColor, t);
+            }
+            
+            yield return null;
+        }
+        
+        // 確保最終狀態正確
+        transform.localScale = targetScale;
+        if (rectTransform != null)
+        {
+            rectTransform.anchoredPosition = targetPos;
+        }
+        if (enableColorChange && buttonImage != null)
+        {
+            buttonImage.color = targetColor;
+        }
+    }
+    
+    // 緩動函數
+    float EaseOutCubic(float t)
+    {
+        return 1f - Mathf.Pow(1f - t, 3f);
+    }
+    
+    float EaseInOutCubic(float t)
+    {
+        return t < 0.5f ? 4f * t * t * t : 1f - Mathf.Pow(-2f * t + 2f, 3f) / 2f;
     }
 }

@@ -69,46 +69,6 @@ public class RelationshipManager : MonoBehaviour
     // 事件
     public static event Action<string, int, int> OnRelationshipChanged; // 角色名, 舊值, 新值
     
-    void Start()
-    {
-        InitializeCharacters();
-    }
-    
-    #region 初始化
-    
-    /// <summary>
-    /// 初始化角色好感度
-    /// </summary>
-    void InitializeCharacters()
-    {
-        // 確保所有角色都有資料
-        string[] defaultCharacters = { "大野陽斗", "久我靜真", "山瀨日向", "高宮芽依", "白石透羽" };
-        
-        foreach (string characterName in defaultCharacters)
-        {
-            if (!HasCharacter(characterName))
-            {
-                characterRelationships.Add(new CharacterRelationship
-                {
-                    characterName = characterName,
-                    relationshipValue = 0  // 初始為 0
-                });
-            }
-        }
-        
-        if (enableDebugLog)
-        {
-            Debug.Log($"💖 好感度系統初始化完成，共 {characterRelationships.Count} 個角色");
-        }
-    }
-    
-    bool HasCharacter(string characterName)
-    {
-        return characterRelationships.Exists(c => c.characterName == characterName);
-    }
-    
-    #endregion
-    
     #region 好感度管理
     
     /// <summary>

@@ -81,6 +81,9 @@ public class DialogueManager : MonoBehaviour
     /// </summary>
     void OnChoiceMade(ChoiceData choice)
     {
+        // 重新啟用 DialoguePanel 的射線阻擋
+        EnableDialoguePanelRaycast();
+        
         // 如果有分支對話,切換過去
         if (choice.branchDialogue != null)
         {
@@ -95,6 +98,12 @@ public class DialogueManager : MonoBehaviour
     
     void Update()
     {
+        // 如果正在顯示選項,則禁止對話繼續
+        if (choiceManager != null && choiceManager.IsShowingChoices())
+        {
+            return;
+        }
+        
         // 空白鍵繼續
         if (Input.GetKeyDown(continueKey))
         {
@@ -273,8 +282,44 @@ public class DialogueManager : MonoBehaviour
         // 處理選擇按鈕 - 使用 ChoiceManager
         if (currentDialogue.hasChoices && choiceManager != null)
         {
+            // 禁用 DialoguePanel 的射線阻擋,避免擋住選項按鈕
+            DisableDialoguePanelRaycast();
+            
             // 轉換 List<ChoiceData> 為陣列
             choiceManager.ShowChoices(currentDialogue.choices.ToArray());
+        }
+    }
+    
+    /// <summary>
+    /// 禁用 DialoguePanel 的射線阻擋
+    /// </summary>
+    void DisableDialoguePanelRaycast()
+    {
+        if (dialoguePanel != null)
+        {
+            var canvasGroup = dialoguePanel.GetComponent<CanvasGroup>();
+            if (canvasGroup == null)
+            {
+                canvasGroup = dialoguePanel.AddComponent<CanvasGroup>();
+            }
+            canvasGroup.blocksRaycasts = false;
+            Debug.Log("🚫 DialoguePanel 射線阻擋已禁用");
+        }
+    }
+    
+    /// <summary>
+    /// 啟用 DialoguePanel 的射線阻擋
+    /// </summary>
+    void EnableDialoguePanelRaycast()
+    {
+        if (dialoguePanel != null)
+        {
+            var canvasGroup = dialoguePanel.GetComponent<CanvasGroup>();
+            if (canvasGroup != null)
+            {
+                canvasGroup.blocksRaycasts = true;
+                Debug.Log("✅ DialoguePanel 射線阻擋已啟用");
+            }
         }
     }
     

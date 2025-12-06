@@ -246,11 +246,18 @@ public class CharacterManager : MonoBehaviour
         
         if (targetCharacter != null && targetCharacter.renderer != null)
         {
-            // 立即隱藏所有其他角色 (無動畫，避免重疊)
-            HideAllCharactersExceptImmediate(targetCharacter);
+            // 檢查是否為同一個角色
+            bool isSameCharacter = (currentActiveCharacter == targetCharacter);
             
-            // 顯示目標角色 (考慮遮罩效果)
-            ShowCharacter(targetCharacter, characterSprite, dimCharacter);
+            // 只有在切換角色時才隱藏其他角色
+            if (!isSameCharacter)
+            {
+                // 立即隱藏所有其他角色 (無動畫，避免重疊)
+                HideAllCharactersExceptImmediate(targetCharacter);
+            }
+            
+            // 顯示目標角色 (考慮遮罩效果,傳入 isSameCharacter 標記)
+            ShowCharacter(targetCharacter, characterSprite, dimCharacter, isSameCharacter);
             
             currentActiveCharacter = targetCharacter;
         }
@@ -274,7 +281,7 @@ public class CharacterManager : MonoBehaviour
     /// <summary>
     /// 顯示特定角色
     /// </summary>
-    void ShowCharacter(CharacterRenderer character, Sprite sprite, bool dimCharacter)
+    void ShowCharacter(CharacterRenderer character, Sprite sprite, bool dimCharacter, bool isSameCharacter = false)
     {
         var renderer = character.renderer;
         
@@ -292,8 +299,21 @@ public class CharacterManager : MonoBehaviour
         // 設定目標顏色
         Color targetColor = dimCharacter ? dimColor : normalColor;
         
+        // 如果是同一個角色連續說話,只做顏色過渡,不要 fade in/out
+        if (isSameCharacter && !wasHidden)
+        {
+            // 同一個角色,只做顏色過渡
+            if (character.supportsFade)
+            {
+                StartCoroutine(TransitionCharacterColor(renderer, targetColor, character.colorTransitionDuration));
+            }
+            else
+            {
+                renderer.color = targetColor;
+            }
+        }
         // 如果角色原本隱藏，執行完整的淡入動畫（從透明到目標顏色）
-        if (wasHidden && character.supportsFade)
+        else if (wasHidden && character.supportsFade)
         {
             StartCoroutine(FadeInCharacterToColor(character, targetColor));
         }
