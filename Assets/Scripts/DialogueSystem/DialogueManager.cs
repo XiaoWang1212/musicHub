@@ -15,6 +15,9 @@ public class DialogueManager : MonoBehaviour
     public GameObject choiceButtonPrefab;
     public Transform choiceButtonContainer;
     
+    [Header("🎯 選擇系統")]
+    public ChoiceManager choiceManager;  // 選擇管理器
+    
     [Header("音效管理")]
     public AudioSource voiceAudioSource;
     public AudioSource musicAudioSource;
@@ -56,6 +59,38 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         InitializeDialogueSystem();
+        
+        // 訂閱 ChoiceManager 事件
+        if (choiceManager != null)
+        {
+            ChoiceManager.OnChoiceMade += OnChoiceMade;
+        }
+    }
+    
+    void OnDestroy()
+    {
+        // 取消訂閱
+        if (choiceManager != null)
+        {
+            ChoiceManager.OnChoiceMade -= OnChoiceMade;
+        }
+    }
+    
+    /// <summary>
+    /// 處理選擇完成 - 切換到分支對話
+    /// </summary>
+    void OnChoiceMade(ChoiceData choice)
+    {
+        // 如果有分支對話,切換過去
+        if (choice.branchDialogue != null)
+        {
+            StartDialogue(choice.branchDialogue);
+        }
+        else
+        {
+            // 沒有分支對話,繼續當前序列
+            ContinueDialogue();
+        }
     }
     
     void Update()
@@ -235,14 +270,11 @@ public class DialogueManager : MonoBehaviour
         // 顯示對話文字（打字效果）
         StartCoroutine(TypeText(currentDialogue.dialogueText));
         
-        // 處理選擇按鈕
-        if (currentDialogue.hasChoices)
+        // 處理選擇按鈕 - 使用 ChoiceManager
+        if (currentDialogue.hasChoices && choiceManager != null)
         {
-            ShowChoices(currentDialogue.choices);
-        }
-        else
-        {
-            ClearChoices();
+            // 轉換 List<ChoiceData> 為陣列
+            choiceManager.ShowChoices(currentDialogue.choices.ToArray());
         }
     }
     

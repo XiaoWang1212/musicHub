@@ -140,8 +140,8 @@ public class RelationshipManager : MonoBehaviour
                 return;
         }
         
-        // 應用變化 (不限制上限，但最低為 0)
-        character.relationshipValue = Mathf.Max(0, character.relationshipValue + changeAmount);
+        // 應用變化 (允許負數，用於結局判定)
+        character.relationshipValue += changeAmount;
         
         // 觸發事件
         OnRelationshipChanged?.Invoke(characterName, oldValue, character.relationshipValue);
@@ -162,7 +162,7 @@ public class RelationshipManager : MonoBehaviour
         if (character == null) return;
         
         int oldValue = character.relationshipValue;
-        character.relationshipValue = Mathf.Max(0, value);
+        character.relationshipValue = value;
         
         OnRelationshipChanged?.Invoke(characterName, oldValue, character.relationshipValue);
         

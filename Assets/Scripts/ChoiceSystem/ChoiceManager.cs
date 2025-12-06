@@ -20,6 +20,10 @@ public class ChoiceManager : MonoBehaviour
     public float panelFadeOutDuration = 0.2f;
     public float buttonAppearDelay = 0.1f;   // 按鈕出現間隔
     
+    [Header("顯示設定")]
+    [Tooltip("是否隨機打亂選項順序")]
+    public bool randomizeChoiceOrder = true;
+    
     // 事件
     public static event System.Action<ChoiceData> OnChoiceMade;
     public static event System.Action OnChoicesShown;
@@ -70,19 +74,46 @@ public class ChoiceManager : MonoBehaviour
         // 清除舊的按鈕
         ClearChoiceButtons();
         
+        // 隨機打亂選項順序
+        ChoiceData[] displayChoices = choices;
+        if (randomizeChoiceOrder && choices.Length > 1)
+        {
+            displayChoices = ShuffleArray(choices);
+            Debug.Log("🎲 選項順序已隨機打亂");
+        }
+        
         // 顯示面板
         choicePanel.SetActive(true);
         yield return StartCoroutine(FadeInPanel());
         
         // 逐個創建按鈕
-        for (int i = 0; i < choices.Length; i++)
+        for (int i = 0; i < displayChoices.Length; i++)
         {
-            CreateChoiceButton(choices[i], i);
+            CreateChoiceButton(displayChoices[i], i);
             yield return new WaitForSeconds(buttonAppearDelay);
         }
         
         OnChoicesShown?.Invoke();
-        Debug.Log($"🎯 顯示了 {choices.Length} 個選項");
+        Debug.Log($"🎯 顯示了 {displayChoices.Length} 個選項");
+    }
+    
+    /// <summary>
+    /// 隨機打亂陣列順序 (Fisher-Yates 洗牌算法)
+    /// </summary>
+    ChoiceData[] ShuffleArray(ChoiceData[] array)
+    {
+        ChoiceData[] shuffled = new ChoiceData[array.Length];
+        System.Array.Copy(array, shuffled, array.Length);
+        
+        for (int i = shuffled.Length - 1; i > 0; i--)
+        {
+            int randomIndex = UnityEngine.Random.Range(0, i + 1);
+            ChoiceData temp = shuffled[i];
+            shuffled[i] = shuffled[randomIndex];
+            shuffled[randomIndex] = temp;
+        }
+        
+        return shuffled;
     }
     
     /// <summary>
@@ -105,20 +136,6 @@ public class ChoiceManager : MonoBehaviour
         if (buttonText != null)
         {
             buttonText.text = choiceData.choiceText;
-            
-            // 根據好感度效果設定顏色
-            switch (choiceData.relationshipEffect)
-            {
-                case RelationshipEffect.Increase:
-                    buttonText.color = new Color(0.2f, 0.8f, 0.2f); // 綠色
-                    break;
-                case RelationshipEffect.Decrease:
-                    buttonText.color = new Color(0.8f, 0.2f, 0.2f); // 紅色
-                    break;
-                default:
-                    buttonText.color = Color.white; // 白色
-                    break;
-            }
         }
         
         // 設定按鈕點擊事件

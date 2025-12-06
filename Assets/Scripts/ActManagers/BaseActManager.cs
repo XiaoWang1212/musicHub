@@ -12,13 +12,6 @@ public class BaseActManager : MonoBehaviour
     public DialogueManager dialogueManager;
     public DialogueSequenceAsset actDialogueSequence;  // 在 Inspector 中設定對話序列
     
-    [Header("選擇系統(可選)")]
-    [Tooltip("如果這個 Act 需要選擇,設定選擇序列")]
-    public ChoiceSequenceAsset choiceSequence;         // 選擇序列
-    
-    [Tooltip("選擇後的對話序列(可選)")]
-    public DialogueSequenceAsset afterChoiceDialogue;  // 選擇後的對話
-    
     [Header("場景物件")]
     public SpriteRenderer backgroundRenderer; // 背景
     
@@ -34,12 +27,8 @@ public class BaseActManager : MonoBehaviour
     [Header("角色動作設定")]
     public CharacterManager characterManager; // 角色管理器引用
     
-    [Header("選擇系統")]
-    public ChoiceManager choiceManager;       // 選擇管理器引用
-    
     [Header("內部狀態")]
     private bool isActDialogueActive = false;  // 標記對話是否正在進行
-    protected bool isWaitingForChoice = false; // 標記是否正在等待玩家選擇
 
     protected virtual void Start()
     {
@@ -51,12 +40,6 @@ public class BaseActManager : MonoBehaviour
         // 訂閱對話結束事件
         DialogueManager.OnDialogueEnd += OnDialogueEnd;
         
-        // 訂閱選擇事件
-        if (choiceManager != null)
-        {
-            ChoiceManager.OnChoiceMade += OnChoiceMade;
-        }
-        
         StartCoroutine(StartActSequence());
     }
     
@@ -64,11 +47,6 @@ public class BaseActManager : MonoBehaviour
     {
         // 取消訂閱
         DialogueManager.OnDialogueEnd -= OnDialogueEnd;
-        
-        if (choiceManager != null)
-        {
-            ChoiceManager.OnChoiceMade -= OnChoiceMade;
-        }
     }
     
     /// <summary>
@@ -97,88 +75,14 @@ public class BaseActManager : MonoBehaviour
     /// </summary>
     protected virtual void OnDialogueEnd()
     {
-        // 如果正在等待選擇，不要進入結束序列
-        if (isWaitingForChoice)
-        {
-            Debug.Log($"⏸️ {GetActName()} 對話結束，但正在等待玩家選擇");
-            return;
-        }
-        
         if (isActDialogueActive)
-        {
-            // 檢查是否需要顯示選擇
-            if (choiceSequence != null && choiceSequence.choices != null && choiceSequence.choices.Length > 0)
-            {
-                Debug.Log($"🎯 {GetActName()} 對話結束，顯示選擇");
-                ShowChoicesFromSequence();
-                return;
-            }
-            
+        {    
             Debug.Log($"✅ {GetActName()} 對話結束，開始淡出序列");
             isActDialogueActive = false;
             StartCoroutine(ActEndingSequence());
         }
     }
-    
-    /// <summary>
-    /// 從選擇序列顯示選項
-    /// </summary>
-    protected virtual void ShowChoicesFromSequence()
-    {
-        if (choiceSequence == null) return;
-        
-        // 轉換為 ChoiceData 陣列
-        ChoiceData[] choices = new ChoiceData[choiceSequence.choices.Length];
-        for (int i = 0; i < choiceSequence.choices.Length; i++)
-        {
-            choices[i] = choiceSequence.choices[i].ToChoiceData();
-        }
-        
-        ShowChoices(choices);
-    }
-    
-    /// <summary>
-    /// 選擇完成處理 - 子類可以覆寫來處理特定選擇邏輯
-    /// </summary>
-    protected virtual void OnChoiceMade(ChoiceData choice)
-    {
-        Debug.Log($"🎯 {GetActName()} 玩家選擇了: {choice.choiceText}");
-        isWaitingForChoice = false;
-        
-        // 如果有分支對話，ChoiceManager 會自動處理切換
-        // 這裡只處理沒有分支對話的情況
-        
-        // 如果選擇有設定分支對話(branchDialogue)，ChoiceManager 已經自動切換了
-        // 不需要在這裡處理
-        
-        // 如果沒有分支對話，檢查是否有統一的選擇後對話
-        if (choice.branchDialogue == null)
-        {
-            if (afterChoiceDialogue != null)
-            {
-                Debug.Log($"🎬 播放統一的選擇後對話");
-                StartCoroutine(PlayFollowUpDialogue(afterChoiceDialogue));
-            }
-            else
-            {
-                // 沒有任何後續對話，直接結束
-                Debug.Log($"🎬 沒有後續對話，開始結束序列");
-                StartCoroutine(ActEndingSequence());
-            }
-        }
-        // 如果有 branchDialogue，ChoiceManager 會處理，這裡什麼都不做
-    }
-    
-    /// <summary>
-    /// 播放後續對話
-    /// </summary>
-    protected virtual IEnumerator PlayFollowUpDialogue(DialogueSequenceAsset dialogue)
-    {
-        yield return new WaitForSeconds(0.5f);
-        
-        isActDialogueActive = true;
-        dialogueManager.StartDialogue(dialogue);
-    }
+
 
     /// <summary>
     /// Act 開始序列 - 子類可以覆寫來添加自定義邏輯
@@ -421,22 +325,12 @@ public class BaseActManager : MonoBehaviour
     /// </summary>
     /// <param name="choices">選項資料陣列</param>
     protected void ShowChoices(ChoiceData[] choices)
-    {
-        if (choiceManager == null)
-        {
-            Debug.LogError("❌ ChoiceManager 未設定，無法顯示選項!");
-            return;
-        }
-        
+    {  
         if (RelationshipManager.Instance == null)
         {
             Debug.LogError("❌ RelationshipManager 不存在，請確認已在 MainMenu 場景設定!");
             return;
         }
-        
-        isWaitingForChoice = true;
-        Debug.Log($"🎯 {GetActName()} 顯示 {choices.Length} 個選項");
-        choiceManager.ShowChoices(choices);
     }
     
     /// <summary>
@@ -450,25 +344,6 @@ public class BaseActManager : MonoBehaviour
             targetCharacter = targetCharacter,
             relationshipEffect = effect
         };
-    }
-    
-    /// <summary>
-    /// 隱藏選項
-    /// </summary>
-    protected void HideChoices()
-    {
-        if (choiceManager != null)
-        {
-            choiceManager.HideChoices();
-        }
-    }
-    
-    /// <summary>
-    /// 檢查是否正在顯示選項
-    /// </summary>
-    protected bool IsShowingChoices()
-    {
-        return choiceManager != null && choiceManager.IsShowingChoices();
     }
     
     // ==================== 內部動作協程 ====================

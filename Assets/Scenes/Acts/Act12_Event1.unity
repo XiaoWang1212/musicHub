@@ -239,8 +239,9 @@ MonoBehaviour:
   characterNameText: {fileID: 2032743104}
   dialogueText: {fileID: 2098735318}
   backgroundRenderer: {fileID: 787841175}
-  choiceButtonPrefab: {fileID: 0}
-  choiceButtonContainer: {fileID: 0}
+  choiceButtonPrefab: {fileID: 3363609755998977854, guid: 07c8f3b9d69089949b64ea58448d76c5, type: 3}
+  choiceButtonContainer: {fileID: 1759500361}
+  choiceManager: {fileID: 463012150}
   voiceAudioSource: {fileID: 0}
   musicAudioSource: {fileID: 0}
   typingSpeed: 0.05
@@ -933,6 +934,7 @@ MonoBehaviour:
   panelFadeInDuration: 0.3
   panelFadeOutDuration: 0.2
   buttonAppearDelay: 0.1
+  randomizeChoiceOrder: 1
 --- !u!4 &463012151
 Transform:
   m_ObjectHideFlags: 0
@@ -1284,7 +1286,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1185825262}
   - component: {fileID: 1185825263}
-  - component: {fileID: 1185825264}
   m_Layer: 0
   m_Name: ActManager
   m_TagString: Untagged
@@ -1322,8 +1323,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueManager: {fileID: 79556193}
   actDialogueSequence: {fileID: 11400000, guid: 0953ca3d7a59b824581feb542a7dc943, type: 2}
-  choiceSequence: {fileID: 0}
-  afterChoiceDialogue: {fileID: 0}
   backgroundRenderer: {fileID: 787841175}
   transitionToNextScene: {fileID: 403987405}
   initialDelay: 0.5
@@ -1331,27 +1330,6 @@ MonoBehaviour:
   backgroundFadeOutTime: 2
   dialogueStartDelay: 1
   characterManager: {fileID: 1402649991}
-  choiceManager: {fileID: 463012150}
---- !u!114 &1185825264
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1185825260}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 474a5b5d2357a174b9da7c06222947f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  expressionTriggers:
-  - dialogueIndex: 0
-    characterName: 
-    expressionName: 
-    useAnimation: 0
-    delay: 0
-    description: 
-  enableDebugLog: 1
 --- !u!1 &1257121362
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,13 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7595591b646afb346a728ab1bee4f6a5, type: 3}
-  m_Name: NewChoiceSequence
+  m_Script: {fileID: 11500000, guid: 05fccf3e6d213354aaa34d617b8b71df, type: 3}
+  m_Name: Increase
   m_EditorClassIdentifier: 
-  choiceDescription: "\u65B0\u7684\u9078\u64C7"
-  choices:
-  - choiceText: 
-    targetCharacter: 
-    relationshipEffect: 0
-    followUpDialogue: {fileID: 0}
-    characterExpression: 
+  sequenceName: 
+  sequenceId: 0
+  dialogues: []
+  isMainStoryline: 1
+  canSkip: 1
+  autoSave: 0
