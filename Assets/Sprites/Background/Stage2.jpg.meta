@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8ec9509753f89c74f85f463586fbfe9e
+guid: 7f72b9c395ff931419de3ffb951cb838
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2219031474291181556
-    second: CG6_0
+      213: 5471114978251189754
+    second: Stage2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: CG6_0
+      name: Stage2_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1024
-        height: 1024
+        width: 1248
+        height: 832
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c08767d81aa6431e0800000000000000
-      internalID: -2219031474291181556
+      spriteID: afd2bf3e51e4deb40800000000000000
+      internalID: 5471114978251189754
       vertices: []
       indices: 
       edges: []

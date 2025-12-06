@@ -1,0 +1,189 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05fccf3e6d213354aaa34d617b8b71df, type: 3}
+  m_Name: Act33_ColliderNight
+  m_EditorClassIdentifier: 
+  sequenceName: Act16_CG3
+  sequenceId: 12
+  dialogues:
+  - dialogueIndex: 0
+    isNarration: 1
+    characterName: "\u5C71\u702C \u65E5\u5411"
+    dialogueText: "\u5915\u967D\u6A59\u9EC3\uFF0C\u6821\u5712\u5FAE\u98A8\u5E36\u8457\u843D\u8449\u8072\u3002\u767D\u77F3
+      \u900F\u7FBD\u7121\u610F\u9593\u807D\u5230\u9060\u8655\u50B3\u4F86\u97F3\u6A02\u8072\u3002"
+    expression: 
+    characterAction:
+      enabled: 0
+      actionType: 1
+      intensity: 0.3
+      jumpHeight: 0.2
+      duration: 0.1
+    choices: []
+    useMultipleCharacters: 1
+    characters:
+    - characterName: "\u767D\u77F3 \u900F\u7FBD"
+      position: 2
+      dimCharacter: 1
+      expression: "\u6B63\u5E38"
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
+    voiceClip: {fileID: 0}
+    backgroundMusic: {fileID: 0}
+    effect: 0
+    dimCharacter: 0
+  - dialogueIndex: 0
+    isNarration: 1
+    characterName: "\u5C71\u702C \u65E5\u5411"
+    dialogueText: "\u767D\u77F3 \u900F\u7FBD\u975C\u975C\u9760\u8FD1\uFF0C\u770B\u5230\u793E\u5718\u6210\u54E1\u4ECD\u5728\u52AA\u529B\u6392\u7DF4\uFF0C\u6C23\u6C1B\u6C89\u91CD\u4F46\u5145\u6EFF\u5805\u6301"
+    expression: 
+    characterAction:
+      enabled: 0
+      actionType: 1
+      intensity: 0.3
+      jumpHeight: 0.2
+      duration: 0.1
+    choices: []
+    useMultipleCharacters: 1
+    characters:
+    - characterName: "\u767D\u77F3 \u900F\u7FBD"
+      position: 2
+      dimCharacter: 1
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
+    voiceClip: {fileID: 0}
+    backgroundMusic: {fileID: 0}
+    effect: 0
+    dimCharacter: 0
+  - dialogueIndex: 0
+    isNarration: 0
+    characterName: "\u767D\u77F3 \u900F\u7FBD"
+    dialogueText: "\u2026\u2026\u662F\u90A3\u500B\u65CB\u5F8B\u2026\u70BA\u4EC0\u9EBC\u662F\u9019\u9996\u6B4C\u2026\u97F3\u6A02\u793E\u9084\u5728\u7DF4\u7FD2\uFF1F"
+    expression: 
+    characterAction:
+      enabled: 1
+      actionType: 0
+      intensity: 0.3
+      jumpHeight: 0.2
+      duration: 0.1
+    choices: []
+    useMultipleCharacters: 1
+    characters:
+    - characterName: "\u767D\u77F3 \u900F\u7FBD"
+      position: 2
+      dimCharacter: 1
+      expression: "\u5687\u5230"
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
+    voiceClip: {fileID: 0}
+    backgroundMusic: {fileID: 0}
+    effect: 0
+    dimCharacter: 0
+  - dialogueIndex: 0
+    isNarration: 0
+    characterName: "\u5927\u91CE \u967D\u6597"
+    dialogueText: "\u5C0F\u5FC3\u62CD\u5B50\uFF01\u5225\u6389\u7BC0\uFF01"
+    expression: 
+    characterAction:
+      enabled: 0
+      actionType: 1
+      intensity: 0.3
+      jumpHeight: 0.2
+      duration: 0.1
+    choices: []
+    useMultipleCharacters: 1
+    characters:
+    - characterName: "\u767D\u77F3 \u900F\u7FBD"
+      position: 2
+      dimCharacter: 1
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
+    voiceClip: {fileID: 0}
+    backgroundMusic: {fileID: 0}
+    effect: 0
+    dimCharacter: 0
+  - dialogueIndex: 0
+    isNarration: 0
+    characterName: "\u4E45\u6211 \u975C\u771F"
+    dialogueText: "\u9AD8\u5BAE \u82BD\u4F9D\uFF0C\u52A0\u5F37\u53F3\u624B\u90A3\u6BB5\u3002"
+    expression: 
+    characterAction:
+      enabled: 0
+      actionType: 1
+      intensity: 0.3
+      jumpHeight: 0.2
+      duration: 0.1
+    choices: []
+    useMultipleCharacters: 1
+    characters:
+    - characterName: "\u767D\u77F3 \u900F\u7FBD"
+      position: 2
+      dimCharacter: 1
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
+    voiceClip: {fileID: 0}
+    backgroundMusic: {fileID: 0}
+    effect: 0
+    dimCharacter: 0
+  - dialogueIndex: 0
+    isNarration: 0
+    characterName: "\u9AD8\u5BAE \u82BD\u4F9D"
+    dialogueText: "\u55EF\uFF0C\u597D\u3002"
+    expression: 
+    characterAction:
+      enabled: 0
+      actionType: 1
+      intensity: 0.3
+      jumpHeight: 0.2
+      duration: 0.1
+    choices: []
+    useMultipleCharacters: 1
+    characters:
+    - characterName: "\u767D\u77F3 \u900F\u7FBD"
+      position: 2
+      dimCharacter: 1
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
+    voiceClip: {fileID: 0}
+    backgroundMusic: {fileID: 0}
+    effect: 0
+    dimCharacter: 0
+  isMainStoryline: 1
+  canSkip: 1
+  autoSave: 1

@@ -19,18 +19,46 @@ MonoBehaviour:
     isNarration: 1
     characterName: "\u767D\u77F3 \u900F\u7FBD"
     dialogueText: "\u5718\u54E1\u5728\u97F3\u6A02\u793E\u96FB\u8166\u524D\u6574\u7406\u97F3\u6A02\u7D20\u6750\u6642"
+    expression: 
+    characterAction:
+      enabled: 0
+      actionType: 1
+      intensity: 0.3
+      jumpHeight: 0.2
+      duration: 0.1
     choices: []
     useMultipleCharacters: 1
     characters:
     - characterName: "\u767D\u77F3 \u900F\u7FBD"
       position: 0
       dimCharacter: 1
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     - characterName: "\u4E45\u6211 \u975C\u771F"
       position: 2
       dimCharacter: 1
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     - characterName: "\u5927\u91CE \u967D\u6597"
       position: 1
       dimCharacter: 1
+      expression: "\u6B63\u5E38"
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     voiceClip: {fileID: 0}
     backgroundMusic: {fileID: 0}
     effect: 0
@@ -39,18 +67,46 @@ MonoBehaviour:
     isNarration: 0
     characterName: "\u4E45\u6211 \u975C\u771F"
     dialogueText: "\u7B49\u7B49\u2026\u2026\u9019\u6BB5\u65CB\u5F8B\u2026\u2026\u8DDF\u4EE5\u524D\u90A3\u9996\u8D85\u7D05\u7684\u6B4C\u5E7E\u4E4E\u4E00\u6A21\u4E00\u6A23\u8036\uFF01\u767D\u77F3\uFF0C\u4F60\u80FD\u89E3\u91CB\u4E00\u4E0B\u55CE\uFF1F"
+    expression: 
+    characterAction:
+      enabled: 0
+      actionType: 1
+      intensity: 0.3
+      jumpHeight: 0.2
+      duration: 0.1
     choices: []
     useMultipleCharacters: 1
     characters:
     - characterName: "\u767D\u77F3 \u900F\u7FBD"
       position: 0
       dimCharacter: 1
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     - characterName: "\u4E45\u6211 \u975C\u771F"
       position: 2
       dimCharacter: 0
+      expression: "\u4E0D\u723D"
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     - characterName: "\u5927\u91CE \u967D\u6597"
       position: 1
       dimCharacter: 1
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     voiceClip: {fileID: 0}
     backgroundMusic: {fileID: 0}
     effect: 0
@@ -59,18 +115,46 @@ MonoBehaviour:
     isNarration: 0
     characterName: "\u5927\u91CE \u967D\u6597"
     dialogueText: "\u4EC0\u9EBC\u610F\u601D\uFF1F\uFF01\u4F60\u5C45\u7136\u6C92\u6709\u8AAA\uFF01\u4F60\u5BEB\u7684\u6B4C\u600E\u9EBC\u53EF\u80FD\u548C\u5225\u4EBA\u7684\u4E00\u6A23\uFF1F"
+    expression: 
+    characterAction:
+      enabled: 0
+      actionType: 1
+      intensity: 0.3
+      jumpHeight: 0.2
+      duration: 0.1
     choices: []
     useMultipleCharacters: 1
     characters:
     - characterName: "\u767D\u77F3 \u900F\u7FBD"
       position: 0
       dimCharacter: 1
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     - characterName: "\u4E45\u6211 \u975C\u771F"
       position: 2
       dimCharacter: 1
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     - characterName: "\u5927\u91CE \u967D\u6597"
       position: 1
       dimCharacter: 0
+      expression: "\u6012"
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     voiceClip: {fileID: 0}
     backgroundMusic: {fileID: 0}
     effect: 0
@@ -79,18 +163,46 @@ MonoBehaviour:
     isNarration: 0
     characterName: "\u9AD8\u5BAE \u82BD\u4F9D"
     dialogueText: "\u2026\u2026\u6211\u2026\u2026\u807D\u904E\u9019\u9996\u65CB\u5F8B\u2026\u2026"
+    expression: 
+    characterAction:
+      enabled: 0
+      actionType: 1
+      intensity: 0.3
+      jumpHeight: 0.2
+      duration: 0.1
     choices: []
     useMultipleCharacters: 1
     characters:
     - characterName: "\u9AD8\u5BAE \u82BD\u4F9D"
       position: 0
       dimCharacter: 0
+      expression: "\u64D4\u5FC3"
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     - characterName: "\u4E45\u6211 \u975C\u771F"
       position: 2
       dimCharacter: 1
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     - characterName: "\u5927\u91CE \u967D\u6597"
       position: 1
       dimCharacter: 1
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     voiceClip: {fileID: 0}
     backgroundMusic: {fileID: 0}
     effect: 0
@@ -99,18 +211,46 @@ MonoBehaviour:
     isNarration: 0
     characterName: "\u5927\u91CE \u967D\u6597"
     dialogueText: "\u9019\u9996\u6B4C\u54EA\u88E1\u4F86\u7684\uFF1F\u6211\u5011\u9084\u80FD\u76F8\u4FE1\u4F60\u55CE\uFF1F\uFF01"
+    expression: 
+    characterAction:
+      enabled: 0
+      actionType: 1
+      intensity: 0.3
+      jumpHeight: 0.2
+      duration: 0.1
     choices: []
     useMultipleCharacters: 1
     characters:
     - characterName: "\u9AD8\u5BAE \u82BD\u4F9D"
       position: 0
       dimCharacter: 0
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     - characterName: "\u4E45\u6211 \u975C\u771F"
       position: 2
       dimCharacter: 1
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     - characterName: "\u5927\u91CE \u967D\u6597"
       position: 1
       dimCharacter: 0
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     voiceClip: {fileID: 0}
     backgroundMusic: {fileID: 0}
     effect: 0
@@ -119,18 +259,46 @@ MonoBehaviour:
     isNarration: 0
     characterName: "\u5C71\u702C \u65E5\u5411"
     dialogueText: "\u5509\u2026\u2026\u5927\u5BB6\u4E0D\u8981\u518D\u5435\u5566\uFF01"
+    expression: 
+    characterAction:
+      enabled: 0
+      actionType: 1
+      intensity: 0.3
+      jumpHeight: 0.2
+      duration: 0.1
     choices: []
     useMultipleCharacters: 1
     characters:
     - characterName: "\u9AD8\u5BAE \u82BD\u4F9D"
       position: 0
       dimCharacter: 1
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     - characterName: "\u5C71\u702C \u65E5\u5411"
       position: 2
       dimCharacter: 0
+      expression: "\u50B7\u5FC3"
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     - characterName: "\u5927\u91CE \u967D\u6597"
       position: 1
       dimCharacter: 1
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     voiceClip: {fileID: 0}
     backgroundMusic: {fileID: 0}
     effect: 0
@@ -139,18 +307,46 @@ MonoBehaviour:
     isNarration: 0
     characterName: "\u9AD8\u5BAE \u82BD\u4F9D"
     dialogueText: "\u2026\u2026\u2026\u2026\u2026"
+    expression: 
+    characterAction:
+      enabled: 0
+      actionType: 1
+      intensity: 0.3
+      jumpHeight: 0.2
+      duration: 0.1
     choices: []
     useMultipleCharacters: 1
     characters:
     - characterName: "\u9AD8\u5BAE \u82BD\u4F9D"
       position: 0
       dimCharacter: 0
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     - characterName: "\u5C71\u702C \u65E5\u5411"
       position: 2
       dimCharacter: 1
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     - characterName: "\u5927\u91CE \u967D\u6597"
       position: 1
       dimCharacter: 1
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     voiceClip: {fileID: 0}
     backgroundMusic: {fileID: 0}
     effect: 0
@@ -159,18 +355,46 @@ MonoBehaviour:
     isNarration: 0
     characterName: "\u5927\u91CE \u967D\u6597"
     dialogueText: "\u4F60\u8AAA\u5979\u6709\u6C92\u6709\u53EF\u80FD\u771F\u7684\u6284\u8972\uFF1F"
+    expression: 
+    characterAction:
+      enabled: 0
+      actionType: 1
+      intensity: 0.3
+      jumpHeight: 0.2
+      duration: 0.1
     choices: []
     useMultipleCharacters: 1
     characters:
     - characterName: "\u9AD8\u5BAE \u82BD\u4F9D"
       position: 0
       dimCharacter: 1
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     - characterName: "\u5C71\u702C \u65E5\u5411"
       position: 2
       dimCharacter: 1
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     - characterName: "\u5927\u91CE \u967D\u6597"
       position: 1
       dimCharacter: 0
+      expression: "\u4E0D\u723D"
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     voiceClip: {fileID: 0}
     backgroundMusic: {fileID: 0}
     effect: 0
@@ -179,18 +403,46 @@ MonoBehaviour:
     isNarration: 0
     characterName: "\u4E45\u6211 \u975C\u771F"
     dialogueText: "\u6211\u4E0D\u77E5\u9053\u2026\u2026\u4F46\u6211\u5011\u81F3\u5C11\u8981\u8003\u616E\u5718\u968A\u7684\u5B89\u5168\u2026\u2026"
+    expression: 
+    characterAction:
+      enabled: 0
+      actionType: 1
+      intensity: 0.3
+      jumpHeight: 0.2
+      duration: 0.1
     choices: []
     useMultipleCharacters: 1
     characters:
     - characterName: "\u9AD8\u5BAE \u82BD\u4F9D"
       position: 0
       dimCharacter: 1
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     - characterName: "\u4E45\u6211 \u975C\u771F"
       position: 2
       dimCharacter: 0
+      expression: "\u8907\u96DC"
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     - characterName: "\u5927\u91CE \u967D\u6597"
       position: 1
       dimCharacter: 1
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     voiceClip: {fileID: 0}
     backgroundMusic: {fileID: 0}
     effect: 0
@@ -199,18 +451,46 @@ MonoBehaviour:
     isNarration: 0
     characterName: "\u5C71\u702C \u65E5\u5411"
     dialogueText: "\u6211\u4E0D\u60F3\u62C6\u6563\u5927\u5BB6\u2026\u2026"
+    expression: 
+    characterAction:
+      enabled: 0
+      actionType: 1
+      intensity: 0.3
+      jumpHeight: 0.2
+      duration: 0.1
     choices: []
     useMultipleCharacters: 1
     characters:
     - characterName: "\u9AD8\u5BAE \u82BD\u4F9D"
       position: 0
       dimCharacter: 1
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     - characterName: "\u5C71\u702C \u65E5\u5411"
       position: 2
       dimCharacter: 0
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     - characterName: "\u5927\u91CE \u967D\u6597"
       position: 1
       dimCharacter: 1
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     voiceClip: {fileID: 0}
     backgroundMusic: {fileID: 0}
     effect: 0
@@ -219,18 +499,46 @@ MonoBehaviour:
     isNarration: 0
     characterName: "\u767D\u77F3 \u900F\u7FBD"
     dialogueText: "\u300C\u6211\u77E5\u9053\u518D\u4E0D\u8AAA\uFF0C\u5927\u5BB6\u6703\u66F4\u751F\u6C23\u2026\u2026\u4F46\u6211\u53D7\u5920\u4E86\u61F7\u7591\u2026\u2026\u6211\u2026\u2026\u300D"
+    expression: 
+    characterAction:
+      enabled: 0
+      actionType: 1
+      intensity: 0.3
+      jumpHeight: 0.2
+      duration: 0.1
     choices: []
     useMultipleCharacters: 1
     characters:
     - characterName: "\u9AD8\u5BAE \u82BD\u4F9D"
       position: 0
       dimCharacter: 1
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     - characterName: "\u5C71\u702C \u65E5\u5411"
       position: 2
       dimCharacter: 1
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     - characterName: "\u767D\u77F3 \u900F\u7FBD"
       position: 1
       dimCharacter: 0
+      expression: "\u59D4\u5C48"
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     voiceClip: {fileID: 0}
     backgroundMusic: {fileID: 0}
     effect: 0
@@ -239,18 +547,46 @@ MonoBehaviour:
     isNarration: 0
     characterName: "\u767D\u77F3 \u900F\u7FBD"
     dialogueText: "\u2026\u2026\u6211\u8D70\u5427\u2026\u2026\u2026\u6211\u4E0D\u60F3\u518D\u89E3\u91CB\u4E86\u3002"
+    expression: 
+    characterAction:
+      enabled: 0
+      actionType: 1
+      intensity: 0.3
+      jumpHeight: 0.2
+      duration: 0.1
     choices: []
     useMultipleCharacters: 1
     characters:
     - characterName: "\u9AD8\u5BAE \u82BD\u4F9D"
       position: 0
       dimCharacter: 1
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     - characterName: "\u5C71\u702C \u65E5\u5411"
       position: 2
       dimCharacter: 1
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     - characterName: "\u767D\u77F3 \u900F\u7FBD"
       position: 1
       dimCharacter: 0
+      expression: "\u50B7\u8166\u7B4B"
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     voiceClip: {fileID: 0}
     backgroundMusic: {fileID: 0}
     effect: 0
@@ -259,18 +595,46 @@ MonoBehaviour:
     isNarration: 1
     characterName: "\u767D\u77F3 \u900F\u7FBD"
     dialogueText: "\u767D\u77F3 \u900F\u7FBD\u6536\u62FE\u6A02\u8B5C\u3001\u5409\u4ED6\u5E36\u3001\u80CC\u5305\uFF0C\u6DF1\u5438\u4E00\u53E3\u6C23 "
+    expression: 
+    characterAction:
+      enabled: 0
+      actionType: 1
+      intensity: 0.3
+      jumpHeight: 0.2
+      duration: 0.1
     choices: []
     useMultipleCharacters: 1
     characters:
     - characterName: "\u9AD8\u5BAE \u82BD\u4F9D"
       position: 0
       dimCharacter: 1
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     - characterName: "\u5C71\u702C \u65E5\u5411"
       position: 2
       dimCharacter: 1
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     - characterName: "\u767D\u77F3 \u900F\u7FBD"
       position: 1
       dimCharacter: 0
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     voiceClip: {fileID: 0}
     backgroundMusic: {fileID: 0}
     effect: 0
@@ -279,18 +643,46 @@ MonoBehaviour:
     isNarration: 0
     characterName: "\u5927\u91CE \u967D\u6597"
     dialogueText: "\u4F60\u2026\u2026\u4F60\u771F\u7684\u8981\u8D70\u55CE\uFF1F\u9019\u6A23\u5718\u968A\u600E\u9EBC\u8FA6\uFF01"
+    expression: 
+    characterAction:
+      enabled: 0
+      actionType: 1
+      intensity: 0.3
+      jumpHeight: 0.2
+      duration: 0.1
     choices: []
     useMultipleCharacters: 1
     characters:
     - characterName: "\u5927\u91CE \u967D\u6597"
       position: 0
       dimCharacter: 0
+      expression: "\u8907\u96DC"
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     - characterName: "\u5C71\u702C \u65E5\u5411"
       position: 2
       dimCharacter: 1
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     - characterName: "\u767D\u77F3 \u900F\u7FBD"
       position: 1
       dimCharacter: 1
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     voiceClip: {fileID: 0}
     backgroundMusic: {fileID: 0}
     effect: 0
@@ -299,18 +691,46 @@ MonoBehaviour:
     isNarration: 0
     characterName: "\u4E45\u6211 \u975C\u771F"
     dialogueText: "\u2026\u2026\u5982\u679C\u4F60\u4E0D\u60F3\u8AAA\uFF0C\u6211\u5011\u4E5F\u6C92\u8FA6\u6CD5\u52C9\u5F37\u4F60\u2026\u2026"
+    expression: 
+    characterAction:
+      enabled: 0
+      actionType: 1
+      intensity: 0.3
+      jumpHeight: 0.2
+      duration: 0.1
     choices: []
     useMultipleCharacters: 1
     characters:
     - characterName: "\u5927\u91CE \u967D\u6597"
       position: 0
       dimCharacter: 1
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     - characterName: "\u4E45\u6211 \u975C\u771F"
       position: 2
       dimCharacter: 0
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     - characterName: "\u767D\u77F3 \u900F\u7FBD"
       position: 1
       dimCharacter: 1
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     voiceClip: {fileID: 0}
     backgroundMusic: {fileID: 0}
     effect: 0
@@ -319,18 +739,46 @@ MonoBehaviour:
     isNarration: 0
     characterName: "\u5C71\u702C \u65E5\u5411"
     dialogueText: "\u2026\u2026\u6211\u4EE5\u70BA\u53EF\u4EE5\u8DDF\u5927\u5BB6\u597D\u597D\u5408\u4F5C\u2026\u2026"
+    expression: 
+    characterAction:
+      enabled: 0
+      actionType: 1
+      intensity: 0.3
+      jumpHeight: 0.2
+      duration: 0.1
     choices: []
     useMultipleCharacters: 1
     characters:
     - characterName: "\u5C71\u702C \u65E5\u5411"
       position: 0
       dimCharacter: 0
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     - characterName: "\u4E45\u6211 \u975C\u771F"
       position: 2
       dimCharacter: 1
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     - characterName: "\u767D\u77F3 \u900F\u7FBD"
       position: 1
       dimCharacter: 1
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     voiceClip: {fileID: 0}
     backgroundMusic: {fileID: 0}
     effect: 0
@@ -339,18 +787,46 @@ MonoBehaviour:
     isNarration: 0
     characterName: "\u9AD8\u5BAE \u82BD\u4F9D"
     dialogueText: "\u2026\u2026\u6211\u2026\u2026\u53EA\u662F\u5E0C\u671B\u4E00\u5207\u6C92\u4E8B\u2026\u2026"
+    expression: 
+    characterAction:
+      enabled: 0
+      actionType: 1
+      intensity: 0.3
+      jumpHeight: 0.2
+      duration: 0.1
     choices: []
     useMultipleCharacters: 1
     characters:
     - characterName: "\u5C71\u702C \u65E5\u5411"
       position: 0
       dimCharacter: 1
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     - characterName: "\u9AD8\u5BAE \u82BD\u4F9D"
       position: 2
       dimCharacter: 0
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     - characterName: "\u767D\u77F3 \u900F\u7FBD"
       position: 1
       dimCharacter: 1
+      expression: "\u50B7\u8166\u7B4B"
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     voiceClip: {fileID: 0}
     backgroundMusic: {fileID: 0}
     effect: 0
