@@ -171,7 +171,21 @@ MonoBehaviour:
       intensity: 0
       jumpHeight: 0
       duration: 0
-    choices: []
+    choices:
+    - choiceText: "\u628A\u8B5C\u6524\u958B\uFF0C\u7D30\u7D30\u770B\u8457\u6BCF\u4E00\u884C\u3002\r"
+      branchDialogue: {fileID: 11400000, guid: 9ba90ea9dec0ae24294a873992c3909a, type: 2}
+      nextDialogueId: 0
+      isAvailable: 1
+      targetCharacter: "\u767D\u77F3 \u900F\u7FBD"
+      relationshipEffect: 1
+      characterExpression: 
+    - choiceText: "\u628A\u8B5C\u6372\u8D77\u4F86\u585E\u56DE\u62BD\u5C5C\u3002\r"
+      branchDialogue: {fileID: 11400000, guid: f8ce578401f597443a916e641122fd4a, type: 2}
+      nextDialogueId: 0
+      isAvailable: 1
+      targetCharacter: "\u767D\u77F3 \u900F\u7FBD"
+      relationshipEffect: 2
+      characterExpression: 
     useMultipleCharacters: 0
     characters: []
     voiceClip: {fileID: 0}

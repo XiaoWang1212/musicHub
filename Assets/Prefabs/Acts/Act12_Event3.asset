@@ -19,15 +19,36 @@ MonoBehaviour:
     isNarration: 1
     characterName: "\u767D\u77F3 \u900F\u7FBD"
     dialogueText: "\u5C71\u702C \u65E5\u5411\u6B63\u5728\u9ED8\u9ED8\u64E6\u8457\u9F13\u68D2\uFF0C\u770B\u8D77\u4F86\u4E0D\u50CF\u5E73\u5E38\u90A3\u9EBC\u958B\u6717\u3002 "
+    expression: 
+    characterAction:
+      enabled: 0
+      actionType: 1
+      intensity: 0.3
+      jumpHeight: 0.2
+      duration: 0.1
     choices: []
     useMultipleCharacters: 1
     characters:
     - characterName: "\u5C71\u702C \u65E5\u5411"
       position: 2
       dimCharacter: 1
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     - characterName: "\u767D\u77F3 \u900F\u7FBD"
       position: 0
       dimCharacter: 1
+      expression: "\u6B63\u5E38"
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     voiceClip: {fileID: 0}
     backgroundMusic: {fileID: 0}
     effect: 0
@@ -36,15 +57,36 @@ MonoBehaviour:
     isNarration: 0
     characterName: "\u5C71\u702C \u65E5\u5411"
     dialogueText: "\u554A\uFF0C\u767D\u77F3\uFF01\u2026\u4F60\u6709\u6C92\u6709\u89BA\u5F97\u6211\u4ECA\u5929\u6253\u5F97\u5F88\u721B\u554A\uFF1F"
+    expression: 
+    characterAction:
+      enabled: 0
+      actionType: 1
+      intensity: 0.3
+      jumpHeight: 0.2
+      duration: 0.1
     choices: []
     useMultipleCharacters: 1
     characters:
     - characterName: "\u5C71\u702C \u65E5\u5411"
       position: 2
       dimCharacter: 0
+      expression: "\u6B63\u5E38"
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     - characterName: "\u767D\u77F3 \u900F\u7FBD"
       position: 0
       dimCharacter: 1
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     voiceClip: {fileID: 0}
     backgroundMusic: {fileID: 0}
     effect: 0
@@ -53,15 +95,57 @@ MonoBehaviour:
     isNarration: 1
     characterName: "\u767D\u77F3 \u900F\u7FBD"
     dialogueText: "\u5979\u7684\u8072\u97F3\u7B2C\u4E00\u6B21\u807D\u8D77\u4F86\u6C92\u90A3\u9EBC\u4EAE\u3002 "
-    choices: []
+    expression: 
+    characterAction:
+      enabled: 0
+      actionType: 1
+      intensity: 0.3
+      jumpHeight: 0.2
+      duration: 0.1
+    choices:
+    - choiceText: "\u59B3\u4ECA\u5929\u72C0\u614B\u4E0D\u597D\u800C\u5DF2\u3002\u5C71\u702C\u7684\u7BC0\u594F\uFF0C\u6211\u6700\u76F8\u4FE1\u3002"
+      branchDialogue: {fileID: 11400000, guid: c5721a79f19ec744ea66c7a211554b21, type: 2}
+      nextDialogueId: 0
+      isAvailable: 1
+      targetCharacter: "\u5C71\u702C \u65E5\u5411"
+      relationshipEffect: 1
+      characterExpression: 
+    - choiceText: "\u9084\u597D\u5566\uFF0C\u7DF4\u591A\u5E7E\u6B21\u5C31\u6703\u9806\u4E86\u3002"
+      branchDialogue: {fileID: 11400000, guid: a3fdca198031c3248b1825abe7029829, type: 2}
+      nextDialogueId: 0
+      isAvailable: 1
+      targetCharacter: "\u5C71\u702C \u65E5\u5411"
+      relationshipEffect: 0
+      characterExpression: 
+    - choiceText: "\u59B3\u78BA\u5BE6\u5E38\u6253\u504F\u62CD\u3002\u6BD4\u8CFD\u5FEB\u5230\u4E86\uFF0C\u59B3\u8981\u6CE8\u610F\u3002"
+      branchDialogue: {fileID: 11400000, guid: dd29a92da88c4cc478607c6b7d6cedbc, type: 2}
+      nextDialogueId: 0
+      isAvailable: 1
+      targetCharacter: "\u5C71\u702C \u65E5\u5411"
+      relationshipEffect: 2
+      characterExpression: 
     useMultipleCharacters: 1
     characters:
     - characterName: "\u5C71\u702C \u65E5\u5411"
       position: 2
       dimCharacter: 1
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     - characterName: "\u767D\u77F3 \u900F\u7FBD"
       position: 0
       dimCharacter: 1
+      expression: "\u82E6\u60F1"
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     voiceClip: {fileID: 0}
     backgroundMusic: {fileID: 0}
     effect: 0

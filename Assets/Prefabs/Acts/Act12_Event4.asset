@@ -19,15 +19,36 @@ MonoBehaviour:
     isNarration: 1
     characterName: "\u767D\u77F3 \u900F\u7FBD"
     dialogueText: "\u9AD8\u5BAE \u82BD\u4F9D\u6B63\u5728\u92FC\u7434\u6559\u5BA4\u7DF4\u7FD2\u53E4\u5178\u6A02\u66F2 "
+    expression: 
+    characterAction:
+      enabled: 0
+      actionType: 1
+      intensity: 0.3
+      jumpHeight: 0.2
+      duration: 0.1
     choices: []
     useMultipleCharacters: 1
     characters:
     - characterName: "\u9AD8\u5BAE \u82BD\u4F9D"
       position: 2
       dimCharacter: 1
+      expression: "\u6B63\u5E38"
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     - characterName: "\u767D\u77F3 \u900F\u7FBD"
       position: 0
       dimCharacter: 1
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     voiceClip: {fileID: 0}
     backgroundMusic: {fileID: 0}
     effect: 0
@@ -38,15 +59,36 @@ MonoBehaviour:
     dialogueText: "\u5979\u5F48\u5230\u4E00\u534A\uFF0C\u624B\u6307\u505C\u4F4F\u3002
       \u9072\u7591\u4E86\u4E00\u4E0B\u5F8C\uFF0C\u5979\u62AC\u982D\u770B\u5411\u9580\u53E3\u7684
       \u767D\u77F3 \u900F\u7FBD\u3002"
+    expression: 
+    characterAction:
+      enabled: 0
+      actionType: 1
+      intensity: 0.3
+      jumpHeight: 0.2
+      duration: 0.1
     choices: []
     useMultipleCharacters: 1
     characters:
     - characterName: "\u9AD8\u5BAE \u82BD\u4F9D"
       position: 2
       dimCharacter: 1
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     - characterName: "\u767D\u77F3 \u900F\u7FBD"
       position: 0
       dimCharacter: 1
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     voiceClip: {fileID: 0}
     backgroundMusic: {fileID: 0}
     effect: 0
@@ -55,15 +97,36 @@ MonoBehaviour:
     isNarration: 0
     characterName: "\u9AD8\u5BAE \u82BD\u4F9D"
     dialogueText: "\u90A3\u500B\u2026\u2026\u4F60\u4ECA\u5929\u6709\u7A7A\u55CE\uFF1F"
+    expression: 
+    characterAction:
+      enabled: 0
+      actionType: 1
+      intensity: 0.3
+      jumpHeight: 0.2
+      duration: 0.1
     choices: []
     useMultipleCharacters: 1
     characters:
     - characterName: "\u9AD8\u5BAE \u82BD\u4F9D"
       position: 2
       dimCharacter: 0
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     - characterName: "\u767D\u77F3 \u900F\u7FBD"
       position: 0
       dimCharacter: 1
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     voiceClip: {fileID: 0}
     backgroundMusic: {fileID: 0}
     effect: 0
@@ -72,15 +135,57 @@ MonoBehaviour:
     isNarration: 1
     characterName: "\u767D\u77F3 \u900F\u7FBD"
     dialogueText: "\u8A9E\u6C23\u5F88\u8F15\uFF0C\u597D\u50CF\u6015\u6253\u64FE\u5230\u4EBA\u3002"
-    choices: []
+    expression: 
+    characterAction:
+      enabled: 0
+      actionType: 1
+      intensity: 0.3
+      jumpHeight: 0.2
+      duration: 0.1
+    choices:
+    - choiceText: "\u6709\u554A\uFF0C\u4F60\u9700\u8981\u4EC0\u9EBC\uFF1F"
+      branchDialogue: {fileID: 11400000, guid: 38849d47f4297924a9e8b576c84ac78b, type: 2}
+      nextDialogueId: 0
+      isAvailable: 1
+      targetCharacter: "\u9AD8\u5BAE \u82BD\u4F9D"
+      relationshipEffect: 1
+      characterExpression: 
+    - choiceText: "\u4E0D\u78BA\u5B9A\u8036\uFF0C\u4F46\u4F60\u53EF\u4EE5\u5148\u81EA\u5DF1\u518D\u8A66\u4E00\u6B21\uFF0C\u6211\u807D\u807D\u770B\u3002"
+      branchDialogue: {fileID: 11400000, guid: ce8264df505a91048b46f3a73b36fc36, type: 2}
+      nextDialogueId: 0
+      isAvailable: 1
+      targetCharacter: "\u9AD8\u5BAE \u82BD\u4F9D"
+      relationshipEffect: 0
+      characterExpression: 
+    - choiceText: "\u6211\u7B49\u4E00\u4E0B\u9084\u6709\u4E8B\uFF0C\u4F60\u81EA\u5DF1\u5148\u7DF4\u5427\u3002"
+      branchDialogue: {fileID: 11400000, guid: a97483dc0a5386e47ba5e648a451761b, type: 2}
+      nextDialogueId: 0
+      isAvailable: 1
+      targetCharacter: "\u9AD8\u5BAE \u82BD\u4F9D"
+      relationshipEffect: 2
+      characterExpression: 
     useMultipleCharacters: 1
     characters:
     - characterName: "\u9AD8\u5BAE \u82BD\u4F9D"
       position: 2
       dimCharacter: 1
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     - characterName: "\u767D\u77F3 \u900F\u7FBD"
       position: 0
       dimCharacter: 1
+      expression: "\u82E6\u60F1"
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
     voiceClip: {fileID: 0}
     backgroundMusic: {fileID: 0}
     effect: 0

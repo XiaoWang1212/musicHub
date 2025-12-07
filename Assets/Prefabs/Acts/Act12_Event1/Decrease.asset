@@ -42,7 +42,7 @@ MonoBehaviour:
     - characterName: "\u5927\u91CE \u967D\u6597"
       position: 2
       dimCharacter: 1
-      expression: 
+      expression: "\u559C"
       characterAction:
         enabled: 0
         actionType: 0
@@ -118,7 +118,7 @@ MonoBehaviour:
     - characterName: "\u5927\u91CE \u967D\u6597"
       position: 2
       dimCharacter: 0
-      expression: 
+      expression: "\u4E0D\u723D"
       characterAction:
         enabled: 0
         actionType: 0
