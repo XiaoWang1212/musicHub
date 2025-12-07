@@ -139,7 +139,7 @@ MonoBehaviour:
     - characterName: "\u767D\u77F3 \u900F\u7FBD"
       position: 0
       dimCharacter: 1
-      expression: 
+      expression: "\u82E6\u60F1"
       characterAction:
         enabled: 0
         actionType: 1

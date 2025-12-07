@@ -80,7 +80,7 @@ MonoBehaviour:
     - characterName: "\u5C71\u702C \u65E5\u5411"
       position: 0
       dimCharacter: 1
-      expression: "\u6B63\u5E38"
+      expression: 
       characterAction:
         enabled: 0
         actionType: 1
@@ -108,7 +108,7 @@ MonoBehaviour:
     - characterName: "\u767D\u77F3 \u900F\u7FBD"
       position: 2
       dimCharacter: 1
-      expression: "\u50B7\u8166\u7B4B"
+      expression: 
       characterAction:
         enabled: 0
         actionType: 1
@@ -146,7 +146,7 @@ MonoBehaviour:
     - characterName: "\u767D\u77F3 \u900F\u7FBD"
       position: 2
       dimCharacter: 1
-      expression: "\u50B7\u8166\u7B4B"
+      expression: 
       characterAction:
         enabled: 0
         actionType: 1
@@ -158,10 +158,10 @@ MonoBehaviour:
     effect: 0
     dimCharacter: 0
   - dialogueIndex: 0
-    isNarration: 1
+    isNarration: 0
     characterName: "\u767D\u77F3 \u900F\u7FBD"
     dialogueText: " \u2026\u2026\u76F8\u4FE1\u6211\u55CE\u3002"
-    expression: "\u559C"
+    expression: "\u82E6\u60F1"
     characterAction:
       enabled: 1
       actionType: 1
@@ -173,8 +173,8 @@ MonoBehaviour:
     characters:
     - characterName: "\u767D\u77F3 \u900F\u7FBD"
       position: 2
-      dimCharacter: 1
-      expression: "\u50B7\u8166\u7B4B"
+      dimCharacter: 0
+      expression: "\u559C"
       characterAction:
         enabled: 0
         actionType: 1

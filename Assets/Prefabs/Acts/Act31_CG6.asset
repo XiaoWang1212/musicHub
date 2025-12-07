@@ -139,7 +139,21 @@ MonoBehaviour:
       intensity: 0.3
       jumpHeight: 0.2
       duration: 0.1
-    choices: []
+    choices:
+    - choiceText: "\u652F\u6301\u4ED6\r"
+      branchDialogue: {fileID: 11400000, guid: 88fae80bf891c974ea1d6e2b8ca2da5e, type: 2}
+      nextDialogueId: 0
+      isAvailable: 1
+      targetCharacter: "\u5C71\u702C \u65E5\u5411"
+      relationshipEffect: 1
+      characterExpression: 
+    - choiceText: "\u4E0D\u8868\u614B"
+      branchDialogue: {fileID: 11400000, guid: c14dff45740047e44a08bc727935aa99, type: 2}
+      nextDialogueId: 0
+      isAvailable: 1
+      targetCharacter: "\u5C71\u702C \u65E5\u5411"
+      relationshipEffect: 2
+      characterExpression: 
     useMultipleCharacters: 1
     characters:
     - characterName: "\u767D\u77F3 \u900F\u7FBD"
