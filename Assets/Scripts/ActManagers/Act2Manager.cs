@@ -28,6 +28,7 @@ public class Act2Manager : BaseActManager
     public AudioClip heartbeatSound;
     public AudioClip drawerCloseSound;
     public AudioClip knockSound;
+    public AudioClip act2MainBGM; 
 
     [Header("動畫設定")]
     public float bookFadeInDuration = 2f;
@@ -430,6 +431,20 @@ public class Act2Manager : BaseActManager
         yield return StartCoroutine(base.ActEndingSequence());
     }
 
+    public void PlayAct2MainBGM()
+    {
+        if (bgmSource != null && act2MainBGM != null)
+        {
+            // 停止當前正在播放的聲音，例如 morningAmbience
+            bgmSource.Stop();
+
+            bgmSource.clip = act2MainBGM;
+            bgmSource.volume = 0.8f; // 設定音量 (可調整)
+            bgmSource.loop = true; // 設為循環播放
+            bgmSource.Play();
+            Debug.Log("[Act2Manager] 播放 Act2 主 BGM。");
+        }
+    }
     // BGM 淡出
     IEnumerator FadeOutBGM()
     {
