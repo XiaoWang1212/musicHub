@@ -793,6 +793,11 @@ MonoBehaviour:
   panelFadeOutDuration: 0.2
   buttonAppearDelay: 0.1
   randomizeChoiceOrder: 1
+  hoverScale: 1.05
+  hoverAnimationDuration: 0.15
+  hoverColor: {r: 0.25, g: 0.25, b: 0.25, a: 1}
+  enableHoverColorChange: 1
+  hoverOffsetX: 10
 --- !u!4 &463012151
 Transform:
   m_ObjectHideFlags: 0
@@ -1893,7 +1898,7 @@ MonoBehaviour:
     m_Top: 20
     m_Bottom: 20
   m_ChildAlignment: 4
-  m_Spacing: 30
+  m_Spacing: 50
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
