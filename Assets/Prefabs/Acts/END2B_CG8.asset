@@ -180,6 +180,24 @@ MonoBehaviour:
     backgroundMusic: {fileID: 0}
     effect: 0
     dimCharacter: 0
+  - dialogueIndex: 0
+    isNarration: 1
+    characterName: 
+    dialogueText: "\u3010\u5287\u7D42\u3011"
+    expression: 
+    characterAction:
+      enabled: 0
+      actionType: 0
+      intensity: 0.005
+      jumpHeight: 0.01
+      duration: 0.05
+    choices: []
+    useMultipleCharacters: 0
+    characters: []
+    voiceClip: {fileID: 0}
+    backgroundMusic: {fileID: 0}
+    effect: 0
+    dimCharacter: 0
   isMainStoryline: 1
   canSkip: 1
   autoSave: 1

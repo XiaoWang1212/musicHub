@@ -241,6 +241,7 @@ MonoBehaviour:
   backgroundRenderer: {fileID: 787841175}
   choiceButtonPrefab: {fileID: 0}
   choiceButtonContainer: {fileID: 0}
+  choiceManager: {fileID: 0}
   voiceAudioSource: {fileID: 0}
   musicAudioSource: {fileID: 0}
   typingSpeed: 0.05
@@ -748,7 +749,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 666b82693b7a84e4f85da4648af8a543, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetSceneName: Act10_
+  targetSceneName: Act20_Musicroom
   delay: 0.5
   onTransitionStart:
     m_PersistentCalls:

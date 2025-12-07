@@ -241,6 +241,7 @@ MonoBehaviour:
   backgroundRenderer: {fileID: 787841175}
   choiceButtonPrefab: {fileID: 0}
   choiceButtonContainer: {fileID: 0}
+  choiceManager: {fileID: 0}
   voiceAudioSource: {fileID: 0}
   musicAudioSource: {fileID: 0}
   typingSpeed: 0.05
@@ -748,7 +749,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 666b82693b7a84e4f85da4648af8a543, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetSceneName: Act10_
+  targetSceneName: Act27_CG4
   delay: 0.5
   onTransitionStart:
     m_PersistentCalls:
@@ -1127,8 +1128,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueManager: {fileID: 79556193}
   actDialogueSequence: {fileID: 11400000, guid: 1f99cfc4976c7bd4e9acc87f8a371a5b, type: 2}
-  choiceSequence: {fileID: 0}
-  afterChoiceDialogue: {fileID: 0}
   backgroundRenderer: {fileID: 787841175}
   transitionToNextScene: {fileID: 403987405}
   initialDelay: 0.5
@@ -1136,7 +1135,6 @@ MonoBehaviour:
   backgroundFadeOutTime: 2
   dialogueStartDelay: 1
   characterManager: {fileID: 1402649991}
-  choiceManager: {fileID: 0}
   actionTriggers:
   - dialogueIndex: 1
     targetRenderer: {fileID: 30463587}

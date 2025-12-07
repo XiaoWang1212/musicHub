@@ -216,6 +216,24 @@ MonoBehaviour:
     backgroundMusic: {fileID: 0}
     effect: 0
     dimCharacter: 1
+  - dialogueIndex: 0
+    isNarration: 1
+    characterName: "\u767D\u77F3 \u900F\u7FBD"
+    dialogueText: "\u3010\u5287\u7D42\u3011"
+    expression: 
+    characterAction:
+      enabled: 0
+      actionType: 1
+      intensity: 0.3
+      jumpHeight: 0.2
+      duration: 0.1
+    choices: []
+    useMultipleCharacters: 1
+    characters: []
+    voiceClip: {fileID: 0}
+    backgroundMusic: {fileID: 0}
+    effect: 0
+    dimCharacter: 1
   isMainStoryline: 1
   canSkip: 1
   autoSave: 1
