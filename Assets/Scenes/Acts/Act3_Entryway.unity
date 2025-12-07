@@ -1173,8 +1173,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dffc0e4f9d641a46a0e4689703cad08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
-=======
   dialogueManager: {fileID: 79556193}
   actDialogueSequence: {fileID: 11400000, guid: 9b9d1c541c7f91d48a84846259b20c3d, type: 2}
   choiceSequence: {fileID: 0}
@@ -1187,7 +1185,6 @@ MonoBehaviour:
   dialogueStartDelay: 1
   characterManager: {fileID: 1402649991}
   choiceManager: {fileID: 0}
->>>>>>> 6b2c9c5b624c1db163095f6b4c083413ba452c1c
 --- !u!1 &1257121362
 GameObject:
   m_ObjectHideFlags: 0
