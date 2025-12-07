@@ -28,7 +28,7 @@ public class BaseActManager : MonoBehaviour
     public CharacterManager characterManager; // 角色管理器引用
     
     [Header("內部狀態")]
-    private bool isActDialogueActive = false;  // 標記對話是否正在進行
+    protected bool isActDialogueActive = false;  // 標記對話是否正在進行
 
     protected virtual void Start()
     {

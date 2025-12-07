@@ -70,7 +70,7 @@ public class Act2Manager : BaseActManager
     
     void OnDialogueIndexChanged(int dialogueIndex)
     {
-        if (!isAct2DialogueActive) return;
+        if (!isActDialogueActive) return;
 
         switch (dialogueIndex)
         {
@@ -91,9 +91,6 @@ public class Act2Manager : BaseActManager
                 HideMusicBookAndShake();
                 ShowPhoneMessage("【開學提醒：今日為轉學生報到日】");  // 改這裡
                 break;
-            case 7: // 手機訊息出現
-                Debug.Log("📱 觸發手機通知顯示");
-                ShowPhoneMessage("【開學提醒】\n今日為轉學生報到日");
                 break;
             case 8: // 第二次按空白鍵：文字變紅 + 主角害怕抖動
                 Debug.Log("😰 觸發文字變紅和主角害怕抖動");
