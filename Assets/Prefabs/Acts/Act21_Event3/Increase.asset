@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05fccf3e6d213354aaa34d617b8b71df, type: 3}
+  m_Name: Increase
+  m_EditorClassIdentifier: 
+  sequenceName: Increase
+  sequenceId: 0
+  dialogues:
+  - dialogueIndex: 0
+    isNarration: 1
+    characterName: 
+    dialogueText: "\u5C71\u702C \u65E5\u5411\u91CD\u65B0\u7372\u5F97\u81EA\u4FE1"
+    expression: 
+    characterAction:
+      enabled: 0
+      actionType: 0
+      intensity: 0
+      jumpHeight: 0
+      duration: 0
+    choices: []
+    useMultipleCharacters: 1
+    characters:
+    - characterName: "\u5C71\u702C \u65E5\u5411"
+      position: 2
+      dimCharacter: 1
+      expression: "\u559C"
+      characterAction:
+        enabled: 0
+        actionType: 0
+        intensity: 0
+        jumpHeight: 0
+        duration: 0
+    - characterName: "\u767D\u77F3 \u900F\u7FBD"
+      position: 0
+      dimCharacter: 1
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 0
+        intensity: 0
+        jumpHeight: 0
+        duration: 0
+    voiceClip: {fileID: 0}
+    backgroundMusic: {fileID: 0}
+    effect: 0
+    dimCharacter: 0
+  isMainStoryline: 1
+  canSkip: 1
+  autoSave: 0

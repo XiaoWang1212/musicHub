@@ -241,6 +241,7 @@ MonoBehaviour:
   backgroundRenderer: {fileID: 787841175}
   choiceButtonPrefab: {fileID: 0}
   choiceButtonContainer: {fileID: 0}
+  choiceManager: {fileID: 0}
   voiceAudioSource: {fileID: 0}
   musicAudioSource: {fileID: 0}
   typingSpeed: 0.05
@@ -745,7 +746,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 666b82693b7a84e4f85da4648af8a543, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetSceneName: Act6_Office
+  targetSceneName: Act7_Corridor
   delay: 0.5
   onTransitionStart:
     m_PersistentCalls:
@@ -1342,6 +1343,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1402649990}
   - component: {fileID: 1402649991}
+  - component: {fileID: 1402649992}
   m_Layer: 0
   m_Name: CharacterManager
   m_TagString: Untagged
@@ -1429,6 +1431,32 @@ MonoBehaviour:
   - {fileID: 655946284}
   - {fileID: 900233159}
   - {fileID: 1165029759}
+--- !u!114 &1402649992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402649988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474a5b5d2357a174b9da7c06222947f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expressionTriggers:
+  - dialogueIndex: 5
+    characterName: "\u767D\u77F3 \u900F\u7FBD"
+    expressionName: "\u59D4\u5C48"
+    useAnimation: 0
+    delay: 0
+    description: 
+  - dialogueIndex: 9
+    characterName: "\u767D\u77F3 \u900F\u7FBD"
+    expressionName: "\u82E6\u60F1"
+    useAnimation: 0
+    delay: 0
+    description: 
+  enableDebugLog: 1
 --- !u!1 &2032743102
 GameObject:
   m_ObjectHideFlags: 0

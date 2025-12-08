@@ -241,6 +241,7 @@ MonoBehaviour:
   backgroundRenderer: {fileID: 787841175}
   choiceButtonPrefab: {fileID: 0}
   choiceButtonContainer: {fileID: 0}
+  choiceManager: {fileID: 0}
   voiceAudioSource: {fileID: 0}
   musicAudioSource: {fileID: 0}
   typingSpeed: 0.05
@@ -748,7 +749,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 666b82693b7a84e4f85da4648af8a543, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetSceneName: Act10_
+  targetSceneName: Act13_Opportunity1
   delay: 0.5
   onTransitionStart:
     m_PersistentCalls:
@@ -1122,7 +1123,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1185825260}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e93aa1b394935574e860727f42bf5acd, type: 3}
+  m_Script: {fileID: 11500000, guid: d8cf6120590866c4482d71e2b111f320, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueManager: {fileID: 79556193}
@@ -1134,43 +1135,6 @@ MonoBehaviour:
   backgroundFadeOutTime: 2
   dialogueStartDelay: 1
   characterManager: {fileID: 1402649991}
-  actionTriggers:
-  - dialogueIndex: 1
-    targetRenderer: {fileID: 30463587}
-    characterName: "\u767D\u77F3 \u900F\u7FBD"
-    actionType: 2
-    intensity: 0.3
-    jumpHeight: 0.2
-    duration: 0.1
-    expressionName: "\u666E\u901A"
-    useExpressionAnimation: 1
-  - dialogueIndex: 4
-    targetRenderer: {fileID: 30463587}
-    characterName: "\u767D\u77F3 \u900F\u7FBD"
-    actionType: 0
-    intensity: 0.3
-    jumpHeight: 0.2
-    duration: 0.1
-    expressionName: "\u666E\u901A"
-    useExpressionAnimation: 1
-  - dialogueIndex: 8
-    targetRenderer: {fileID: 30463587}
-    characterName: "\u767D\u77F3 \u900F\u7FBD"
-    actionType: 0
-    intensity: 0.3
-    jumpHeight: 0.2
-    duration: 0.1
-    expressionName: "\u666E\u901A"
-    useExpressionAnimation: 1
-  - dialogueIndex: 10
-    targetRenderer: {fileID: 171917260}
-    characterName: "\u5C0E\u5E2B"
-    actionType: 1
-    intensity: 0.3
-    jumpHeight: 0.2
-    duration: 0.1
-    expressionName: "\u666E\u901A"
-    useExpressionAnimation: 1
 --- !u!1 &1257121362
 GameObject:
   m_ObjectHideFlags: 0
@@ -1332,6 +1296,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1402649990}
   - component: {fileID: 1402649991}
+  - component: {fileID: 1402649992}
   m_Layer: 0
   m_Name: CharacterManager
   m_TagString: Untagged
@@ -1499,6 +1464,38 @@ MonoBehaviour:
   - {fileID: 655946284}
   - {fileID: 900233159}
   - {fileID: 1165029759}
+--- !u!114 &1402649992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402649988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474a5b5d2357a174b9da7c06222947f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expressionTriggers:
+  - dialogueIndex: 1
+    characterName: 
+    expressionName: 
+    useAnimation: 0
+    delay: 0
+    description: 
+  - dialogueIndex: 2
+    characterName: 
+    expressionName: 
+    useAnimation: 0
+    delay: 0
+    description: 
+  - dialogueIndex: 0
+    characterName: "\u767D\u77F3 \u900F\u7FBD"
+    expressionName: "\u50B7\u8166\u7B4B"
+    useAnimation: 0
+    delay: 0
+    description: 
+  enableDebugLog: 1
 --- !u!1 &1481972846
 GameObject:
   m_ObjectHideFlags: 0

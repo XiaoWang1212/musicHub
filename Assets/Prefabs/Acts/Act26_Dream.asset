@@ -1,0 +1,148 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05fccf3e6d213354aaa34d617b8b71df, type: 3}
+  m_Name: Act26_Dream
+  m_EditorClassIdentifier: 
+  sequenceName: Act16_CG3
+  sequenceId: 12
+  dialogues:
+  - dialogueIndex: 0
+    isNarration: 0
+    characterName: "\u88FD\u4F5C\u4EBA"
+    dialogueText: "\u6211\u807D\u904E\u59B3\u7684Demo\u4E86\u3002  \u65CB\u5F8B\u4E7E\u6DE8\u3001\u8A5E\u4E5F\u8AA0\u5BE6\u2026\u2026\u59B3\u5F88\u6709\u5929\u5206\u3002 "
+    expression: 
+    characterAction:
+      enabled: 0
+      actionType: 1
+      intensity: 0.3
+      jumpHeight: 0.2
+      duration: 0.1
+    choices: []
+    useMultipleCharacters: 0
+    characters: []
+    voiceClip: {fileID: 0}
+    backgroundMusic: {fileID: 0}
+    effect: 0
+    dimCharacter: 0
+  - dialogueIndex: 0
+    isNarration: 0
+    characterName: "\u767D\u77F3 \u900F\u7FBD"
+    dialogueText: "\u771F\u7684\u55CE\uFF1F\u6211\u9084\u4EE5\u70BA\u2026\u2026\r\n
+      \u53EA\u662F\u7DB2\u8DEF\u4E0A\u7684\u5C0F\u4F5C\u54C1\u800C\u5DF2\u3002\r\n"
+    expression: "\u5687\u5230"
+    characterAction:
+      enabled: 0
+      actionType: 1
+      intensity: 0.3
+      jumpHeight: 0.2
+      duration: 0.1
+    choices: []
+    useMultipleCharacters: 0
+    characters: []
+    voiceClip: {fileID: 0}
+    backgroundMusic: {fileID: 0}
+    effect: 0
+    dimCharacter: 0
+  - dialogueIndex: 0
+    isNarration: 1
+    characterName: "\u767D\u77F3 \u900F\u7FBD"
+    dialogueText: "\u767D\u77F3 \u900F\u7FBD\u7684\u773C\u775B\u4EAE\u8D77\u3002\u5979\u7B2C\u4E00\u6B21\u89BA\u5F97\u81EA\u5DF1\u88AB\u7576\u4F5C\u300C\u5275\u4F5C\u8005\u300D\u770B\u5F85\r\n"
+    expression: "\u5687\u5230"
+    characterAction:
+      enabled: 0
+      actionType: 1
+      intensity: 0.3
+      jumpHeight: 0.2
+      duration: 0.1
+    choices: []
+    useMultipleCharacters: 0
+    characters: []
+    voiceClip: {fileID: 0}
+    backgroundMusic: {fileID: 0}
+    effect: 0
+    dimCharacter: 0
+  - dialogueIndex: 0
+    isNarration: 0
+    characterName: "\u767D\u77F3 \u900F\u7FBD"
+    dialogueText: "\u9019\u9996\u2026\u2026\u662F\u6211\u7B2C\u4E00\u9996\u5BEB\u7684\u6B4C\u3002\r\n
+      \u96D6\u7136\u6709\u4E00\u9EDE\u5929\u771F\u2026\u2026"
+    expression: "\u559C"
+    characterAction:
+      enabled: 0
+      actionType: 1
+      intensity: 0.3
+      jumpHeight: 0.2
+      duration: 0.1
+    choices: []
+    useMultipleCharacters: 0
+    characters: []
+    voiceClip: {fileID: 0}
+    backgroundMusic: {fileID: 0}
+    effect: 0
+    dimCharacter: 0
+  - dialogueIndex: 0
+    isNarration: 0
+    characterName: "\u88FD\u4F5C\u4EBA"
+    dialogueText: "\u4E0D\u3002\r\n \u9019\u9996\u6B4C\u7684\u9748\u9B42\u2026\u2026\u662F\u59B3\u7684\u3002\r\n"
+    expression: 
+    characterAction:
+      enabled: 0
+      actionType: 1
+      intensity: 0.3
+      jumpHeight: 0.2
+      duration: 0.1
+    choices: []
+    useMultipleCharacters: 0
+    characters: []
+    voiceClip: {fileID: 0}
+    backgroundMusic: {fileID: 0}
+    effect: 0
+    dimCharacter: 0
+  - dialogueIndex: 0
+    isNarration: 0
+    characterName: "\u88FD\u4F5C\u4EBA"
+    dialogueText: "\u76F8\u4FE1\u6211\uFF0C\u6211\u6703\u5E36\u59B3\u8D70\u5F97\u66F4\u9060\u3002"
+    expression: 
+    characterAction:
+      enabled: 0
+      actionType: 1
+      intensity: 0.3
+      jumpHeight: 0.2
+      duration: 0.1
+    choices: []
+    useMultipleCharacters: 0
+    characters: []
+    voiceClip: {fileID: 0}
+    backgroundMusic: {fileID: 0}
+    effect: 0
+    dimCharacter: 0
+  - dialogueIndex: 0
+    isNarration: 1
+    characterName: "\u767D\u77F3 \u900F\u7FBD"
+    dialogueText: "\u767D\u77F3 \u900F\u7FBD\u88AB\u64CA\u4E2D\u5FC3\u3002\u5979\u7B2C\u4E00\u6B21\u89BA\u5F97\u81EA\u5DF1\u503C\u5F97\u88AB\u300C\u671F\u5F85\u300D\u3002"
+    expression: "\u559C"
+    characterAction:
+      enabled: 0
+      actionType: 1
+      intensity: 0.3
+      jumpHeight: 0.2
+      duration: 0.1
+    choices: []
+    useMultipleCharacters: 0
+    characters: []
+    voiceClip: {fileID: 0}
+    backgroundMusic: {fileID: 0}
+    effect: 0
+    dimCharacter: 1
+  isMainStoryline: 1
+  canSkip: 1
+  autoSave: 1

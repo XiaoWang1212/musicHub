@@ -1,0 +1,119 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05fccf3e6d213354aaa34d617b8b71df, type: 3}
+  m_Name: Act21_Event2
+  m_EditorClassIdentifier: 
+  sequenceName: Act16_CG3
+  sequenceId: 12
+  dialogues:
+  - dialogueIndex: 0
+    isNarration: 1
+    characterName: "\u767D\u77F3 \u900F\u7FBD"
+    dialogueText: "\u767D\u77F3 \u900F\u7FBD\u5728\u6A39\u4E0B\u770B\u5230\u4E45\u6211
+      \u975C\u771F\u4E00\u500B\u4EBA\u5750\u5728\u89D2\u843D\u8ABF\u6574\u8C9D\u65AF\uFF0C\u8868\u60C5\u6C89\u91CD\u3002"
+    expression: 
+    characterAction:
+      enabled: 0
+      actionType: 1
+      intensity: 0.3
+      jumpHeight: 0.2
+      duration: 0.1
+    choices: []
+    useMultipleCharacters: 1
+    characters:
+    - characterName: "\u767D\u77F3 \u900F\u7FBD"
+      position: 0
+      dimCharacter: 1
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
+    - characterName: "\u4E45\u6211 \u975C\u771F"
+      position: 2
+      dimCharacter: 1
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
+    voiceClip: {fileID: 0}
+    backgroundMusic: {fileID: 0}
+    effect: 0
+    dimCharacter: 0
+  - dialogueIndex: 0
+    isNarration: 0
+    characterName: "\u4E45\u6211 \u975C\u771F"
+    dialogueText: "\u6211\u53EA\u662F\u60F3\u8B93\u6574\u9996\u6B4C\u7A69\u4F4F\u2026\u2026\u5927\u91CE
+      \u967D\u6597\u61C2\u55CE\uFF1F"
+    expression: 
+    characterAction:
+      enabled: 0
+      actionType: 1
+      intensity: 0.3
+      jumpHeight: 0.2
+      duration: 0.1
+    choices:
+    - choiceText: "\u4F60\u7684\u7A69\u5B9A\u5F88\u91CD\u8981\uFF0C\u4E5F\u9700\u8981\u88AB\u8A8D\u53EF\u3002\u6C92\u6709\u4F60\uFF0C\u6211\u5011\u6628\u5929\u5C31\u771F\u7684\u6563\u4E86\u3002"
+      branchDialogue: {fileID: 11400000, guid: ee3a0c336160d2847bd284895ac7cab8, type: 2}
+      nextDialogueId: 0
+      isAvailable: 1
+      targetCharacter: "\u4E45\u6211 \u975C\u771F"
+      relationshipEffect: 1
+      characterExpression: 
+    - choiceText: "\u5225\u518D\u60B6\u60B6\u4E0D\u6A02\u4E86\uFF01\u5FEB\u9EDE\u628A\u8C9D\u65AF\u8ABF\u597D\uFF0C\u6211\u5011\u660E\u5929\u9084\u8981\u6392\u7DF4\u3002"
+      branchDialogue: {fileID: 11400000, guid: 8e9c475aa6ac45b469ba0d956e9392aa, type: 2}
+      nextDialogueId: 0
+      isAvailable: 1
+      targetCharacter: "\u4E45\u6211 \u975C\u771F"
+      relationshipEffect: 2
+      characterExpression: 
+    - choiceText: "\u6211\u5176\u5BE6\u6BD4\u4F60\u5011\u66F4\u5BB3\u6015\u641E\u7838\u2026\u2026"
+      branchDialogue: {fileID: 11400000, guid: 032af7d1f52acaf48a4a9dc91ac81cc0, type: 2}
+      nextDialogueId: 0
+      isAvailable: 1
+      targetCharacter: "\u4E45\u6211 \u975C\u771F"
+      relationshipEffect: 1
+      characterExpression: 
+    useMultipleCharacters: 1
+    characters:
+    - characterName: "\u767D\u77F3 \u900F\u7FBD"
+      position: 0
+      dimCharacter: 1
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
+    - characterName: "\u4E45\u6211 \u975C\u771F"
+      position: 2
+      dimCharacter: 0
+      expression: 
+      characterAction:
+        enabled: 0
+        actionType: 1
+        intensity: 0.3
+        jumpHeight: 0.2
+        duration: 0.1
+    voiceClip: {fileID: 0}
+    backgroundMusic: {fileID: 0}
+    effect: 0
+    dimCharacter: 0
+  isMainStoryline: 1
+  canSkip: 1
+  autoSave: 1

@@ -1013,6 +1013,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueManager: {fileID: 79556193}
   actDialogueSequence: {fileID: 11400000, guid: da0c1f28cbac2234b8df41eaec64cdc4, type: 2}
+  choiceSequence: {fileID: 0}
+  afterChoiceDialogue: {fileID: 0}
   backgroundRenderer: {fileID: 787841175}
   transitionToNextScene: {fileID: 1226097934}
   initialDelay: 1
@@ -1020,6 +1022,7 @@ MonoBehaviour:
   backgroundFadeOutTime: 2
   dialogueStartDelay: 1
   characterManager: {fileID: 1402649991}
+  choiceManager: {fileID: 0}
   musicBookRenderer: {fileID: 622286720}
   phoneMessagePanel: {fileID: 0}
   phoneRenderer: {fileID: 837886931}
@@ -1524,7 +1527,7 @@ SpriteRenderer:
   m_SortingLayerID: 558274157
   m_SortingLayer: -2
   m_SortingOrder: 1
-  m_Sprite: {fileID: -8288338645124521271, guid: 993290a42b14d6d4295a5b3c7662cd31, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e72541dbe77f6454aa8f123c6faa4525, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

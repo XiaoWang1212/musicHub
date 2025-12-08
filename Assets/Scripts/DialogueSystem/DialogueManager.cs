@@ -15,6 +15,9 @@ public class DialogueManager : MonoBehaviour
     public GameObject choiceButtonPrefab;
     public Transform choiceButtonContainer;
     
+    [Header("🎯 選擇系統")]
+    public ChoiceManager choiceManager;  // 選擇管理器
+    
     [Header("音效管理")]
     public AudioSource voiceAudioSource;
     public AudioSource musicAudioSource;
@@ -56,10 +59,51 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         InitializeDialogueSystem();
+        
+        // 訂閱 ChoiceManager 事件
+        if (choiceManager != null)
+        {
+            ChoiceManager.OnChoiceMade += OnChoiceMade;
+        }
+    }
+    
+    void OnDestroy()
+    {
+        // 取消訂閱
+        if (choiceManager != null)
+        {
+            ChoiceManager.OnChoiceMade -= OnChoiceMade;
+        }
+    }
+    
+    /// <summary>
+    /// 處理選擇完成 - 切換到分支對話
+    /// </summary>
+    void OnChoiceMade(ChoiceData choice)
+    {
+        // 重新啟用 DialoguePanel 的射線阻擋
+        EnableDialoguePanelRaycast();
+        
+        // 如果有分支對話,切換過去
+        if (choice.branchDialogue != null)
+        {
+            StartDialogue(choice.branchDialogue);
+        }
+        else
+        {
+            // 沒有分支對話,繼續當前序列
+            ContinueDialogue();
+        }
     }
     
     void Update()
     {
+        // 如果正在顯示選項,則禁止對話繼續
+        if (choiceManager != null && choiceManager.IsShowingChoices())
+        {
+            return;
+        }
+        
         // 空白鍵繼續
         if (Input.GetKeyDown(continueKey))
         {
@@ -140,6 +184,29 @@ public class DialogueManager : MonoBehaviour
             // 多角色顯示模式
             OnMultipleCharactersDisplay?.Invoke(currentDialogue.characters);
             Debug.Log($"👥 多角色顯示: {currentDialogue.characters.Count} 個角色");
+            
+            // 處理每個角色的表情和動作
+            var characterManager = FindFirstObjectByType<CharacterManager>();
+            if (characterManager != null)
+            {
+                foreach (var charData in currentDialogue.characters)
+                {
+                    // 表情切換
+                    if (!string.IsNullOrEmpty(charData.expression))
+                    {
+                        characterManager.ChangeCharacterExpression(charData.characterName, charData.expression);
+                        Debug.Log($"😊 {charData.characterName} 表情切換: {charData.expression}");
+                    }
+                    
+                    // 執行角色動作
+                    if (charData.characterAction != null && 
+                        charData.characterAction.enabled && 
+                        !string.IsNullOrEmpty(charData.characterName))
+                    {
+                        ExecuteCharacterAction(charData.characterAction, charData.characterName);
+                    }
+                }
+            }
         }
         else
         {
@@ -165,12 +232,32 @@ public class DialogueManager : MonoBehaviour
                 else
                 {
                     OnCharacterDisplay?.Invoke(currentDialogue.characterName, 
-                                             null,  // 不再傳入 sprite，由 CharacterManager 使用預設 sprite
+                                             null,  // 不再傳入 sprite,由 CharacterManager 使用預設 sprite
                                              currentDialogue.dimCharacter);
+                    
+                    // 處理單人對話的表情切換
+                    if (!string.IsNullOrEmpty(currentDialogue.expression))
+                    {
+                        var characterManager = FindFirstObjectByType<CharacterManager>();
+                        if (characterManager != null)
+                        {
+                            characterManager.ChangeCharacterExpression(currentDialogue.characterName, currentDialogue.expression);
+                            Debug.Log($"😊 {currentDialogue.characterName} 表情切換: {currentDialogue.expression}");
+                        }
+                    }
                 }
             }
         }
         // 背景管理已移至 ActManager，此處不再處理背景設定
+        
+        // 執行角色動作 (單人對話模式)
+        if (!currentDialogue.useMultipleCharacters && 
+            currentDialogue.characterAction != null && 
+            currentDialogue.characterAction.enabled &&
+            !string.IsNullOrEmpty(currentDialogue.characterName))
+        {
+            ExecuteCharacterAction(currentDialogue.characterAction, currentDialogue.characterName);
+        }
         
         // 播放語音
         if (voiceAudioSource != null && currentDialogue.voiceClip != null)
@@ -192,14 +279,47 @@ public class DialogueManager : MonoBehaviour
         // 顯示對話文字（打字效果）
         StartCoroutine(TypeText(currentDialogue.dialogueText));
         
-        // 處理選擇按鈕
-        if (currentDialogue.hasChoices)
+        // 處理選擇按鈕 - 使用 ChoiceManager
+        if (currentDialogue.hasChoices && choiceManager != null)
         {
-            ShowChoices(currentDialogue.choices);
+            // 禁用 DialoguePanel 的射線阻擋,避免擋住選項按鈕
+            DisableDialoguePanelRaycast();
+            
+            // 轉換 List<ChoiceData> 為陣列
+            choiceManager.ShowChoices(currentDialogue.choices.ToArray());
         }
-        else
+    }
+    
+    /// <summary>
+    /// 禁用 DialoguePanel 的射線阻擋
+    /// </summary>
+    void DisableDialoguePanelRaycast()
+    {
+        if (dialoguePanel != null)
         {
-            ClearChoices();
+            var canvasGroup = dialoguePanel.GetComponent<CanvasGroup>();
+            if (canvasGroup == null)
+            {
+                canvasGroup = dialoguePanel.AddComponent<CanvasGroup>();
+            }
+            canvasGroup.blocksRaycasts = false;
+            Debug.Log("🚫 DialoguePanel 射線阻擋已禁用");
+        }
+    }
+    
+    /// <summary>
+    /// 啟用 DialoguePanel 的射線阻擋
+    /// </summary>
+    void EnableDialoguePanelRaycast()
+    {
+        if (dialoguePanel != null)
+        {
+            var canvasGroup = dialoguePanel.GetComponent<CanvasGroup>();
+            if (canvasGroup != null)
+            {
+                canvasGroup.blocksRaycasts = true;
+                Debug.Log("✅ DialoguePanel 射線阻擋已啟用");
+            }
         }
     }
     
@@ -401,5 +521,125 @@ public class DialogueManager : MonoBehaviour
         
         Debug.Log("✅ 對話面板淡出完成");
     }
+    
+    #region 角色動作執行
+    
+    /// <summary>
+    /// 執行角色動作 (自動使用 CharacterManager 找到角色的 SpriteRenderer)
+    /// </summary>
+    void ExecuteCharacterAction(CharacterAction action, string characterName)
+    {
+        var characterManager = FindFirstObjectByType<CharacterManager>();
+        if (characterManager == null)
+        {
+            Debug.LogWarning("⚠️ 找不到 CharacterManager，無法執行角色動作");
+            return;
+        }
+        
+        // 透過 CharacterManager 找到角色的 SpriteRenderer
+        SpriteRenderer targetRenderer = characterManager.GetCharacterRenderer(characterName);
+        if (targetRenderer == null)
+        {
+            Debug.LogWarning($"⚠️ 找不到角色 '{characterName}' 的 SpriteRenderer");
+            return;
+        }
+        
+        // 使用Inspector設定的參數，只有當參數為0時才使用預設值
+        float actualIntensity = action.intensity > 0 ? action.intensity : 0.05f;
+        float actualJumpHeight = action.jumpHeight > 0 ? action.jumpHeight : 0.1f;
+        float actualDuration = action.duration > 0 ? action.duration : 0.4f;
+        
+        switch (action.actionType)
+        {
+            case CharacterActionType.Shake:
+                StartCoroutine(ShakeRendererCoroutine(targetRenderer, actualIntensity, actualDuration));
+                Debug.Log($"🎬 {characterName} 執行動作: 搖動");
+                break;
+                
+            case CharacterActionType.JumpOnce:
+                StartCoroutine(JumpRendererCoroutine(targetRenderer, 1, actualJumpHeight, actualDuration));
+                Debug.Log($"🎬 {characterName} 執行動作: 跳一下");
+                break;
+                
+            case CharacterActionType.JumpTwice:
+                StartCoroutine(JumpRendererCoroutine(targetRenderer, 2, actualJumpHeight, actualDuration));
+                Debug.Log($"🎬 {characterName} 執行動作: 跳兩下");
+                break;
+        }
+    }
+    
+    /// <summary>
+    /// 搖動 SpriteRenderer 協程 - 左右抖動兩次，確保回到原位置
+    /// </summary>
+    IEnumerator ShakeRendererCoroutine(SpriteRenderer renderer, float intensity, float duration)
+    {
+        // 記錄原始位置
+        Vector3 originalPosition = renderer.transform.position;
+        
+        // 左右抖動兩次
+        float singleShakeDuration = duration / 5f; // 總共5個動作：右左右左回原位
+        
+        for (int shake = 0; shake < 2; shake++)
+        {
+            // 向右
+            yield return StartCoroutine(SmoothMoveToPosition(renderer, 
+                originalPosition + new Vector3(intensity, 0f, 0f), singleShakeDuration));
+            
+            // 向左
+            yield return StartCoroutine(SmoothMoveToPosition(renderer, 
+                originalPosition + new Vector3(-intensity, 0f, 0f), singleShakeDuration));
+        }
+        
+        // 確保回到原始位置
+        yield return StartCoroutine(SmoothMoveToPosition(renderer, originalPosition, singleShakeDuration));
+        
+        // 強制設置到精確位置
+        renderer.transform.position = originalPosition;
+    }
+    
+    /// <summary>
+    /// 跳躍動作協程 - 上下跳動，確保回到原位置
+    /// </summary>
+    IEnumerator JumpRendererCoroutine(SpriteRenderer renderer, int jumpCount, float jumpHeight, float duration)
+    {
+        Vector3 originalPosition = renderer.transform.position;
+        float singleJumpDuration = duration / (jumpCount * 2); // 每次跳躍分為上下兩個動作
+        
+        for (int i = 0; i < jumpCount; i++)
+        {
+            // 向上
+            yield return StartCoroutine(SmoothMoveToPosition(renderer, 
+                originalPosition + new Vector3(0f, jumpHeight, 0f), singleJumpDuration));
+            
+            // 向下回原位
+            yield return StartCoroutine(SmoothMoveToPosition(renderer, originalPosition, singleJumpDuration));
+        }
+        
+        // 強制設置到精確位置
+        renderer.transform.position = originalPosition;
+    }
+    
+    /// <summary>
+    /// 平滑移動到目標位置
+    /// </summary>
+    IEnumerator SmoothMoveToPosition(SpriteRenderer renderer, Vector3 targetPosition, float duration)
+    {
+        Vector3 startPosition = renderer.transform.position;
+        float elapsed = 0f;
+        
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = elapsed / duration;
+            // 使用 SmoothStep 讓動作更自然
+            t = t * t * (3f - 2f * t);
+            renderer.transform.position = Vector3.Lerp(startPosition, targetPosition, t);
+            yield return null;
+        }
+        
+        renderer.transform.position = targetPosition;
+    }
+    
+    #endregion
 
 }

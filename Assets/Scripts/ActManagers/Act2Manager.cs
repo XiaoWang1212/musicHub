@@ -71,8 +71,6 @@ public class Act2Manager : BaseActManager
     
     void OnDialogueIndexChanged(int dialogueIndex)
     {
-        if (!isActDialogueActive) return;
-
         switch (dialogueIndex)
         {
             case 4:
@@ -91,7 +89,6 @@ public class Act2Manager : BaseActManager
                 Debug.Log("[Act2Manager] 對話索引 7：隱藏筆記本 + 抖動 + 顯示手機");
                 HideMusicBookAndShake();
                 ShowPhoneMessage("【開學提醒：今日為轉學生報到日】");  // 改這裡
-                break;
                 break;
             case 8: // 第二次按空白鍵：文字變紅 + 主角害怕抖動
                 Debug.Log("😰 觸發文字變紅和主角害怕抖動");

@@ -11,12 +11,6 @@ public class Act6Manager : BaseActManager
     [Tooltip("在指定的對話索引觸發角色動作")]
     public CharacterActionTrigger[] actionTriggers;
 
-    // ⬇️ 新增：背景音樂的公共欄位 ⬇️
-    [Header("背景音效")]
-    public AudioSource bgmSource;
-    public AudioClip actBGM;
-    // ⬆️ 新增：背景音樂的公共欄位 ⬆️
-
     protected override string GetActName()
     {
         return "Act6 - 導師辦公室";
@@ -37,37 +31,6 @@ public class Act6Manager : BaseActManager
         // 取消訂閱
         DialogueManager.OnDialogueIndexChanged -= OnDialogueIndexChanged;
     }
-
-    // ⬇️ 新增：在 Act 啟動時播放 BGM ⬇️
-    protected override IEnumerator StartActSequence()
-    {
-        // 調用基類的開始序列
-        yield return StartCoroutine(base.StartActSequence());
-
-        // 【新增】 Act6 特殊初始化：播放 BGM
-        PlayBGM();
-    }
-
-    /// <summary>
-    /// 播放 Act6 背景音樂
-    /// </summary>
-    public void PlayBGM()
-    {
-        if (bgmSource != null && actBGM != null)
-        {
-            bgmSource.clip = actBGM;
-            bgmSource.volume = 0.6f; // 導師辦公室音量可以稍低一點，可調整
-            bgmSource.loop = true;
-            bgmSource.Play();
-            Debug.Log("[Act6Manager] Act BGM 開始播放");
-        }
-        else
-        {
-            Debug.LogWarning("⚠️ 無法播放 BGM: Bgm Source 或 Act BGM 尚未在 Inspector 中綁定。");
-        }
-    }
-    // ⬆️ 新增：在 Act 啟動時播放 BGM ⬆️
-
 
     /// <summary>
     /// 對話索引變化處理
@@ -118,19 +81,6 @@ public class Act6Manager : BaseActManager
 
             case CharacterActionType.JumpTwice:
                 StartCoroutine(JumpRendererCoroutine(trigger.targetRenderer, 2, actualJumpHeight, actualDuration));
-                break;
-
-            case CharacterActionType.ChangeExpression:
-                // 直接通過 CharacterManager 切換表情
-                var characterManager = FindFirstObjectByType<CharacterManager>();
-                if (characterManager != null)
-                {
-                    characterManager.ChangeCharacterExpression(trigger.characterName, trigger.expressionName, trigger.useExpressionAnimation);
-                }
-                else
-                {
-                    Debug.LogWarning("⚠️ 找不到 CharacterManager，無法切換表情");
-                }
                 break;
         }
     }
@@ -213,7 +163,7 @@ public class Act6Manager : BaseActManager
                 // 強制設定位置
                 renderer.transform.position = targetPosition;
 
-                yield return new WaitForSeconds(0.05f);  // 固定間隔而非每幀
+                yield return new WaitForSeconds(0.05f);  // 固定間隔而非每幀
             }
 
             // 下降階段
@@ -230,88 +180,51 @@ public class Act6Manager : BaseActManager
                 // 強制設定位置
                 renderer.transform.position = targetPosition;
 
-                yield return new WaitForSeconds(0.05f);  // 固定間隔而非每幀
+                yield return new WaitForSeconds(0.05f);  // 固定間隔而非每幀
             }
         }
     }
 
     /// <summary>
-    /// 測試表情切換 - 用於除錯
+    /// 角色動作觸發器 - 可在 Inspector 中設定
     /// </summary>
-    [ContextMenu("測試表情切換")]
-    void TestExpressionChange()
+    [System.Serializable]
+    public class CharacterActionTrigger
     {
-        var characterManager = FindFirstObjectByType<CharacterManager>();
-        if (characterManager != null && actionTriggers != null && actionTriggers.Length > 0)
-        {
-            // 尋找第一個表情切換觸發器
-            foreach (var trigger in actionTriggers)
-            {
-                if (trigger.actionType == CharacterActionType.ChangeExpression)
-                {
-                    Debug.Log($"🧪 測試切換 {trigger.characterName} 的表情為 {trigger.expressionName}");
-                    characterManager.ChangeCharacterExpression(trigger.characterName, trigger.expressionName, trigger.useExpressionAnimation);
-                    return;
-                }
-            }
-            Debug.LogWarning("⚠️ 沒有找到表情切換觸發器");
-        }
-        else
-        {
-            Debug.LogError("❌ 找不到 CharacterManager 或沒有設定觸發器");
-        }
+        [Header("觸發設定")]
+        [Tooltip("在第幾句對話觸發動作（從 0 開始）")]
+        public int dialogueIndex;
+
+        [Header("角色設定")]
+        [Tooltip("直接拖拉要執行動作的角色 SpriteRenderer")]
+        public SpriteRenderer targetRenderer;
+
+        [Tooltip("角色名稱（僅用於顯示，可選）")]
+        public string characterName = "角色名稱";
+
+        [Header("動作設定")]
+        [Tooltip("動作類型")]
+        public CharacterActionType actionType = CharacterActionType.JumpOnce;
+
+        [Header("參數設定")]
+        [Tooltip("搖動強度 (Shake 專用)")]
+        [Range(0.005f, 1.0f)]
+        public float intensity = 0.3f;
+
+        [Tooltip("跳躍高度 (Jump 專用)")]
+        [Range(0.01f, 1.0f)]
+        public float jumpHeight = 0.2f;
+
+        [Tooltip("動作持續時間")]
+        [Range(0.05f, 2.0f)]
+        public float duration = 0.1f;
+
+        [Header("表情設定 (ChangeExpression 專用)")]
+        [Tooltip("要切換的表情名稱 (普通/開心/難過/驚訝/憤怒/害怕/困惑/害羞)")]
+        public string expressionName = "普通";
+
+        [Tooltip("是否使用表情切換動畫")]
+        public bool useExpressionAnimation = true;
     }
 }
-
-/// <summary>
-/// 角色動作觸發器 - 可在 Inspector 中設定
-/// </summary>
-[System.Serializable]
-public class CharacterActionTrigger
-{
-    [Header("觸發設定")]
-    [Tooltip("在第幾句對話觸發動作（從 0 開始）")]
-    public int dialogueIndex;
     
-    [Header("角色設定")]
-    [Tooltip("直接拖拉要執行動作的角色 SpriteRenderer")]
-    public SpriteRenderer targetRenderer;
-    
-    [Tooltip("角色名稱（僅用於顯示，可選）")]
-    public string characterName = "角色名稱";
-    
-    [Header("動作設定")]
-    [Tooltip("動作類型")]
-    public CharacterActionType actionType = CharacterActionType.JumpOnce;
-    
-    [Header("參數設定")]
-    [Tooltip("搖動強度 (Shake 專用)")]
-    [Range(0.005f, 1.0f)]
-    public float intensity = 0.3f;
-    
-    [Tooltip("跳躍高度 (Jump 專用)")]
-    [Range(0.01f, 1.0f)]
-    public float jumpHeight = 0.2f;
-    
-    [Tooltip("動作持續時間")]
-    [Range(0.05f, 2.0f)]
-    public float duration = 0.1f;
-    
-    [Header("表情設定 (ChangeExpression 專用)")]
-    [Tooltip("要切換的表情名稱 (普通/開心/難過/驚訝/憤怒/害怕/困惑/害羞)")]
-    public string expressionName = "普通";
-    
-    [Tooltip("是否使用表情切換動畫")]
-    public bool useExpressionAnimation = true;
-}
-
-/// <summary>
-/// 角色動作類型
-/// </summary>
-public enum CharacterActionType
-{
-    Shake,           // 搖動（恐懼）
-    JumpOnce,        // 跳一下
-    JumpTwice,       // 跳兩下
-    ChangeExpression // 切換表情
-}

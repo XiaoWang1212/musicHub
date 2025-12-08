@@ -76,12 +76,13 @@ public class BaseActManager : MonoBehaviour
     protected virtual void OnDialogueEnd()
     {
         if (isActDialogueActive)
-        {
+        {    
             Debug.Log($"✅ {GetActName()} 對話結束，開始淡出序列");
             isActDialogueActive = false;
             StartCoroutine(ActEndingSequence());
         }
     }
+
 
     /// <summary>
     /// Act 開始序列 - 子類可以覆寫來添加自定義邏輯
@@ -315,6 +316,34 @@ public class BaseActManager : MonoBehaviour
         }
         
         characterManager.SetCharacterDefaultExpression(characterName);
+    }
+    
+    // ==================== 選擇系統方法 ====================
+    
+    /// <summary>
+    /// 顯示選項
+    /// </summary>
+    /// <param name="choices">選項資料陣列</param>
+    protected void ShowChoices(ChoiceData[] choices)
+    {  
+        if (RelationshipManager.Instance == null)
+        {
+            Debug.LogError("❌ RelationshipManager 不存在，請確認已在 MainMenu 場景設定!");
+            return;
+        }
+    }
+    
+    /// <summary>
+    /// 建立選項資料 - 輔助方法
+    /// </summary>
+    protected ChoiceData CreateChoice(string text, string targetCharacter, RelationshipEffect effect)
+    {
+        return new ChoiceData
+        {
+            choiceText = text,
+            targetCharacter = targetCharacter,
+            relationshipEffect = effect
+        };
     }
     
     // ==================== 內部動作協程 ====================
