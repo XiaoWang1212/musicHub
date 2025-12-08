@@ -945,7 +945,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1185825260}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e93aa1b394935574e860727f42bf5acd, type: 3}
+  m_Script: {fileID: 11500000, guid: d8cf6120590866c4482d71e2b111f320, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueManager: {fileID: 79556193}
@@ -957,43 +957,6 @@ MonoBehaviour:
   backgroundFadeOutTime: 2
   dialogueStartDelay: 1
   characterManager: {fileID: 1402649991}
-  actionTriggers:
-  - dialogueIndex: 1
-    targetRenderer: {fileID: 30463587}
-    characterName: "\u767D\u77F3 \u900F\u7FBD"
-    actionType: 2
-    intensity: 0.3
-    jumpHeight: 0.2
-    duration: 0.1
-    expressionName: "\u666E\u901A"
-    useExpressionAnimation: 1
-  - dialogueIndex: 4
-    targetRenderer: {fileID: 30463587}
-    characterName: "\u767D\u77F3 \u900F\u7FBD"
-    actionType: 0
-    intensity: 0.3
-    jumpHeight: 0.2
-    duration: 0.1
-    expressionName: "\u666E\u901A"
-    useExpressionAnimation: 1
-  - dialogueIndex: 8
-    targetRenderer: {fileID: 30463587}
-    characterName: "\u767D\u77F3 \u900F\u7FBD"
-    actionType: 0
-    intensity: 0.3
-    jumpHeight: 0.2
-    duration: 0.1
-    expressionName: "\u666E\u901A"
-    useExpressionAnimation: 1
-  - dialogueIndex: 10
-    targetRenderer: {fileID: 0}
-    characterName: "\u5C0E\u5E2B"
-    actionType: 1
-    intensity: 0.3
-    jumpHeight: 0.2
-    duration: 0.1
-    expressionName: "\u666E\u901A"
-    useExpressionAnimation: 1
 --- !u!1 &1257121362
 GameObject:
   m_ObjectHideFlags: 0

@@ -23,6 +23,162 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Acts/Act5_SchoolGate.unity
     guid: 06ce183c1f2195547a8c0269caf9393b
+  - enabled: 1
+    path: Assets/Scenes/Acts/Act6_Office.unity
+    guid: 59f28ed76cb3e8f44a3044959e7fe720
+  - enabled: 1
+    path: Assets/Scenes/Acts/Act7_Corridor.unity
+    guid: 07d12a10c0c456947b221895f5b9b51c
+  - enabled: 1
+    path: Assets/Scenes/Acts/Act8_MusicRoom.unity
+    guid: f61f10f84be54b84e8007e6c97719033
+  - enabled: 1
+    path: Assets/Scenes/Acts/Act9_CG2.unity
+    guid: 24e6d41432d3d2a488eda169a02056f0
+  - enabled: 1
+    path: Assets/Scenes/Acts/Act10_Class.unity
+    guid: 6067e49ec332b5b4c9e5f41e96256b68
+  - enabled: 1
+    path: Assets/Scenes/Acts/Act11_RoadSunSet.unity
+    guid: 1f292f9ddabd50248970c94c49c42058
+  - enabled: 1
+    path: Assets/Scenes/Acts/Act12_Event1.unity
+    guid: c73b98f8447bbef478b29644ba9bfd9c
+  - enabled: 1
+    path: Assets/Scenes/Acts/Act12_Event2.unity
+    guid: fb8404eb5942cf340baf8b4055e6b319
+  - enabled: 1
+    path: Assets/Scenes/Acts/Act12_Event3.unity
+    guid: 6f946c479f0e70041a0834e217a8a3ef
+  - enabled: 1
+    path: Assets/Scenes/Acts/Act12_Event4.unity
+    guid: c130d9cf0fe8a314ea6ef548d0b0891f
+  - enabled: 1
+    path: Assets/Scenes/Acts/Act13_Opportunity.unity
+    guid: f975f13d028a23c4fa3b608ef5996f89
+  - enabled: 1
+    path: Assets/Scenes/Acts/Act13_Opportunity1.unity
+    guid: beb12b5dd9efccc42b0c45ac648ee8d7
+  - enabled: 1
+    path: Assets/Scenes/Acts/Act13_Opportunity2.unity
+    guid: db7ee5c3d4b5b604cb9c4535bed921b2
+  - enabled: 1
+    path: Assets/Scenes/Acts/Act14_EmptyStage.unity
+    guid: a2ade85c2abc79246a77c9a9ffb41541
+  - enabled: 1
+    path: Assets/Scenes/Acts/Act15_Stage.unity
+    guid: a5c42853cb090ca4c935cadd27c1852f
+  - enabled: 1
+    path: Assets/Scenes/Acts/Act16_CG3.unity
+    guid: 5fb7e48048525da4fb944611fab1ee2d
+  - enabled: 1
+    path: Assets/Scenes/Acts/Act17_Afterstage.unity
+    guid: 71c9daf25b9361e44ba8468848add8f7
+  - enabled: 1
+    path: Assets/Scenes/Acts/Act18_BeforeDream.unity
+    guid: c1b87170e0d59aa49ac86705ab0e645d
+  - enabled: 1
+    path: Assets/Scenes/Acts/Act18_InDream.unity
+    guid: fda64a2555fb19b4db7bc7cd5781c7e2
+  - enabled: 1
+    path: Assets/Scenes/Acts/Act18_InDream2.unity
+    guid: 319d147a2fcd6fb49a2ec62ecbf10b0c
+  - enabled: 1
+    path: Assets/Scenes/Acts/Act18_InDream3.unity
+    guid: 56c15de98cfc62549a4236d524e99648
+  - enabled: 1
+    path: Assets/Scenes/Acts/Act19_Collider.unity
+    guid: 47b97efef54e3624086a836fc3e3836a
+  - enabled: 1
+    path: Assets/Scenes/Acts/Act20_Musicroom.unity
+    guid: 2da4686a9e592364d81da007eac45e6c
+  - enabled: 1
+    path: Assets/Scenes/Acts/Act21_Event1.unity
+    guid: ee2442362b1ca5847aa4c37452d20ece
+  - enabled: 1
+    path: Assets/Scenes/Acts/Act21_Event2.unity
+    guid: 48e3f3fc68d474042bab3d8fc0b8c325
+  - enabled: 1
+    path: Assets/Scenes/Acts/Act21_Event3.unity
+    guid: ad176a8685e81bf46bc8abda8e511314
+  - enabled: 1
+    path: Assets/Scenes/Acts/Act21_Event4.unity
+    guid: 901092a11716ff24e88a621c888de3d9
+  - enabled: 1
+    path: Assets/Scenes/Acts/Act22_Musicroom.unity
+    guid: 6b0c92c18cfdd264e96d6674e5727374
+  - enabled: 1
+    path: Assets/Scenes/Acts/Act23_Musicroom.unity
+    guid: 0672bcd533815994d845420037239112
+  - enabled: 1
+    path: Assets/Scenes/Acts/Act24_Musicroom.unity
+    guid: 817268054661f2041919e2bb0e29ae5b
+  - enabled: 1
+    path: Assets/Scenes/Acts/Act25_Nightroom.unity
+    guid: c11598afb11064248be6082e295bc52a
+  - enabled: 1
+    path: Assets/Scenes/Acts/Act26_Dream.unity
+    guid: 78a50a111dbdaf641ab9481a3e44dc4e
+  - enabled: 1
+    path: Assets/Scenes/Acts/Act26_Dream2.unity
+    guid: 34125dd9e243c76459ca1a20965c4dd3
+  - enabled: 1
+    path: Assets/Scenes/Acts/Act26_Dream3.unity
+    guid: 16f13f591d6f8f944890e8500f5b6a6f
+  - enabled: 1
+    path: Assets/Scenes/Acts/Act27_CG4.unity
+    guid: 203329268da56864d9015cb98092f70e
+  - enabled: 1
+    path: Assets/Scenes/Acts/Act28_OutDoor.unity
+    guid: 79fe654fe4a676946a1d708717ca7b4e
+  - enabled: 1
+    path: Assets/Scenes/Acts/Act29_Musicroom.unity
+    guid: e733f4f248eaa8d40917501738f607c9
+  - enabled: 1
+    path: Assets/Scenes/Acts/Act30_CG5.unity
+    guid: 1c6f3c8dfbd2bf8439874398172c96b1
+  - enabled: 1
+    path: Assets/Scenes/Acts/Act31_Balcony.unity
+    guid: 35313344ffdd9e748923c41d98cbbbec
+  - enabled: 1
+    path: Assets/Scenes/Acts/Act31_CG6.unity
+    guid: 9a111a99185358e42aa4d5b9042784cf
+  - enabled: 1
+    path: Assets/Scenes/Acts/Act32_Balcony.unity
+    guid: f0f5769c9533b1a4eba032285a70e027
+  - enabled: 1
+    path: Assets/Scenes/Acts/Act33_ColliderNight.unity
+    guid: d667d234826c71745aebe7f707f9597d
+  - enabled: 1
+    path: Assets/Scenes/Acts/BeforeEND.unity
+    guid: ababab0d34cd938418fb8464e9690e05
+  - enabled: 1
+    path: Assets/Scenes/Acts/END3_1.unity
+    guid: 6dac18d0620949b468fe60aac7660cf9
+  - enabled: 1
+    path: Assets/Scenes/Acts/END3_2.unity
+    guid: f749ffe3ec9ef29408e23a646939c1a5
+  - enabled: 1
+    path: Assets/Scenes/Acts/END_1_1.unity
+    guid: 08e47dd88611a114f9cf52b72d53229c
+  - enabled: 1
+    path: Assets/Scenes/Acts/END_1_CG8.unity
+    guid: c16d85b5f46ce9e46946e4f43ffa18ac
+  - enabled: 1
+    path: Assets/Scenes/Acts/END_1_CG9.unity
+    guid: a8c347bb5b22a7d4986981a34731affa
+  - enabled: 1
+    path: Assets/Scenes/Acts/END_2A_1.unity
+    guid: 414d380c9e547494f9988a34a62cb9d7
+  - enabled: 1
+    path: Assets/Scenes/Acts/END_2A_CG7.unity
+    guid: 669d5521bc4c4414994719fe6200f2fb
+  - enabled: 1
+    path: Assets/Scenes/Acts/END_2B_1.unity
+    guid: 3e9f37f90e3ca624ca376edc5f2acf86
+  - enabled: 1
+    path: Assets/Scenes/Acts/END_2B_CG8.unity
+    guid: a1d5fb7b390f2bd43a0344ef482b55b5
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

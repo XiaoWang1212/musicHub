@@ -59,6 +59,7 @@
     <UnityVersion>6000.0.39f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Analyzer Include="C:\Users\USER\.vscode\extensions\visualstudiotoolsforunity.vstuc-1.2.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.39f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.39f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.39f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
@@ -67,7 +68,6 @@
     <Compile Include="Assets\Scripts\Utils\GameSetupTest.cs" />
     <Compile Include="Assets\Scripts\ActManagers\BaseActManager.cs" />
     <Compile Include="Assets\Scripts\CharacterSystem\CharacterManager.cs" />
-    <Compile Include="Assets\Scripts\ChoiceSystem\範例_EndingManager.cs" />
     <Compile Include="Assets\Scripts\ChoiceSystem\RelationshipManager.cs" />
     <Compile Include="Assets\Scripts\Effects\ShakeTextManager.cs" />
     <Compile Include="Assets\Scripts\DialogueSystem\DialogueManager.cs" />
@@ -76,9 +76,11 @@
     <Compile Include="Assets\Scripts\SceneSystem\AudioListenerManager.cs" />
     <Compile Include="Assets\Scripts\CharacterSystem\CharacterDisplay.cs" />
     <Compile Include="Assets\Scripts\ActManagers\Act6Manager.cs" />
+    <Compile Include="Assets\Scripts\ActManagers\Act33Manager.cs" />
     <Compile Include="Assets\Scripts\AnimationSystem\MusicbookDropAnimation.cs" />
     <Compile Include="Assets\Scripts\ActManagers\Act1Manager.cs" />
     <Compile Include="Assets\Scripts\SceneSystem\SceneTransitionManager.cs" />
+    <Compile Include="Assets\Scripts\ActManagers\BeforeEndManager.cs" />
     <Compile Include="Assets\Scripts\BackgroundSystem\BackgroundManager.cs" />
     <Compile Include="Assets\Scripts\ChoiceSystem\ChoiceManager.cs" />
     <Compile Include="Assets\Scripts\CharacterSystem\ExpressionTriggerManager.cs" />

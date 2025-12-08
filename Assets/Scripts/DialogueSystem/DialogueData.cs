@@ -69,6 +69,13 @@ public class ChoiceData
     [Tooltip("選擇後角色的表情")]
     public string characterExpression = "";
     
+    [Header("🚩 劇情標記")]
+    [Tooltip("選擇後設定的劇情標記 ID (例如: hinata_returned)")]
+    public string storyFlagId = "";
+    
+    [Tooltip("劇情標記的值 (true/false)")]
+    public bool storyFlagValue = true;
+    
     public ChoiceData(string text, int nextId)
     {
         choiceText = text;

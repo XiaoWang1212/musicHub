@@ -261,6 +261,13 @@ public class ChoiceManager : MonoBehaviour
             Debug.Log($"💝 {choiceData.targetCharacter} 好感度變化: {choiceData.relationshipEffect}");
         }
         
+        // 設定劇情標記
+        if (RelationshipManager.Instance != null && !string.IsNullOrEmpty(choiceData.storyFlagId))
+        {
+            RelationshipManager.Instance.SetStoryFlag(choiceData.storyFlagId, choiceData.storyFlagValue);
+            Debug.Log($"🚩 設定劇情標記: {choiceData.storyFlagId} = {choiceData.storyFlagValue}");
+        }
+        
         // 觸發角色表情變化
         if (!string.IsNullOrEmpty(choiceData.characterExpression))
         {
