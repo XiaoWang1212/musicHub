@@ -11,6 +11,10 @@ public class Act6Manager : BaseActManager
     [Tooltip("在指定的對話索引觸發角色動作")]
     public CharacterActionTrigger[] actionTriggers;
 
+    [Header("背景音效")]
+    public AudioSource bgmSource;
+    public AudioClip actBGM; // <-- 這個欄位已存在，用於接收 BGM 檔案
+
     protected override string GetActName()
     {
         return "Act6 - 導師辦公室";
@@ -23,6 +27,42 @@ public class Act6Manager : BaseActManager
         // 訂閱對話索引變化事件
         DialogueManager.OnDialogueIndexChanged += OnDialogueIndexChanged;
     }
+    // =========================================================================
+    // ⬇️ 新增的音樂播放邏輯 ⬇️
+    // =========================================================================
+
+    protected override IEnumerator StartActSequence()
+    {
+        // 調用基類的開始序列（通常處理淡入、對話開始）
+        yield return StartCoroutine(base.StartActSequence());
+
+        // 【新增】 Act4 特殊初始化：播放 BGM
+        PlayBGM();
+    }
+
+    /// <summary>
+    /// 播放 Act4 背景音樂
+    /// </summary>
+    public void PlayBGM()
+    {
+        if (bgmSource != null && actBGM != null)
+        {
+            bgmSource.clip = actBGM;
+            bgmSource.volume = 0.7f; // 初始音量可以調整
+            bgmSource.loop = true;
+            bgmSource.Play();
+            Debug.Log("[Act4Manager] Act BGM 開始播放");
+        }
+        else
+        {
+            Debug.LogWarning("⚠️ 無法播放 BGM: Bgm Source 或 Act BGM 尚未在 Inspector 中綁定。");
+        }
+    }
+
+    // =========================================================================
+    // ⬆️ 新增的音樂播放邏輯 ⬆️
+    // =========================================================================
+
 
     protected override void OnDestroy()
     {

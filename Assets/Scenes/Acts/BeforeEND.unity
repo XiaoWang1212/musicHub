@@ -1182,6 +1182,8 @@ MonoBehaviour:
   dialogueManager: {fileID: 79556193}
   actDialogueSequence: {fileID: 11400000, guid: d18a5d18af96ce141a4fe22e5acdfd79, type: 2}
   backgroundRenderer: {fileID: 787841175}
+  actBGMClip: {fileID: 8300000, guid: 0e8ed32558d79c5409d3a0e716178eba, type: 3}
+  bgmFadeOutTime: 1.5
   transitionToNextScene: {fileID: 403987405}
   initialDelay: 0.5
   backgroundFadeInTime: 1
@@ -1191,6 +1193,7 @@ MonoBehaviour:
   transitionLowScoreDrummerReturned: {fileID: 403987405}
   transitionLowScoreOrDrummerLeft: {fileID: 1954550848}
   transitionHighScoreDrummerReturned: {fileID: 230556096}
+  beforeEndBGMClip: {fileID: 0}
 --- !u!82 &1185825264
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1201,8 +1204,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 9a0e9ab28e6ea5e44886af0b68ee416a, type: 3}
-  m_Resource: {fileID: 8300000, guid: 9a0e9ab28e6ea5e44886af0b68ee416a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 0e8ed32558d79c5409d3a0e716178eba, type: 3}
+  m_Resource: {fileID: 8300000, guid: 0e8ed32558d79c5409d3a0e716178eba, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

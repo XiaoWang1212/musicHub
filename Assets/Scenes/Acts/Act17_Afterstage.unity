@@ -1130,6 +1130,8 @@ MonoBehaviour:
   dialogueManager: {fileID: 79556193}
   actDialogueSequence: {fileID: 11400000, guid: d762c24a15e296f4bb05eded9f6f9f1f, type: 2}
   backgroundRenderer: {fileID: 787841175}
+  actBGMClip: {fileID: 8300000, guid: 762d5040c79e88d4596358f339e69dc4, type: 3}
+  bgmFadeOutTime: 1.5
   transitionToNextScene: {fileID: 403987405}
   initialDelay: 0.5
   backgroundFadeInTime: 1

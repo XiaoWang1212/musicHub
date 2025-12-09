@@ -1060,6 +1060,8 @@ MonoBehaviour:
   dialogueManager: {fileID: 79556193}
   actDialogueSequence: {fileID: 11400000, guid: 6b80885f9f56d8b4e9f669b5c00b2487, type: 2}
   backgroundRenderer: {fileID: 0}
+  actBGMClip: {fileID: 0}
+  bgmFadeOutTime: 1.5
   transitionToNextScene: {fileID: 403987405}
   initialDelay: 0.5
   backgroundFadeInTime: 1
@@ -1103,6 +1105,8 @@ MonoBehaviour:
     duration: 0.1
     expressionName: "\u666E\u901A"
     useExpressionAnimation: 1
+  bgmSource: {fileID: 1185825264}
+  actBGM: {fileID: 8300000, guid: d9d049b00e3d43a48bbebf68b0b3fd32, type: 3}
 --- !u!82 &1185825264
 AudioSource:
   m_ObjectHideFlags: 0
